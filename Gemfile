@@ -41,6 +41,7 @@ gem 'selenium-webdriver', group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -160,6 +160,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   bcrypt-ruby
   capybara
   coffee-rails (~> 4.0.0)
