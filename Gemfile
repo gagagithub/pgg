@@ -38,10 +38,9 @@ gem 'capybara', group: :development
 gem 'selenium-webdriver', group: :development
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
+gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt-ruby'
-gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'
