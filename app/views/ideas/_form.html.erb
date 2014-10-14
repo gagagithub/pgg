@@ -1,0 +1,61 @@
+<%= form_for(@idea) do |f| %>
+  <% if @idea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+      <ul>
+      <% @idea.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :intro %><br>
+    <%= f.text_field :intro %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_segments %><br>
+    <%= f.text_area :customer_segments %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_relationships %><br>
+    <%= f.text_area :customer_relationships %>
+  </div>
+  <div class="field">
+    <%= f.label :value_proposition %><br>
+    <%= f.text_area :value_proposition %>
+  </div>
+  <div class="field">
+    <%= f.label :key_activities %><br>
+    <%= f.text_area :key_activities %>
+  </div>
+  <div class="field">
+    <%= f.label :key_partners %><br>
+    <%= f.text_area :key_partners %>
+  </div>
+  <div class="field">
+    <%= f.label :channels %><br>
+    <%= f.text_area :channels %>
+  </div>
+  <div class="field">
+    <%= f.label :key_resources %><br>
+    <%= f.text_area :key_resources %>
+  </div>
+  <div class="field">
+    <%= f.label :revenue_streams %><br>
+    <%= f.text_area :revenue_streams %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_structure %><br>
+    <%= f.text_area :cost_structure %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

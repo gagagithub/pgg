@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @idea.user_id %>
+</p>
+
+<p>
+  <strong>Intro:</strong>
+  <%= @idea.intro %>
+</p>
+
+<p>
+  <strong>Customer segments:</strong>
+  <%= @idea.customer_segments %>
+</p>
+
+<p>
+  <strong>Customer relationships:</strong>
+  <%= @idea.customer_relationships %>
+</p>
+
+<p>
+  <strong>Value proposition:</strong>
+  <%= @idea.value_proposition %>
+</p>
+
+<p>
+  <strong>Key activities:</strong>
+  <%= @idea.key_activities %>
+</p>
+
+<p>
+  <strong>Key partners:</strong>
+  <%= @idea.key_partners %>
+</p>
+
+<p>
+  <strong>Channels:</strong>
+  <%= @idea.channels %>
+</p>
+
+<p>
+  <strong>Key resources:</strong>
+  <%= @idea.key_resources %>
+</p>
+
+<p>
+  <strong>Revenue streams:</strong>
+  <%= @idea.revenue_streams %>
+</p>
+
+<p>
+  <strong>Cost structure:</strong>
+  <%= @idea.cost_structure %>
+</p>
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<%= link_to 'Back', ideas_path %>
