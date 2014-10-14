@@ -11,20 +11,8 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <%= link_to "快钱海外钱包", root_path, class:"navbar-brand" %>
-<!--
-          <nav>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "首页", root_path %></li>
-              <li><%= link_to "登陆", signin_path %></li>
-            </ul>
-          </nav>
--->
-        </div>
-    </nav>
-
+  	<%= render 'layouts/header' %>
+  	
     <div class="container">
       <%= yield %>
       <%= render 'layouts/footer' %>
