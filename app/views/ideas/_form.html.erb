@@ -13,49 +13,52 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :type =>'text',:class =>'form-control' %>
   </div>
   <div class="field">
     <%= f.label :intro %><br>
-    <%= f.text_field :intro %>
+    <%= f.text_field :intro, :type =>'text',:class =>'form-control' %>
   </div>
+  
+
   <div class="field">
     <%= f.label :customer_segments %><br>
-    <%= f.text_area :customer_segments %>
+    <%= f.text_area :customer_segments, :class =>'form-control', :rows =>'3' %>
   </div>
+
   <div class="field">
     <%= f.label :customer_relationships %><br>
-    <%= f.text_area :customer_relationships %>
+    <%= f.text_area :customer_relationships, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :value_proposition %><br>
-    <%= f.text_area :value_proposition %>
+    <%= f.text_area :value_proposition, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :key_activities %><br>
-    <%= f.text_area :key_activities %>
+    <%= f.text_area :key_activities, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :key_partners %><br>
-    <%= f.text_area :key_partners %>
+    <%= f.text_area :key_partners, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :channels %><br>
-    <%= f.text_area :channels %>
+    <%= f.text_area :channels, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :key_resources %><br>
-    <%= f.text_area :key_resources %>
+    <%= f.text_area :key_resources, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :revenue_streams %><br>
-    <%= f.text_area :revenue_streams %>
+    <%= f.text_area :revenue_streams, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="field">
     <%= f.label :cost_structure %><br>
-    <%= f.text_area :cost_structure %>
+    <%= f.text_area :cost_structure, :class =>'form-control', :rows =>'3' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>'btn btn-success', :type=>'submit' %>
   </div>
 <% end %>
