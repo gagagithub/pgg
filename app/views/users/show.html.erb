@@ -1,4 +1,7 @@
-<%= @user.name %>, <%= @user.email %>
-<br />
-<br />
-<%= link_to "点击创建新创意", signup_path %>
+
+
+	<% if @user.ideas.any? %>
+		<h1><%= @user.name %>想法集(<%= @user.ideas.count %>)</h1>
+	<% end %>
+
+<%= render :partial=>"ideasindex",:locals=>{:ideas=>@user.ideas}%> 

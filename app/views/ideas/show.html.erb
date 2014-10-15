@@ -1,59 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @idea.user_id %>
-</p>
-
-<p>
-  <strong>Intro:</strong>
-  <%= @idea.intro %>
-</p>
-
-<p>
-  <strong>Customer segments:</strong>
-  <%= @idea.customer_segments %>
-</p>
-
-<p>
-  <strong>Customer relationships:</strong>
-  <%= @idea.customer_relationships %>
-</p>
-
-<p>
-  <strong>Value proposition:</strong>
-  <%= @idea.value_proposition %>
-</p>
-
-<p>
-  <strong>Key activities:</strong>
-  <%= @idea.key_activities %>
-</p>
-
-<p>
-  <strong>Key partners:</strong>
-  <%= @idea.key_partners %>
-</p>
-
-<p>
-  <strong>Channels:</strong>
-  <%= @idea.channels %>
-</p>
-
-<p>
-  <strong>Key resources:</strong>
-  <%= @idea.key_resources %>
-</p>
-
-<p>
-  <strong>Revenue streams:</strong>
-  <%= @idea.revenue_streams %>
-</p>
-
-<p>
-  <strong>Cost structure:</strong>
-  <%= @idea.cost_structure %>
-</p>
+<table class="table">
+  <tbody>
+      <tr>
+        <td>name:</td>
+        <td><%= @idea.name %></td>
+      </tr>
+      <tr>
+        <td>Intro:</td>
+        <td><%= @idea.intro %></td>        
+      </tr>
+      </tr>
+      <tr>
+        <td>Customer segments:</td>
+        <td><%= @idea.customer_segments %></td>        
+      </tr>
+      <tr>
+        <td>Customer relationships:</td>
+        <td><%= @idea.customer_relationships %></td>        
+      </tr>      
+      <tr>
+        <td>Value proposition:</td>
+        <td><%= @idea.value_proposition %></td>        
+      </tr>      
+      <tr>
+        <td>Key activities:</td>
+        <td><%= @idea.key_activities %></td>        
+      </tr>      
+      <tr>
+        <td>Key partners:</td>
+        <td><%= @idea.key_partners %></td>        
+      </tr>      
+      <tr>
+        <td>Channels:</td>
+        <td><%= @idea.channels %></td>        
+      </tr>      
+      <tr>
+        <td>Key resources:</td>
+        <td><%= @idea.key_resources %></td>        
+      </tr>      
+      <tr>
+        <td>Revenue streams:</td>
+        <td><%= @idea.revenue_streams %></td>        
+      </tr>      
+      <tr>
+        <td>Cost structure:</td>
+        <td><%= @idea.cost_structure %></td>        
+      </tr>    
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
+<%= link_to 'Back', current_user %>

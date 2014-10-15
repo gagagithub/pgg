@@ -24,7 +24,8 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
-    @idea = Idea.new(idea_params)
+#    @idea = Idea.new(idea_params)
+    @idea = current_user.ideas.build(idea_params)
 
     respond_to do |format|
       if @idea.save
@@ -69,6 +70,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:user_id, :intro, :customer_segments, :customer_relationships, :value_proposition, :key_activities, :key_partners, :channels, :key_resources, :revenue_streams, :cost_structure)
+      params.require(:idea).permit(:user_id, :intro, :name, :customer_segments, :customer_relationships, :value_proposition, :key_activities, :key_partners, :channels, :key_resources, :revenue_streams, :cost_structure)
     end
 end
