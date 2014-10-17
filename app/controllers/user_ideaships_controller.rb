@@ -5,8 +5,13 @@ class UserIdeashipsController < ApplicationController
 	end
 
 	def create
-		@user_ideaship = UserIdeaship.new(userideaship_params)
+#		@user_ideaship = UserIdeaship.new(userideaship_params)
+		@user_ideaship = UserIdeaship.new
+		@user_ideaship.user_id = params[:user_id]
+		@user_ideaship.idea_id = params[:idea_id]
+		@user_ideaship.relationtype = '1'
 		if @user_ideaship.save
+			redirect_to current_user 
 		else
 			render 'new'
 		end

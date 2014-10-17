@@ -1,18 +1,21 @@
 	<h1>User Idea Link Page</h1>
 
-    <%= form_for(@user_ideaship) do |f| %>
+    <%#= form_for(@user_ideaship) do |f| %>
 
-      <%= f.label :user_id %>
-      <%= f.number_field :user_id %>
+    <%= form_tag("/user_ideaships/create",method:"get") do %>
+      <%= label_tag("user_id") %>
+      <%= number_field_tag(:user_id) %>
+      <%= hidden_field_tag(:idea_id,params[:linkidea_id]) %>
 
-      <%= f.label :idea_id %>
-      <%= f.number_field :idea_id %>
+      <%#= f.label :idea_id %>
+      <%#= f.number_field :idea_id %>
 
-      <%= f.label :relationtype %>
-      <%= f.number_field :relationtype %>
+      <%#= f.label :relationtype %>
+      <%#= f.number_field :relationtype %>
 
 
-      <%= f.submit "关联" %>
+      <%#= f.submit "关联" %>
+      <%= submit_tag("关联") %>
     <% end %>
 
 <!--

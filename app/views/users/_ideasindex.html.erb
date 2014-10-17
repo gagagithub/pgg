@@ -1,4 +1,4 @@
-
+<% if uiships %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -23,9 +23,11 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <br>
 
+<% if uishipreviewers %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -50,4 +52,6 @@
   </tbody>
 </table>
 
-<%= link_to 'New Idea', new_idea_path %>
+<% end %>
+
+<%= link_to '创建新想法', new_idea_path %>

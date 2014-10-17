@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'user_ideaships/new'
+  get 'user_ideaships/create'
 
   resources :ideas
 
