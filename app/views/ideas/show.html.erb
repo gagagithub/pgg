@@ -50,5 +50,7 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', current_user %>
+<%= link_to '修改', edit_idea_path(@idea) %> |
+<%= link_to '返回', current_user %> |
+<%= link_to '关联', {:controller =>"user_ideaships", :action =>"new"} %> |
+

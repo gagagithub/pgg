@@ -1,7 +1,9 @@
 
 
-	<% if @user.ideas.any? %>
-		<h1><%= @user.name %>想法集(<%= @user.ideas.count %>)</h1>
-	<% end %>
+<h1><%= @user.name %>想法集</h1>
 
-<%= render :partial=>"ideasindex",:locals=>{:ideas=>@user.ideas}%> 
+<%= render :partial=>"ideasindex",:locals=>{:uiships=>@user.user_ideaships.where(relationtype:"1"),
+											:uishipreviewers=>@user.user_ideaships.where(relationtype:"0") }%>
+
+<%#= render :partial=>"ideasindex",:locals=>{:ideas=>@user.ideas}%>
+<%#= render :partial=>"ideasindex",:locals=>{:ideas=>Idea.all}%>

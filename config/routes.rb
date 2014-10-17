@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'user_ideaships/new'
+
   resources :ideas
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :user_ideaships, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 

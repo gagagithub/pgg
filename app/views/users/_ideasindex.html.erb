@@ -9,20 +9,45 @@
   </thead>
 
   <tbody>
-    <% ideas.each do |idea| %>
+    <% uiships.each do |uiship| %>
+    <%# for idea in @ideas %>
       <tr>
-        <td><%= idea.name %></td>
-        <td><%= idea.intro %></td>
-        <td><%= link_to '详情', idea %></td>
-<!--
-        <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-        <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
--->
+        <td><%= uiship.idea.name %></td>
+        <td><%= uiship.idea.intro %></td>
+        <td><%= link_to '详情', uiship.idea %></td>
+
+        <%#= link_to 'Edit', edit_idea_path(idea) %>
+        <%#= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>Intro</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% uishipreviewers.each do |uishipreviewer| %>
+      <tr>
+        <td><%= uishipreviewer.idea.name %></td>
+        <td><%= uishipreviewer.idea.intro %></td>
+        <td><%= link_to '详情', uishipreviewer.idea %></td>
+
+        <%#= link_to 'Edit', edit_idea_path(idea) %>
+        <%#= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'New Idea', new_idea_path %>

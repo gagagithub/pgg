@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
-	  has_many :ideas
+#	  has_many :ideas
+
+	  has_many :user_ideaships
+	  has_many :ideas, :through => :user_ideaships
+#	  has_many :ideas
+
 	  before_save { self.email = email.downcase }
 	  before_create :create_remember_token
 	  validates :name, presence: true, length: { maximum: 50 }
