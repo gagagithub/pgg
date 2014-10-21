@@ -10,53 +10,53 @@
 <table class="table table-striped">
   <tbody>
       <tr>
-        <td>name:</td>
+        <td>产品名称:</td>
         <td><%= @idea.name %></td>
       </tr>
       <tr>
-        <td>Intro:</td>
+        <td>一句话描述:</td>
         <td><%= @idea.intro %></td>        
       </tr>
       </tr>
       <tr>
-        <td>Customer segments:</td>
+        <td>客户细分:</td>
         <td><%= @idea.customer_segments %></td>        
       </tr>
       <tr>
-        <td>Customer relationships:</td>
+        <td>客户关系:</td>
         <td><%= @idea.customer_relationships %></td>        
       </tr>      
       <tr>
-        <td>Value proposition:</td>
+        <td>价值主张:</td>
         <td><%= @idea.value_proposition %></td>        
       </tr>      
       <tr>
-        <td>Key activities:</td>
+        <td>核心业务:</td>
         <td><%= @idea.key_activities %></td>        
       </tr>      
       <tr>
-        <td>Key partners:</td>
+        <td>合作伙伴:</td>
         <td><%= @idea.key_partners %></td>        
       </tr>      
       <tr>
-        <td>Channels:</td>
+        <td>客户渠道:</td>
         <td><%= @idea.channels %></td>        
       </tr>      
       <tr>
-        <td>Key resources:</td>
+        <td>核心资源:</td>
         <td><%= @idea.key_resources %></td>        
       </tr>      
       <tr>
-        <td>Revenue streams:</td>
+        <td>收入来源:</td>
         <td><%= @idea.revenue_streams %></td>        
       </tr>      
       <tr>
-        <td>Cost structure:</td>
+        <td>成本:</td>
         <td><%= @idea.cost_structure %></td>        
       </tr>    
   </tbody>
 </table>
 
-<%= render :partial=>"remarkslist",:locals=>{:comments=>Comment.all} %>
+<%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>

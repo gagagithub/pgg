@@ -1,12 +1,12 @@
-<p> remarks are listed in the following </p>
+<p> 朋友评论 </p>
 
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
+      <th>朋友名</th>
 <!--      <th>Idea</th>		-->
-      <th>Body</th>
+      <th>评论内容</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -14,12 +14,12 @@
   <tbody>
     <% comments.each do |comment| %>
       <tr>
-        <td><%= comment.user_id %></td>
+        <td><%= comment.user.email %></td>
 <!--        <td><%= comment.idea_id %></td>	-->
         <td><%= comment.body %></td>
 <!--        <td><%= link_to 'Show', comment %></td>		-->
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '修改', edit_comment_path(comment) %></td>
+        <td><%= link_to '删除', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
