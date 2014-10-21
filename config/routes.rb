@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
   get 'user_ideaships/new'
   get 'user_ideaships/create'
 

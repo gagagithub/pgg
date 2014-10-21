@@ -1,0 +1,36 @@
+
+<%= form_for(newcomment) do |f| %>
+  <% if newcomment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(newcomment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% newcomment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%#= f.label :user_id %><br>
+    <%= f.hidden_field :user_id, :value =>current_user.id %>
+    <%#= f.hidden_field :user_id,:value =>current_user.id %>
+    <%#= f.hidden_field :user_id,:value =>@comment.user_id %>
+  </div>
+  <div class="field">
+    <%#= f.number_field :idea_id,:value => linkidea_id %>
+    <%= f.hidden_field :idea_id,:value => linkidea_id %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%#= render 'form' %>
+
+<%#= link_to 'Back', comments_path %>
