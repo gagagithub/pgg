@@ -51,6 +51,7 @@ text-align: center;
 
 .jumbotron h1 {
 font-size: 50px;
+font-weight: bold;
 line-height: 60px;
 }
 
@@ -80,3 +81,23 @@ padding: 15px;
 border-radius: 8px;
 }
 
+body{
+-webkit-font-smoothing: antialiased;
+}
+
+.jumbotron .signupForm .input-bigger {
+	height: 56px;
+	padding: 10px 18px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-color: #fff;
+}
+
+.jumbotron .signupForm .btn-bigger {
+	padding: 16px 16px;
+	font-size: 17px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
