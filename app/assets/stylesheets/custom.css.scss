@@ -1,130 +1,82 @@
 @import "bootstrap";
 
-
-
-/* universal */
-
-
-html {
-  overflow-y: scroll;
+.jumbotron{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin-bottom:0;
+	overflow: hidden;
+	max-height: 100%;
+	background-image: url("/assets/hero-home03.jpg");
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	background-position: center;
 }
 
-body {
-  padding-top: 60px;
+.jumbotron .container {
+position: relative;
+height: 100%;
 }
 
-section {
-  overflow: auto;
+.clearfix:before, .clearfix:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical>.btn-group:before, .btn-group-vertical>.btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+content: " ";
+display: table;
 }
 
-textarea {
-  resize: vertical;
+.clearfix:after, .container:after, .container-fluid:after, .row:after, .form-horizontal .form-group:after, .btn-toolbar:after, .btn-group-vertical>.btn-group:after, .nav:after, .navbar:after, .navbar-header:after, .navbar-collapse:after, .pager:after, .panel-body:after, .modal-footer:after {
+clear: both;
 }
 
-.center {
-  text-align: center;
+.row {
+margin-left: -15px;
+margin-right: -15px;
 }
 
-.center h1 {
-  margin-bottom: 10px;
+.jumbotron .signupForm {
+position: absolute;
+top: 50%;
+margin-top: -125px;
 }
 
-
-/* typography */
-
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+.jumbotron h1, .jumbotron h2 {
+color: #fff;
+text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+text-align: center;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
+.jumbotron h1 {
+font-size: 50px;
+line-height: 60px;
 }
 
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: #999;
+.jumbotron .signupForm h1 {
+letter-spacing: -2px;
 }
 
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  text-align: center;
+.jumbotron h2 {
+font-style: italic;
+font-weight: 300;
+margin-top: 15px;
+margin-right:auto; 
+margin-bottom: 40px;
+margin-left:auto;
 }
 
-
-
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
+fieldset {
+padding: 0;
+margin: 0;
+border: 0;
+min-width: 0;
 }
 
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+.jumbotron .signup-form-block {
+background-color: rgba(255,255,255,.25);
+padding: 15px;
+border-radius: 8px;
 }
 
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
-}
-
-footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 10px;
-}
-
-$grayMediumLight: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
