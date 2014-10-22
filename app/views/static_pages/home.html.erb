@@ -19,22 +19,10 @@
       <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0  signupForm">
         <h1 class="fontlato">ProductGaga, 帮你从创意到赚钱</h1>
         <h2 class="fontlato">检验创意，寻找初期用户，推出MVP，迭代。</h2>
-        <fieldset>
-          <div class="signup-form-block">
-            <div class="row">
-              <div class="col-md-4 col-sm-4 ">
-                <input type="text" placeholder="邮箱" class="form-control input-lg input-bigger" name="mail" id="mail" value="" autofocus="">
-              </div>
-              <div class="col-md-4 col-sm-4 ">
-                <input type="password" placeholder="邀请码" class="form-control input-lg input-bigger" name="password" id="password" value="">
-                <div id="password_icon" class="checkpswd btn-danger"></div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <button type="submit" id="validation" class="btn btn-lg btn-block btn-success btn-uppercase btn-bigger">登陆</button>
-              </div>
-            </div>
-          </div>
-        </fieldset>
+
+        <%= render :partial=>"login" %>
+
+
       </div>        
 <!--
     		<h1>海外钱包 MVP</h1>

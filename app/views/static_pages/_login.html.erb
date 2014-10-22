@@ -1,0 +1,45 @@
+
+<fieldset>
+	<div class="signup-form-block">
+		<div class="row">
+			<%= form_tag sessions_path,:class =>"form-horizontal",:role =>'form' do %>
+
+				<div class="col-md-4 col-sm-4 ">
+					<input type="text" placeholder="邮箱" class="form-control input-lg input-bigger" name="email" id="email" value="" autofocus="">
+
+				</div>
+
+				<div class="col-md-4 col-sm-4 ">
+					<input type="password" placeholder="邀请码" class="form-control input-lg input-bigger" name="password" id="password" value="">
+
+					<div id="password_icon" class="checkpswd btn-danger"></div>
+				</div>
+
+				<div class="col-md-4 col-sm-4">
+
+					<button type="submit" id="validation" class="btn btn-lg btn-block btn-success btn-uppercase btn-bigger">登 陆</button>
+				</div>
+
+			<% end %>
+		</div>
+	</div>
+</fieldset>
+
+<!--
+<div class = "container">
+
+	<%= form_tag sessions_path,:class =>"form-horizontal",:role =>'form' do %>
+
+			  <%= text_field :email, params[:email],class:'form-control',placeholder:"Enter email",id:'inputEmail3',type:'email' %>
+		
+		      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+		
+		      <button type="submit" class="btn btn-primary">登 陆</button>
+			
+
+
+	<% end %>
+</div>
+
+-->
+
