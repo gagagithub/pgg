@@ -1,33 +1,24 @@
 <% if uiships %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>想法名</th>
-      <th>简介</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <ul>
     <% uiships.each do |uiship| %>
-    <%# for idea in @ideas %>
-      <tr>
-        <td><%= uiship.idea.name %></td>
-        <td><%= uiship.idea.intro %></td>
-        <td><%= link_to '详情', uiship.idea %></td>
-
-        <%#= link_to 'Edit', edit_idea_path(idea) %>
-        <%#= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-      </tr>
+    <div class="product-room">
+      <li class="product-item">
+        <div class="product-url">
+          <%= link_to uiship.idea.name,'#' %>
+          <p><%= uiship.idea.intro%></p>
+        </div>
+          <div class="product-meta">
+        <%= link_to '详情', uiship.idea %>
+        </div>
+      </li>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </ul>
 <% end %>
 
-<br>
 
-<% if uishipreviewers %>
+<%# if uishipreviewers %>
+<!--
 <table class="table table-striped">
   <thead>
     <tr>
@@ -38,20 +29,21 @@
   </thead>
 
   <tbody>
-    <% uishipreviewers.each do |uishipreviewer| %>
+    <%# uishipreviewers.each do |uishipreviewer| %>
       <tr>
-        <td><%= uishipreviewer.idea.name %></td>
-        <td><%= uishipreviewer.idea.intro %></td>
-        <td><%= link_to '详情', uishipreviewer.idea %></td>
+        <td><%#= uishipreviewer.idea.name %></td>
+        <td><%#= uishipreviewer.idea.intro %></td>
+        <td><%#= link_to '详情', uishipreviewer.idea %></td>
 
         <%#= link_to 'Edit', edit_idea_path(idea) %>
         <%#= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
 
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
 </table>
+-->
+<%# end %>
 
-<% end %>
 
-<%= link_to '创建新想法', new_idea_path %>
+<%#= link_to '创建新想法', new_idea_path %>

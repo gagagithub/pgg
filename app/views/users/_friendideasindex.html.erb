@@ -1,0 +1,26 @@
+
+
+
+<% if uishipreviewers %>
+<ul>
+
+    <% uishipreviewers.each do |uishipreviewer| %>
+    <div class="product-room">
+      <li class="product-item">
+        <div class="product-url">
+        <%= link_to uishipreviewer.idea.name,'#' %>
+        <p><%= uishipreviewer.idea.intro %></p>
+      </div>
+      <div class="product-meta">
+        <%#= link_to '详情', uishipreviewer.idea %>
+      </div>
+
+      </li>
+    </div>
+    <% end %>
+</ul>
+
+<% end %>
+
+
+<%#= link_to '创建新想法', new_idea_path %>
