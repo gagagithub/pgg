@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'user_ideaships/new'
   get 'user_ideaships/create'
+  get 'ideas/share'
+  get 'ideas/sendmail'
 
   resources :ideas
 

@@ -5,7 +5,11 @@ class UserIdeashipsController < ApplicationController
 	end
 
 	def create
-#		@user_ideaship = UserIdeaship.new(userideaship_params)
+#		@newuser = User.new
+#		@newuser.name = params[:friend_name]
+#		@newuser.email = params[:friend_email]
+#		@newuser.save
+
 		@user_ideaship = UserIdeaship.new
 		@user_ideaship.user_id = params[:user_id]
 		@user_ideaship.idea_id = params[:idea_id]

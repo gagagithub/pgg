@@ -21,6 +21,14 @@ class IdeasController < ApplicationController
   def edit
   end
 
+  def share
+#    UserMailer.idea_invite(params[:friend_email],params[:email_title]).deliver
+  end
+
+  def sendmail
+    UserMailer.idea_invite(params[:friend_email],params[:email_title],params[:email_content]).deliver
+  end
+
   # POST /ideas
   # POST /ideas.json
   def create

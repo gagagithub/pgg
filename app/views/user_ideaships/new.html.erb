@@ -1,36 +1,18 @@
-	<h1>User Idea Link Page</h1>
-
-    <%#= form_for(@user_ideaship) do |f| %>
-
-    <%= form_tag("/user_ideaships/create",method:"get") do %>
-      <%= label_tag("user_id") %>
-      <%= number_field_tag(:user_id) %>
-      <%= hidden_field_tag(:idea_id,params[:linkidea_id]) %>
-
-      <%#= f.label :idea_id %>
-      <%#= f.number_field :idea_id %>
-
-      <%#= f.label :relationtype %>
-      <%#= f.number_field :relationtype %>
-
-
-      <%#= f.submit "关联" %>
-      <%= submit_tag("关联") %>
-    <% end %>
-
 <!--
-	<%= form_for user_ideaships_path,:class =>"form-horizontal",:role =>'form' do %>
-		<div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">邮箱:</label>
-			<div class="col-xs-4">
-			<%= text_field :email, params[:email],class:'form-control',placeholder:"Enter email",id:'inputEmail3',type:'email' %>
-			</div>
-		</div>
+	<div class = "container">
+		<h1>邀请朋友来提建议</h1>
 
-		<div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-primary">关 联</button>
-		    </div>
-		</div>		
-	<% end %>		
+	    <%= form_tag("/user_ideaships/create",method:"get") do %>
+
+	      <%#= label_tag("user_id") %>
+	      <%#= number_field_tag(:user_id) %>
+	      <%= text_field_tag(:friend_name) %>
+	      <%= text_field_tag(:friend_email) %>
+	      <%= text_field_tag(:email_title) %>
+	      <%= text_field_tag(:email_content) %>
+	      <%= hidden_field_tag(:idea_id,params[:linkidea_id]) %>
+	      <%= submit_tag("关联") %>
+
+	    <% end %>
+	</div>
 -->
