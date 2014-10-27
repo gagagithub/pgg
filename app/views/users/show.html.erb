@@ -8,13 +8,11 @@
 	</div>
 
 	<div class="ideas-list">
-	<h1><%#= @user.name %>自己的想法</h1>
+	<h1>自己的想法</h1>
 
 	<%= render :partial=>"ideasindex",:locals=>{:uiships=>@user.user_ideaships.where(relationtype:"0") }%>
-	<%#= render :partial=>"ideasindex",:locals=>{:uiships=>@user.user_ideaships.where(relationtype:"0"),
-												:uishipreviewers=>@user.user_ideaships.where(relationtype:"1") }%>
 
-	<h1><%#= @user.name %>朋友的想法</h1>
+	<h1>朋友的想法</h1>
 	<%= render :partial=>"friendideasindex",:locals=>{:uishipreviewers=>@user.user_ideaships.where(relationtype:"1") }%>
 
     </div>
