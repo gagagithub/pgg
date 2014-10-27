@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :invitations
+
   resources :comments
 
   get 'user_ideaships/new'
@@ -18,7 +20,10 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/signup', to:'users#new', via:'get'
+  get '/signup/:invitation_token', to:'users#new', as: :signup
+  #match '/signup/:invitation_token', to:'users#new', via:'get'
+  #map.signup '/signup/:invitation_token', :controller => 'users', :action => 'new'
+
   match '/signin', to:'sessions#new', via:'get'
   match '/signout', to:'sessions#destroy', via:'delete'
 

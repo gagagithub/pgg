@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017074511) do
+ActiveRecord::Schema.define(version: 20141027082319) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20141017074511) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "invitations", force: true do |t|
+    t.integer  "sender_id"
+    t.string   "recipient_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.string   "new"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "microposts", force: true do |t|
@@ -62,6 +72,8 @@ ActiveRecord::Schema.define(version: 20141017074511) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "invitation_id"
+    t.integer  "invitation_limit"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"

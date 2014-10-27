@@ -8,5 +8,16 @@ class UserMailer < ActionMailer::Base
 		@url1 = "http://www.baidu.com"
 		mail(:to =>email, :subject =>title)
 	end
+
+	def invitation(invitation, signup_url)
+#		subject 'Invitation'
+#		recipients invitation.recipient_email
+#		body :invitation => invitation, :signup_url => signup_url
+		@signup_url = signup_url
+
+		mail(:to=>invitation.recipient_email,:subject=>'Invitation')
+#		invitation.update_attribute(:sent_at, Time.now)
+
+	end
 end
 	
