@@ -26,7 +26,9 @@ class IdeasController < ApplicationController
   end
 
   def sendmail
-    UserMailer.idea_invite(params[:friend_email],params[:email_title],params[:email_content]).deliver
+
+    @idea = Idea.find(params[:idea_id])
+    UserMailer.idea_invite(params[:friend_email],params[:email_title],params[:email_content],@idea).deliver
     redirect_to @idea
   end
 
