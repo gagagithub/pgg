@@ -2,7 +2,7 @@
 
 <%= link_to '修改', edit_idea_path(@idea) %> |
 <%= link_to '返回', current_user %> |
-<%#= link_to '关联', share %> |
+<%= link_to '关联', share_path(@idea) %> |
 <%= link_to '点评', {:controller =>"comments", :action =>"new",:linkidea_id=>@idea.id} %>
 <%#= link_to '点评', {:controller =>"comments", :action =>"new"} %>
 
