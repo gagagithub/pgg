@@ -1,13 +1,14 @@
 	<div class = "container">
 		<h1>邀请朋友来提建议</h1>
 
-	    <%= form_tag("/ideas/sendmail",method:"get") do %>
-	      <%= text_field_tag(:friend_name,"Friend Name:") %>
-	      <%= text_field_tag(:friend_email,"Friend Email:") %>
-	      <%= text_field_tag(:email_title,"Email Title:") %>
-	      <%= text_area_tag(:email_content,"Email Content:") %>
-	      <%#= hidden_field_tag(:idea_id,params[:linkidea_id]) %>
-	      <%= submit_tag("Idea_Share") %>
+	    <%#= bootstrap_form_tag("/ideas/sendmail",method:"get") do %>
+	    <%= bootstrap_form_tag url:'/sendmail' do |f| %>
+	      <%#= f.text_field :friend_name, label:"朋友名字" %>
+	      <%= f.text_field(:friend_email, label:"朋友邮箱") %>
+	      <%= f.text_field(:email_title, label:"邀请信主题") %>
+	      <%= f.text_area(:email_content,label:"邀请信内容") %>
+	      <%#= hidden_field_tag(:idea_id,params[:id]) %>
+	      <%= f.primary("邀请") %>
 
 	    <% end %>
 	</div>

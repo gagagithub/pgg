@@ -47,6 +47,8 @@ gem 'bcrypt-ruby'
 
 gem 'mail'
 
+gem 'bootstrap_form'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

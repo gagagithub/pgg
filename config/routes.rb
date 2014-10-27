@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   get 'user_ideaships/new'
   get 'user_ideaships/create'
-  get 'ideas/share'
+#  get 'ideas/share'
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'ideas/:id/share' => 'ideas#share', as: :share
   get 'ideas/sendmail'
 
   resources :ideas
