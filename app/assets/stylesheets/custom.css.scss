@@ -1,5 +1,13 @@
 @import "bootstrap";
 
+.ideas-list a:visited {
+	color:#428bca;
+}
+
+.navbar-default .navbar-nav > li > a{
+	color:#428bca;
+}
+
 .container{
 	width: 900px;
 	padding-left: 0px;
@@ -114,16 +122,23 @@ body{
 }
 
 .user-share-part{
-	margin-bottom:60px;
+	margin-bottom:70px;
 	line-height: 40px;
 	padding-right:30px;
+	padding-left:55px;
+
 }
 .user-share-part a{
 	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
 	font-size :14px;
 	font-weight: bold;
 	float:right;
-
+	margin-top:10px;
+}
+.user-share-part h1{
+	font-size:28px;
+	float:left;
+	margin-top:10px;
 }
 .ideas-list{
 	padding-left:55px;
@@ -133,6 +148,14 @@ body{
 	font-size :24px;
 	font-weight: bold;
 	line-height: 44px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.ideas-list h2{
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
+	font-size :18px;
+	font-weight: bold;
+	line-height: 40px;
 	-webkit-font-smoothing: antialiased;
 }
 

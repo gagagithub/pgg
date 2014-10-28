@@ -16,7 +16,7 @@
     <% uiships.each do |uiship| %>
       <tr>
         <td><%= i %></td>
-        <td><%= link_to uiship.idea.name,'#' %></td>
+        <td><%= link_to uiship.idea.name,uiship.idea %></td>
         <td><%= uiship.idea.intro %></td>
         <td><%= link_to '详情', uiship.idea %></td>
       </tr>

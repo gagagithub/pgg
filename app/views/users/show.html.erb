@@ -3,15 +3,16 @@
 
 
 	<div class="user-share-part">
-		<a class="btn btn-primary" href="/ideas/new">分享新产品</a>
+		<h1>想法集</h1>
+		<a class="btn btn-primary" href="/ideas/new">新想法</a>
 	</div>
 
 	<div class="ideas-list">
-	<h1>我的想法</h1>
+	<h2>我的想法</h2>
 
 	<%= render :partial=>"ideasindex",:locals=>{:uiships=>@user.user_ideaships.where(relationtype:"0") }%>
 
-	<h1>朋友的想法</h1>
+	<h2>朋友的想法</h2>
 	<%= render :partial=>"friendideasindex",:locals=>{:uishipreviewers=>@user.user_ideaships.where(relationtype:"1") }%>
 
     </div>

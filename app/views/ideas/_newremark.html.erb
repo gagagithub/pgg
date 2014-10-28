@@ -1,5 +1,6 @@
+<h2>3、评论内容</h2>
 
-<%= form_for(newcomment) do |f| %>
+<%= bootstrap_form_for(newcomment) do |f| %>
   <% if newcomment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(newcomment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -12,22 +13,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%#= f.label :user_id %><br>
+
+    <%#= f.label :user_id %>
     <%= f.hidden_field :user_id, :value =>current_user.id %>
     <%#= f.hidden_field :user_id,:value =>current_user.id %>
     <%#= f.hidden_field :user_id,:value =>@comment.user_id %>
-  </div>
-  <div class="field">
+
     <%#= f.number_field :idea_id,:value => linkidea_id %>
     <%= f.hidden_field :idea_id,:value => linkidea_id %>
-  </div>
-  <div class="field">
-    <%= f.label :评论内容 %><br>
+
+    <%#= f.label :评论内容 %>
     <%= f.text_area :body %>
-  </div>
+
   <div class="actions">
-    <%= f.submit :value=>'新建评论' %>
+    <%= f.submit "新建评论", class: "btn btn-success" %>
   </div>
 <% end %>
 

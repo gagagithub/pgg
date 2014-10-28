@@ -1,29 +1,52 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
+
+<%#= link_to '修改', edit_idea_path(@idea) %> 
+<%#= link_to '返回', current_user %> 
+<%#= link_to '关联', share_path(@idea) %> 
+<%#= link_to '点评', {:controller =>"comments", :action =>"new",:linkidea_id=>@idea.id} %>
+
+<div class="user-share-part">
+
+<h1><%= @idea.name %></h1>
+
+<!--  <a class="btn btn-primary" href="/ideas/new">找朋友帮忙</a>  -->
+<%= link_to '找朋友帮忙', share_path(@idea),class:"btn btn-primary" %> 
+</div>
 
 <div class="ideas-list">
 
-<%= link_to '修改', edit_idea_path(@idea) %> |
-<%= link_to '返回', current_user %> |
-<%= link_to '关联', share_path(@idea) %> |
-<%= link_to '点评', {:controller =>"comments", :action =>"new",:linkidea_id=>@idea.id} %>
-<%#= link_to '点评', {:controller =>"comments", :action =>"new"} %>
+<h2>1、商业模型 Business Model Canvas</h2>
 
 
 <table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th class="canvas-table-attr"><p>模型属性</p></th>
+      <th class="canvas-table-intro"><p>描述</p></th>
+
+    </tr>
+  </thead>
+
   <tbody>
+<!--
       <tr>
         <td>产品名称:</td>
         <td><%= @idea.name %></td>
       </tr>
+
       <tr>
         <td>一句话描述:</td>
         <td><%= @idea.intro %></td>        
       </tr>
-      </tr>
+-->
       <tr>
         <td>客户细分:</td>
         <td><%= @idea.customer_segments %></td>        
       </tr>
+
       <tr>
         <td>客户关系:</td>
         <td><%= @idea.customer_relationships %></td>        
@@ -63,4 +86,5 @@
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
 
+</div>
 </div>
