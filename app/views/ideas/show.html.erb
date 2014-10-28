@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="ideas-list">
+
 <%= link_to '修改', edit_idea_path(@idea) %> |
 <%= link_to '返回', current_user %> |
 <%= link_to '关联', share_path(@idea) %> |
@@ -60,3 +62,5 @@
 <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
+
+</div>
