@@ -1,3 +1,21 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.idea-table-id {
+	width: 30px;
+}
+
+
+.idea-table-name{
+	width:200px;
+}
+
+
+.idea-table-intro{
+	width:467px;
+}
+
+.idea-table-id p,.idea-table-name p,.idea-table-intro p,.idea-table-oper p{
+font-size: 16px;
+}

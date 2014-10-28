@@ -1,26 +1,27 @@
-
-
-
 <% if uishipreviewers %>
-<ul>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="idea-table-id"><p>#</p></th>
+      <th class="idea-table-name"><p>创意名称<p></th>
+      <th class="idea-table-intro"><p>简介</p></th>
+      <th class="idea-table-oper"><p>操作</p></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% i=1 %>
     <% uishipreviewers.each do |uishipreviewer| %>
-    <div class="product-room">
-      <li class="product-item">
-        <div class="product-url">
-        <%= link_to uishipreviewer.idea.name,'#' %>
-        <p><%= uishipreviewer.idea.intro %></p>
-      </div>
-      <div class="product-meta">
-        <%#= link_to '详情', uishipreviewer.idea %>
-      </div>
-
-      </li>
-    </div>
+      <tr>
+        <td class="idea-table-id"><%= i %></td>
+        <td><%= link_to uishipreviewer.idea.name,'#' %></td>
+        <td><%= uishipreviewer.idea.intro %></td>
+        <td><%= link_to '详情', uishipreviewer.idea %></td>
+      </tr>
+      <% i=i+1 %>
     <% end %>
-</ul>
-
+  </tbody>
+</table>
 <% end %>
-
-
-<%#= link_to '创建新想法', new_idea_path %>
