@@ -27,8 +27,22 @@ class IdeasController < ApplicationController
 
   def sendmail
 
+    @inviteuseridea = UserIdeaship.new
+    @inviteuseridea.idea_id = params[:idea_id]
+    @inviteuseridea.email = params[:friend_email]
+    @inviteuseridea.relationtype = 1
+    @inviteuseridea.save
+
+    @invitation = Invitation.new
+    @invitation.sender = current_user
+    @invitation.recipient_email = params[:friend_email]
+    @invitation.sender_id = current_user.id
+    @invitation.save
+
     @idea = Idea.find(params[:idea_id])
-    UserMailer.idea_invite(params[:friend_email],params[:email_title],params[:email_content],@idea).deliver
+    UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
+                           signup_url(@invitation.token)).deliver
+
     redirect_to @idea
   end
 

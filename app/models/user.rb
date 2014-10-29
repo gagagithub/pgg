@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 	  has_secure_password
 	  validates :password, length: { minimum: 6 }
 	  validates_presence_of :invitation_id, :message =>'is required'
+
 	  validates_uniqueness_of :invitation_id
 
 	  def User.new_remember_token

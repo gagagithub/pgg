@@ -6,7 +6,11 @@
 
       <%= render 'shared/error_messages' %>
 
-      <%= f.hidden_field :invitation_token %>
+      <%#= f.label :token %>
+      <%#= f.hidden_field :invitation_token %>
+
+      <%#= f.label :invitation_id %>
+      <%= f.hidden_field :invitation_id %>
       
       <%= f.label :姓名 %>
       <%= f.text_field :name %>
