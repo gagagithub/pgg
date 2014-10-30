@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :signed_in_user, only: [:show]
+  before_action :correct_user, only: [:show]
+
   def new
   	@user = User.new(:invitation_token => params[:invitation_token])
     @user.email = @user.invitation.recipient_email if @user.invitation
@@ -42,6 +45,17 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation,:invitation_id)
-  end
+    end
 
+    def signed_in_user
+      redirect_to root_path, notice: "请先登录!" unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_path, notice:"您不具备该用户的访问权限！" unless current_user?(@user)
+    end
 end
+
+
+
