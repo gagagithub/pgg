@@ -24,9 +24,11 @@ class UsersController < ApplicationController
 
   	if @user.save
       sign_in @user
-      @catchup_idea_relation = UserIdeaship.where(email:@user.email).first
-      @catchup_idea_relation.user_id = @user.id
-      @catchup_idea_relation.save
+      catchup_idea_relation = UserIdeaship.where(email:@user.email)
+      catchup_idea_relation.each do |cir|
+        cir.user_id = @user.id
+        cir.save
+      end
 
 #  		flash[:success] = "Welcome to the 99bill Oversea Wallet App ! "
   		redirect_to @user

@@ -63,7 +63,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        format.html { redirect_to @idea, notice: '已成功创建想法.' }
         format.json { render :show, status: :created, location: @idea }
       else
         format.html { render :new }
@@ -89,9 +89,15 @@ class IdeasController < ApplicationController
   # DELETE /ideas/1
   # DELETE /ideas/1.json
   def destroy
+
+    userideaship = UserIdeaship.where(idea_id:@idea.id)
+    userideaship.each do |uis|
+    uis.destroy
+    end
+
     @idea.destroy
     respond_to do |format|
-      format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
+      format.html { redirect_to current_user, notice: '已成功删除新创意。' }
       format.json { head :no_content }
     end
   end

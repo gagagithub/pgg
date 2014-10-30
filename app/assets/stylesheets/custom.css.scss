@@ -1,8 +1,6 @@
 @import "bootstrap";
 
-.ideas-list a:visited {
-	color:#428bca;
-}
+
 
 .navbar-default .navbar-nav > li > a{
 	color:#428bca;
@@ -159,6 +157,15 @@ body{
 	-webkit-font-smoothing: antialiased;
 }
 
+.ideas-list a:visited {
+	color:#428bca;
+}
+
+.ideas-list a{
+	color:#428bca;
+}
+
+
 .product-room{
 	height: 74px;
 }
@@ -183,3 +190,14 @@ list-style-type:none
 	color:#747f8c;
 }
 
+.new_idea{
+	margin-top:90px;
+}
+.new_idea .field label{
+	font-size:16px;
+}
+
+.new_idea .field .form-control{
+	font-size: 13px;
+	-webkit-font-smoothing: antialiased;
+}

@@ -1,6 +1,10 @@
 
 <div class="container">
 
+<% flash.each do |key, value| %>
+        <div class="alert alert-success" role="alert"><%= notice %></div>
+<% end %>
+
 
 	<div class="user-share-part">
 		<h1>想法集</h1>
