@@ -89,3 +89,21 @@ SVG Icons - svgicons.sparkk.fr
   stroke: #4691f6;
   stroke-width: 1;
 }
+
+.svg-icon-reg {
+  width: 6em;
+  height: 6em;
+
+  float: center;
+}
+
+.svg-icon-reg path,
+.svg-icon-reg polygon,
+.svg-icon-reg rect {
+  fill: #4691f6;
+}
+
+.svg-icon-reg circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
