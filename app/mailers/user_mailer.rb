@@ -6,6 +6,7 @@ class UserMailer < ActionMailer::Base
 		@mailcontent = sendcontent
 #		@url = "http://localhost:3000/ideas/#{idea.id}"
 		@url = sendurl
+		@myidea = sendidea
 		sendinvitation.update_attribute(:sent_at, Time.now)
 		
 		mail(:to =>sendinvitation.recipient_email, :subject =>sendtitle)
@@ -13,6 +14,7 @@ class UserMailer < ActionMailer::Base
 
 	def oldfriend_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
 		@mailcontent = sendcontent
+		@myidea = sendidea
 		@url = "http://localhost:3000/ideas/#{sendidea.id}"
 		mail(:to =>sendemail,:subject=>sendtitle)
 	end
