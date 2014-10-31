@@ -34,15 +34,25 @@ class IdeasController < ApplicationController
     @inviteuseridea.relationtype = 1
     @inviteuseridea.save
 
-    @invitation = Invitation.new
-    @invitation.sender = current_user
-    @invitation.recipient_email = params[:friend_email]
-    @invitation.sender_id = current_user.id
-    @invitation.save
-
     @idea = Idea.find(params[:idea_id])
-    UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
+
+    if (User.where(email:params[:friend_email]).empty?)
+
+        @invitation = Invitation.new
+        @invitation.sender = current_user
+        @invitation.recipient_email = params[:friend_email]
+        @invitation.sender_id = current_user.id
+        @invitation.save
+    
+        UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
                            signup_url(@invitation.token)).deliver
+
+    else
+        UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],params[:friend_email],@idea)
+
+    end
+
+
 
     redirect_to @idea
   end
@@ -112,7 +122,7 @@ class IdeasController < ApplicationController
     def validate_user
 #      @idea = Idea.find(params[:id])
       validateresult = @idea.user_ideaships.where(user_id:current_user.id)
-      redirect_to root_path, notice:"您不具备该用户的访问权限！" if validateresult.empty?
+      redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
 
     end
 

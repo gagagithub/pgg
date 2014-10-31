@@ -11,6 +11,13 @@ class UserMailer < ActionMailer::Base
 		mail(:to =>sendinvitation.recipient_email, :subject =>sendtitle)
 	end
 
+	def oldfriend_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
+		@mailcontent = sendcontent
+		@url = "http://localhost:3000/ideas/#{sendidea.id}"
+		mail(:to =>sendemail,:subject=>sendtitle)
+	end
+
+
 	def invitation(invitation, signup_url)
 
 		@signup_url = signup_url
