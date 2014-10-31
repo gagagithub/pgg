@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :validate_user, only: [:show]
 
   # GET /ideas
   # GET /ideas.json
@@ -106,6 +107,13 @@ class IdeasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
       @idea = Idea.find(params[:id])
+    end
+
+    def validate_user
+#      @idea = Idea.find(params[:id])
+      validateresult = @idea.user_ideaships.where(user_id:current_user.id)
+      redirect_to root_path, notice:"您不具备该用户的访问权限！" if validateresult.empty?
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

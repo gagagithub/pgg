@@ -4,7 +4,7 @@
 	    <%#= bootstrap_form_tag("/ideas/sendmail",method:"get") do %>
 	    <%= bootstrap_form_tag url:'/ideas/sendmail' do |f| %>
 	      <%#= f.text_field :friend_name, label:"朋友名字" %>
-	      <%= f.text_field(:friend_email, label:"朋友邮箱") %>
+	      <%= f.text_field(:friend_email, label:"朋友邮箱",placeholder:"tom@abc.com") %>
 	      <%= f.text_field(:email_title, label:"邀请信主题",value:"最近有个很不错的创业想法，帮我看看，提提建议，多谢！") %>
 	      <%= f.text_area(:email_content,label:"邀请信内容",value:"Hi Buddy:
 
