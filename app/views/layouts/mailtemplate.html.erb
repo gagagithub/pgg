@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProductGaga 邀请注册页</title>
+    <%= stylesheet_link_tag "application", media: "all",
+                                           "data-turbolinks-track" => true %>
+  </head>
+
+  <body>
+      <div class="container">
+
+          <p><%= @mailcontent %></p>
+
+          <p>想法名字叫 <strong>
+                        <mark>
+                          <%= link_to @myidea.name,@url %>
+                        </mark>
+                        <strong>,
+          你可以把他简单理解为: <%= link_to @myidea.intro,@url %>
+                        <mark>
+                          
+                        </mark>
+          </p>
+
+
+          <p>我已经从客户细分、客户关系、价值主张、核心业务、合作伙伴、客户渠道、核心资源、收入来源、成本等角度考虑过这个想法，想听听你的看看法，<%= link_to "点击阅读详情",@url %>。
+          </p>
+
+          <%#= yield %>
+
+          <address>
+          <%= link_to "ProductGaga,从想法到赚钱","http://www.productgaga.com" %><br>
+          保密, 检验创意,寻找初期用户,迭代<br>
+          </address>
+
+      </div>
+  </body>
+</html>
