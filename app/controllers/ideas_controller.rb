@@ -11,6 +11,7 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+#    @idea.
   end
 
   # GET /ideas/new
@@ -51,8 +52,6 @@ class IdeasController < ApplicationController
         UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],params[:friend_email],@idea)
 
     end
-
-
 
     redirect_to @idea
   end
