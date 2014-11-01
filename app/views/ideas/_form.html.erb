@@ -15,53 +15,81 @@
 
       <div class="field">
         <%= f.label :产品名称 %>
-        <%= f.text_field :name, :type =>'text',:class =>'form-control',:placeholder=>"好的产品名称便于消费者记忆，引发好感，促进购买，节约传播费用。"%>
+        <span class="help-block">好的产品名称便于消费者记忆，引发好感，促进购买，节约传播费用。</span>
+        <%= f.text_field :name, :type =>'text',:class =>'form-control'%>
       </div>
-
+      <br>
 
       <div class="field">
         <%= f.label :一句话描述 %>
-        <%= f.text_field :intro, :type =>'text',:class =>'form-control',:placeholder=>"描述举例：（产品名称)提供的(产品或服务)利用(特色功能的突出) 帮助(目标用户)解决(问题描述) 。" %>
+        <span class="help-block">（产品名称)提供的(产品或服务)利用(特色功能的突出) 帮助(目标用户)解决(问题描述) 。</span>
+        <%= f.text_field :intro, :type =>'text',:class =>'form-control' %>
       </div>
-      
+      <br>
 
       <div class="field">
         <%= f.label :客户细分 %>
-        <%= f.text_area :customer_segments, :class =>'form-control',:rows =>'3',:placeholder=>'我们正在为谁创造价值？谁是我们最重要的客户？' %>
+        <span class="help-block">我们正在为谁创造价值？谁是我们最重要的客户？</span>
+        <%= f.text_area :customer_segments, :class =>'form-control',:rows =>'3' %>
       </div>
+      <br>
 
       <div class="field">
-        <%= f.label :客户关系 %><br>
-        <%= f.text_area :customer_relationships, :class =>'form-control', :rows =>'3',:placeholder=>"如何和客户建立关系？线下活动，微信互动，抽奖等等。" %>
+        <%= f.label :客户关系 %>
+        <span class="help-block">如何和客户建立关系？线下活动，微信互动，抽奖等等。</span>
+        <%= f.text_area :customer_relationships, :class =>'form-control', :rows =>'3' %>
       </div>
+      <br>
+
       <div class="field">
         <%= f.label :价值主张 %><br>
-        <%= f.text_area :value_proposition, :class =>'form-control', :rows =>'3',:placeholder=>"详细描述产品的服务方案，是如何帮助客户解决当前问题的。" %>
+        <span class="help-block">详细描述产品的服务方案，是如何帮助客户解决当前问题的。</span>        
+        <%= f.text_area :value_proposition, :class =>'form-control', :rows =>'3' %>
       </div>
+      <br>
+
       <div class="field">
-        <%= f.label :核心业务 %><br>
-        <%= f.text_area :key_activities, :class =>'form-control', :rows =>'3',:placeholder=>"需要做哪些事情，来实现创意，搭建产品。例如：建造网站，招聘技术合伙人，募集资金等。" %>
+        <%= f.label :核心业务 %>
+        <span class="help-block">需要做哪些事情，来实现创意，搭建产品。例如：建造网站，招聘技术合伙人，募集资金等。</span>
+        <%= f.text_area :key_activities, :class =>'form-control', :rows =>'3'%>
       </div>
+      <br>
+
       <div class="field">
-        <%= f.label :合作伙伴 %><br>
-        <%= f.text_area :key_partners, :class =>'form-control', :rows =>'3',:placeholder=>"那些可以给你提供核心资源的小伙伴们。" %>
+        <%= f.label :合作伙伴 %>
+        <span class="help-block">那些可以给你提供核心资源的小伙伴们。</span>
+        <%= f.text_area :key_partners, :class =>'form-control', :rows =>'3' %>
       </div>
+      <br>
+
       <div class="field">
         <%= f.label :客户渠道 %><br>
-        <%= f.text_area :channels, :class =>'form-control', :rows =>'3',:placeholder=>"接触到客户的渠道，例如微信，微博，论坛等。" %>
+        <span class="help-block">接触到客户的渠道，例如微信，微博，论坛等。</span>
+        <%= f.text_area :channels, :class =>'form-control', :rows =>'3' %>
       </div>
+      <br>
+
       <div class="field">
-        <%= f.label :核心资源 %><br>
-        <%= f.text_area :key_resources, :class =>'form-control', :rows =>'3',:placeholder=>"核心资源可以是资金、技术、知识产权、人脉、人力资源等。" %>
+        <%= f.label :核心资源 %>
+        <span class="help-block">核心资源可以是资金、技术、知识产权、人脉、人力资源等。</span>
+        <%= f.text_area :key_resources, :class =>'form-control', :rows =>'3'%>
       </div>
+      <br>
+
       <div class="field">
-        <%= f.label :收入来源 %><br>
-        <%= f.text_area :revenue_streams, :class =>'form-control', :rows =>'3',:placeholder=>"如果客户是商业资源的心脏的话，收入来源就是动脉。什么样的产品功能让客户愿意付费？他们愿意如何支付费用？每个收入来源占总收入的比例等等。" %>
+        <%= f.label :收入来源 %>
+        <span class="help-block">如果客户是商业资源的心脏的话，收入来源就是动脉。什么样的产品功能让客户愿意付费？他们愿意如何支付费用？每个收入来源占总收入的比例等等。</span>
+        <%= f.text_area :revenue_streams, :class =>'form-control', :rows =>'3' %>
       </div>
+      <br>
+
       <div class="field">
         <%= f.label :成本 %><br>
-        <%= f.text_area :cost_structure, :class =>'form-control', :rows =>'3',:placeholder=>"将创意实现为产品，并推向社会赚钱，你将需要投入多少钱？" %>
+        <span class="help-block">将创意实现为产品，并推向社会赚钱，你将需要投入多少钱？</span>
+        <%= f.text_area :cost_structure, :class =>'form-control', :rows =>'3' %>
       </div>
+      <br>
+      
       <div class="actions">
         <%= f.submit :class=>'btn btn-primary', :type=>'submit',:value=>'提交创意' %>
       </div>
