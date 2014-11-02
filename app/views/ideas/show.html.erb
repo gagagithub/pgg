@@ -12,9 +12,11 @@
 <div class="user-share-part">
 
 <h1><%= @idea.name %></h1>
+<p><mark><%= @idea.intro %></mark></p>
 
 <!--  <a class="btn btn-primary" href="/ideas/new">找朋友帮忙</a>  -->
 <%= link_to '找朋友帮忙', share_path(@idea),class:"btn btn-primary" %> 
+
 </div>
 
 <div class="ideas-list">
@@ -22,70 +24,34 @@
 
 
 <h2>1、商业模型 Business Model Canvas</h2>
-<p><mark><%= @idea.intro %></mark></p>
 
+<blockquote class="canvas-type">客户细化:</blockquote>
+<span class="help-block"><%= @idea.customer_segments %></span>
 
-<table class="table table-striped">
+<blockquote class="canvas-type">客户关系:</blockquote>
+<span class="help-block"><%= @idea.customer_relationships %></span>
 
-  <thead>
-    <tr>
-      <th class="canvas-table-attr"><p>模型属性</p></th>
-      <th class="canvas-table-intro"><p>描述</p></th>
+<blockquote class="canvas-type">价值主张:</blockquote>
+<span class="help-block"><%= @idea.value_proposition %></span>
 
-    </tr>
-  </thead>
+<blockquote class="canvas-type">核心业务:</blockquote>
+<span class="help-block"><%= @idea.key_activities %></span>
 
-  <tbody>
-<!--
-      <tr>
-        <td>产品名称:</td>
-        <td><%= @idea.name %></td>
-      </tr>
+<blockquote class="canvas-type">合作伙伴:</blockquote>
+<span class="help-block"><%= @idea.key_partners %></span>
 
-      <tr>
-        <td>一句话描述:</td>
-        <td><%= @idea.intro %></td>        
-      </tr>
--->
-      <tr>
-        <td>客户细分:</td>
-        <td><%= @idea.customer_segments %></td>        
-      </tr>
+<blockquote class="canvas-type">客户渠道:</blockquote>
+<span class="help-block"><%= @idea.channels %></span>
 
-      <tr>
-        <td>客户关系:</td>
-        <td><%= @idea.customer_relationships %></td>        
-      </tr>      
-      <tr>
-        <td>价值主张:</td>
-        <td><%= @idea.value_proposition %></td>        
-      </tr>      
-      <tr>
-        <td>核心业务:</td>
-        <td><%= @idea.key_activities %></td>        
-      </tr>      
-      <tr>
-        <td>合作伙伴:</td>
-        <td><%= @idea.key_partners %></td>        
-      </tr>      
-      <tr>
-        <td>客户渠道:</td>
-        <td><%= @idea.channels %></td>        
-      </tr>      
-      <tr>
-        <td>核心资源:</td>
-        <td><%= @idea.key_resources %></td>        
-      </tr>      
-      <tr>
-        <td>收入来源:</td>
-        <td><%= @idea.revenue_streams %></td>        
-      </tr>      
-      <tr>
-        <td>成本:</td>
-        <td><%= @idea.cost_structure %></td>        
-      </tr>    
-  </tbody>
-</table>
+<blockquote class="canvas-type">核心资源:</blockquote>
+<span class="help-block"><%= @idea.key_resources %></span>
+
+<blockquote class="canvas-type">收入来源:</blockquote>
+<span class="help-block"><%= @idea.revenue_streams %></span>
+
+<blockquote class="canvas-type">成本:</blockquote>
+<span class="help-block"><%= @idea.cost_structure %></span>
+
 
 <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
 
