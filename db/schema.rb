@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029021559) do
+ActiveRecord::Schema.define(version: 20141103040939) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20141029021559) do
     t.string   "remember_token"
     t.integer  "invitation_id"
     t.integer  "invitation_limit"
+    t.boolean  "admin",            default: false
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"

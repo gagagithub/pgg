@@ -5,7 +5,11 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    if current_user.admin?
+      @ideas = Idea.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /ideas/1

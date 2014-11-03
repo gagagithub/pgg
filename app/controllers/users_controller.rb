@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:show]
   before_action :correct_user, only: [:show]
 
+  def index
+    if current_user.admin?
+      @users = User.all
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
   	@user = User.new(:invitation_token => params[:invitation_token])
     @user.email = @user.invitation.recipient_email if @user.invitation

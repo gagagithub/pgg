@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  get 'users/index'=>'users#index'
   get 'ideas/index'=>'ideas#index'
   get 'user_ideaships/new'
   get 'user_ideaships/create'
