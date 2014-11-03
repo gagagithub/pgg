@@ -1,6 +1,53 @@
 @import "bootstrap";
 
 
+#nav {
+	position: relative;
+	z-index: 2;
+	border-bottom: none;
+	padding:20px 0;
+}
+
+#nav h1{
+	margin: 0;
+	padding: 0;
+}
+
+.gallery-attractive {
+	border-width: 2px;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 50px;
+	padding: 8px 18px;
+	font-size: 14px;
+	margin-left: 8px;
+}
+
+.btn-red {
+	background-color: #e67862;
+	border: 1px solid #e1644f;
+	color: #fff;
+}
+
+.navPublic a{
+	color: white;
+}
+
+.navPublic a:visited{
+	color: white;
+}
+
+.navPublic a span {
+	margin-right: 5px;
+}
+
+
+
+#nav .navPublic .navTop {
+	list-style: none;
+	margin: 0;
+	padding-top: 6px;
+}
 
 .navbar-default .navbar-nav > li > a{
 	color:#428bca;

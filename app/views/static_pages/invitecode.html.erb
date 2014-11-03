@@ -31,9 +31,11 @@
 
       <%= bootstrap_form_for Invitation.new do |f| %>
 
-        <%= f.text_field :recipient_email,hide_label: :true,placeholder:"邮箱地址" %>
+        <%= f.text_field :recipient_email,hide_label: :true,placeholder:"邮箱地址", class:"input-lg" %>
 
-        <%= f.submit "申请邀请码", class:"btn btn-success btn-lg" %>
+        <br>
+
+        <%= f.submit "邀请码申请", class:"btn btn-success btn-lg" %>
       <% end %>
 
 

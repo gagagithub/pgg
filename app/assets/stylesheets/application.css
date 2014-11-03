@@ -90,6 +90,7 @@ SVG Icons - svgicons.sparkk.fr
   stroke-width: 1;
 }
 
+
 .svg-icon-reg {
   width: 6em;
   height: 6em;
@@ -104,6 +105,26 @@ SVG Icons - svgicons.sparkk.fr
 }
 
 .svg-icon-reg circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
+
+
+
+.svg-icon-homepage {
+  width: 1.5em;
+  height: 1.5em;
+
+  float: center;
+}
+
+.svg-icon-homepage path,
+.svg-icon-homepage polygon,
+.svg-icon-homepage rect {
+  fill: white;
+}
+
+.svg-icon-homepage circle {
   stroke: #4691f6;
   stroke-width: 1;
 }
