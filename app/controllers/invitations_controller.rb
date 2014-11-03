@@ -17,20 +17,25 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
     @invitation.sender = current_user
 
-    respond_to do |format|
+#    respond_to do |format|
       if @invitation.save
-#        Mailer.deliver_invitation(@invitation, signup_url(@invitation.token))
-#        UserMailer.idea_invite(params[:friend_email],params[:email_title],params[:email_content],@idea).deliver
 
-        UserMailer.invitation(@invitation, signup_url(@invitation.token)).deliver
+        if signed_in?
+            UserMailer.invitation(@invitation, signup_url(@invitation.token)).deliver
 
-        format.html { redirect_to current_user, notice: 'Thank you, invitation sent.' }
-        format.json { render :show, status: :created, location: @invitation }
+            format.html { redirect_to current_user, notice: 'Thank you, invitation sent.' }
+            format.json { render :show, status: :created, location: @invitation }
+        else
+            flash[:notice] ="申请已接受，一旦受理将及时邮件反馈您!"
+            redirect_to root_path
+        end          
+
+
       else
         format.html { render :new }
         format.json { render json: @invitation.errors, status: :unprocessable_entity }
       end
-    end
+#    end
   end
 
 

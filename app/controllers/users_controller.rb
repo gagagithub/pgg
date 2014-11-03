@@ -24,6 +24,10 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
 #    @owneridea = @user.ideas
 #    @ownerideas = owneridea.where(relationtype:'0')
+    if @user.admin?
+      @users = User.all
+      render 'index'
+    end
   end
 
   def create
