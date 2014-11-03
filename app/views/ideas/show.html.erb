@@ -21,8 +21,7 @@
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
 
-
-<h2>1、商业模型 Business Model Canvas</h2>
+<h2>1、<a data-toggle="modal" data-target="#myModal">商业模型 Business Model Canvas</a></h2>
 
 <blockquote class="canvas-type">客户细化:</blockquote>
 <span class="help-block"><%= @idea.customer_segments %></span>
@@ -57,4 +56,25 @@
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
 
 </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">商业模型介绍</h4>
+      </div>
+      <div class="modal-body">
+  		<p>
+		Business Model Canvas 是销售过百万、被翻译成 30 种语言的畅销书的核心思想。其设计简单易懂，主要用来帮创业者建立、可视化、测试自身的商业模式的可行性，从而避免挥霍资金或者盲目得叠加功能。小公司用它开辟新领域，GE, PG 以及 3M 之类的大公司也可以通过它探索新模式，维持行业竞争力。 
+		</p>
+		<%= image_tag("business-model-canvas.jpg",height:'300',width:'500') %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
 </div>
