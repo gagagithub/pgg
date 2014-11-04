@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  get 'static_pages/about' =>'static_pages#about'
+
   get 'static_pages/invitecode' =>'static_pages#invitecode'
   get 'users/index'=>'users#index'
   get 'ideas/index'=>'ideas#index'

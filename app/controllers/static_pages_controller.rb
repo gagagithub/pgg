@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
   		render layout:false
   end
 
+  def about
+  end
+
 end
