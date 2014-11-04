@@ -33,10 +33,6 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
 
-#    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-#    puts @user.email
-#    puts @user.invitation_id
-
   	if @user.save
       sign_in @user
       catchup_idea_relation = UserIdeaship.where(email:@user.email)
@@ -51,6 +47,18 @@ class UsersController < ApplicationController
   		render 'new'
   	end
   end
+
+  def destroy
+
+    @user = User.find(params[:id])
+
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to current_user, notice: '已成功删除用户。' }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
 
