@@ -1,250 +1,288 @@
 
-<!DOCTYPE html>
-<html>
-<head>
+<div class="container">
 
+<% flash.each do |key, value| %>
+        <div class="alert alert-success" role="alert"><%= notice %></div>
+<% end %>
 
-<link href="/assets/canvas.css" media="screen" rel="stylesheet">
-    <%= stylesheet_link_tag "application", media: "all",
-                                           "data-turbolinks-track" => true %>
+<%#= link_to '修改', edit_idea_path(@idea) %> 
+<%#= link_to '返回', current_user %> 
+<%#= link_to '关联', share_path(@idea) %> 
+<%#= link_to '点评', {:controller =>"comments", :action =>"new",:linkidea_id=>@idea.id} %>
 
-<meta content="Ex3RR+pUgSkm7GCzaTr9XCVkklJRe20A+3cX6/Q6QkY=" name="csrf-token" />
-</head>
+<div class="user-share-part">
 
-<body class='canvas show with-canvas updateable-canvas'></body>
+<h1><%= @idea.name %></h1>
+<!-- <p><mark><%= @idea.intro %></mark></p> -->
 
-<div class='content-container'>
-
-<div id='content_area'>
-
-
-<div id='canvas'>
-
-<table class='canvas'>
-<tr>
-<td class='area' height='66%' rowspan='2' width='20%'>
-
-<table class="cell-container" style="display: table;">
-  <tbody>
-    <tr>
-      <td class="canvas-cell canvas-cell-main">
-        <h3 class="main">
-          <div class="area-title">合作伙伴</div>
-        </h3>
-        <ol class="sortable ui-sortable">
-          <li> 
-            <div class="show">
-              <span class="content"><%= @idea.key_partners %></span>
-            </div>
-
-          </li>
-        </ol>
-        </td>
-    </tr>
-  </tbody>
-</table>
-</td>
-
-
-<td class='area' height='33%' width='20%'>
-
-<table class="cell-container" style="display: table;">
-  <tbody>
-    <tr>
-      <td class="canvas-cell canvas-cell-main">
-        <h3 class="main">
-          <div class="area-title">核心业务</div>
-        </h3>
-        <ol class="sortable">
-          <li> 
-            <div class="show">
-              <span class="content"><%= @idea.key_activities %></span>
-            </div>
-          </li>
-
-        </ol>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</td>
-
-
-<td class='area' colspan='2' height='66%' rowspan='2' width='20%'>
-
-<table class="cell-container" style="display: table;">
-  <tbody>
-    <tr>
-      <td class="canvas-cell canvas-cell-main">
-        <h3 class="main">
-          <div class="area-title">价值主张</div>
-        </h3>
-        <ol class="sortable">
-          <li> 
-            <div class="show">
-              <span class="content"><%= @idea.value_proposition %></span>
-            </div>
-          </li>
-        </ol>
-      </td>
-    </tr>
-   </tbody>
- </table>
-
-</td>
-
-
-
-<td class='area' height='33%' width='20%'>
-<table class="cell-container" style="display: table;">
-  <tbody>
-    <tr>
-      <td class="canvas-cell canvas-cell-main">
-        <h3 class="main"><div class="area-title">客户关系</div></h3>
-        <ol class="sortable">
-          <li> 
-            <div class="show">
-              <span class="content"><%= @idea.customer_relationships %></span>
-            </div>
-          </li>
-        </ol>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</td>
-
-
-
-<td class='area' height='66%' rowspan='2' width='20%'>
-  <table class="cell-container" style="display: table;">
-    <tbody>
-      <tr>
-        <td class="canvas-cell canvas-cell-main">
-          <h3 class="main">
-            <div class="area-title">客户细分</div>
-          </h3>
-          <ol class="sortable ui-sortable">
-            <li> 
-              <div class="show">
-                <span class="content" title="Click to edit"><%= @idea.customer_segments %></span>
-              </div>
-            </li>
-          </ol>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</td>
-</tr>
-
-<tr>
-<td class='area' height='33%' width='20%' style="height:220px;">
-  <table class="cell-container" style="display: table;">
-    <tbody>
-      <tr>
-
-        <td class="canvas-cell canvas-cell-main">
-          <h3 class="main">
-            <div class="area-title">核心资源</div>
-          </h3>
-        <ol class="sortable">
-            <li> 
-              <div class="show">
-                <span class="content" title="Click to edit"><%= @idea.key_resources %></span>
-              </div>
-            </li>
-
-        </ol>
-      </td>
-
-    </tr>
-  </tbody>
-</table>
-</td>
-
-<td class='area' height='33%' width='20%'>
-  <table class="cell-container" style="display: table;">
-    <tbody>
-      <tr>
-        <td class="canvas-cell canvas-cell-main">
-          <h3 class="main">
-            <div class="area-title">客户渠道</div>
-          </h3>
-          <ol class="sortable">
-            <li> 
-              <div class="show">
-                <span class="content" title="Click to edit"><%= @idea.channels %></span>
-              </div>
-            </li>          
-          </ol>
-
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</td>
-
-</tr>
-<tr>
-<td class='area' colspan='3' height='33%' width='50%'>
-  <table class="cell-container" style="display: table;">
-    <tbody>
-      <tr>
-        <td class="canvas-cell canvas-cell-main">
-          <h3 class="main">
-            <div class="area-title">成本</div>
-          </h3>
-          <ol class="sortable ui-sortable">
-
-            <li> 
-              <div class="show">
-                <span class="content" title="Click to edit"><%= @idea.cost_structure %></span>
-              </div>
-            </li>       
-
-          </ol>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</td>
-
-<td class='area' colspan='3' height='33%' width='50%'>
-
-  <table class="cell-container" style="display: table;">
-    <tbody>
-      <tr>
-        <td class="canvas-cell canvas-cell-main">
-          <h3 class="main">
-            <div class="area-title">收入来源</div>
-          </h3>
-          <ol class="sortable ui-sortable">
-            <li> 
-              <div class="show">
-                <span class="content" title="Click to edit"><%= @idea.revenue_streams %></span>
-              </div>
-            </li>  
-          </ol>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</td>
-</tr>
-</table>
-
-<!-- /= render :partial => 'canvas/collaborators/show' -->
+<%= link_to '找朋友帮忙', share_path(@idea),class:"btn btn-danger" %> 
+<!-- <a class="btn btn-danger" href="/ideas/share?param=@idea">找朋友帮忙</a>  -->
 </div>
 
+<div class="ideas-list">
+<!-- <h2>0、受邀的朋友 </h2>  -->
+<h2>1、商业模型 Business Model Canvas</h2>
+<!--
+<a data-toggle="modal" data-target="#myModal">?</a>
+-->
+      <body class='canvas show with-canvas updateable-canvas'></body>
+
+      <div class='content-container'>
+
+      <div id='content_area'>
+
+
+      <div id='canvas'>
+
+      <table class='canvas'>
+      <tr>
+      <td class='area' height='66%' rowspan='2' width='20%'>
+
+      <table class="cell-container" style="display: table;">
+        <tbody>
+          <tr>
+            <td class="canvas-cell canvas-cell-main">
+              <h3 class="main">
+                <div class="area-title">合作伙伴</div>
+              </h3>
+              <ol class="sortable ui-sortable">
+                <li> 
+                  <div class="show">
+                    <span class="content"><%= @idea.key_partners %></span>
+                  </div>
+
+                </li>
+              </ol>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+
+
+      <td class='area' height='33%' width='20%'>
+
+      <table class="cell-container" style="display: table;">
+        <tbody>
+          <tr>
+            <td class="canvas-cell canvas-cell-main">
+              <h3 class="main">
+                <div class="area-title">核心业务</div>
+              </h3>
+              <ol class="sortable">
+                <li> 
+                  <div class="show">
+                    <span class="content"><%= @idea.key_activities %></span>
+                  </div>
+                </li>
+
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+
+
+      <td class='area' colspan='2' height='66%' rowspan='2' width='20%'>
+
+      <table class="cell-container" style="display: table;">
+        <tbody>
+          <tr>
+            <td class="canvas-cell canvas-cell-main">
+              <h3 class="main">
+                <div class="area-title">价值主张</div>
+              </h3>
+              <ol class="sortable">
+                <li> 
+                  <div class="show">
+                    <span class="content"><%= @idea.value_proposition %></span>
+                  </div>
+                </li>
+              </ol>
+            </td>
+          </tr>
+         </tbody>
+       </table>
+
+      </td>
+
+
+
+      <td class='area' height='33%' width='20%'>
+      <table class="cell-container" style="display: table;">
+        <tbody>
+          <tr>
+            <td class="canvas-cell canvas-cell-main">
+              <h3 class="main"><div class="area-title">客户关系</div></h3>
+              <ol class="sortable">
+                <li> 
+                  <div class="show">
+                    <span class="content"><%= @idea.customer_relationships %></span>
+                  </div>
+                </li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+
+
+
+      <td class='area' height='66%' rowspan='2' width='20%'>
+        <table class="cell-container" style="display: table;">
+          <tbody>
+            <tr>
+              <td class="canvas-cell canvas-cell-main">
+                <h3 class="main">
+                  <div class="area-title">客户细分</div>
+                </h3>
+                <ol class="sortable ui-sortable">
+                  <li> 
+                    <div class="show">
+                      <span class="content" title="Click to edit"><%= @idea.customer_segments %></span>
+                    </div>
+                  </li>
+                </ol>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      </tr>
+
+      <tr>
+      <td class='area' height='33%' width='20%' style="height:220px;">
+        <table class="cell-container" style="display: table;">
+          <tbody>
+            <tr>
+
+              <td class="canvas-cell canvas-cell-main">
+                <h3 class="main">
+                  <div class="area-title">核心资源</div>
+                </h3>
+              <ol class="sortable">
+                  <li> 
+                    <div class="show">
+                      <span class="content" title="Click to edit"><%= @idea.key_resources %></span>
+                    </div>
+                  </li>
+
+              </ol>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+      </td>
+
+      <td class='area' height='33%' width='20%'>
+        <table class="cell-container" style="display: table;">
+          <tbody>
+            <tr>
+              <td class="canvas-cell canvas-cell-main">
+                <h3 class="main">
+                  <div class="area-title">客户渠道</div>
+                </h3>
+                <ol class="sortable">
+                  <li> 
+                    <div class="show">
+                      <span class="content" title="Click to edit"><%= @idea.channels %></span>
+                    </div>
+                  </li>          
+                </ol>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+
+      </tr>
+      <tr>
+      <td class='area' colspan='3' height='33%' width='50%'>
+        <table class="cell-container" style="display: table;">
+          <tbody>
+            <tr>
+              <td class="canvas-cell canvas-cell-main">
+                <h3 class="main">
+                  <div class="area-title">成本</div>
+                </h3>
+                <ol class="sortable ui-sortable">
+
+                  <li> 
+                    <div class="show">
+                      <span class="content" title="Click to edit"><%= @idea.cost_structure %></span>
+                    </div>
+                  </li>       
+
+                </ol>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </td>
+
+      <td class='area' colspan='3' height='33%' width='50%'>
+
+        <table class="cell-container" style="display: table;">
+          <tbody>
+            <tr>
+              <td class="canvas-cell canvas-cell-main">
+                <h3 class="main">
+                  <div class="area-title">收入来源</div>
+                </h3>
+                <ol class="sortable ui-sortable">
+                  <li> 
+                    <div class="show">
+                      <span class="content" title="Click to edit"><%= @idea.revenue_streams %></span>
+                    </div>
+                  </li>  
+                </ol>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </td>
+      </tr>
+      </table>
+
+
+      </div>
+
+      </div>
+
+      </div>
+
+
+<%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
+
+<%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
+
+</div>
 </div>
 
-<!DOCTYPE html>
-
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">商业模型介绍</h4>
+      </div>
+      <div class="modal-body">
+      <p>
+    Business Model Canvas 是销售过百万、被翻译成 30 种语言的畅销书的核心思想。其设计简单易懂，主要用来帮创业者建立、可视化、测试自身的商业模式的可行性，从而避免挥霍资金或者盲目得叠加功能。小公司用它开辟新领域，GE, PG 以及 3M 之类的大公司也可以通过它探索新模式，维持行业竞争力。 
+    </p>
+    <%= image_tag("business-model-canvas.jpg",height:'300',width:'500') %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-</html>
