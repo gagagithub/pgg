@@ -200,6 +200,7 @@
 }
 
 .canvas .content-container table.canvas td.area ol li .show,.snapshots .content-container table.canvas td.area ol li .show,.risks .content-container table.canvas td.area ol li .show,.canvas.wizard .content-container table.canvas td.area ol li .show,.experiments .content-container table.canvas td.area ol li .show {
+	margin-left:-12px;
 	margin-right: 24px;
 	padding: 3px 5px 5px 5px
 }
@@ -638,6 +639,7 @@
 	display: block;
 	float: left;
 	margin-top: 8px;
+	margin-left:-10px;
 	width: 1024px
 }
 
@@ -692,3 +694,6 @@ div.show:hover {
 	margin-bottom: 2px
 }
 
+.show .content {
+	font-size:14px;
+}
