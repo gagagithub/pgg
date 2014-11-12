@@ -19,6 +19,12 @@ class UserMailer < ActionMailer::Base
 		mail(:to =>sendemail,:subject=>sendtitle)
 	end
 
+	def update_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
+		@mailcontent = sendcontent
+		@myidea = sendidea
+		@url = "http://www.productgaga.com/ideas/#{sendidea.id}"
+		mail(:to =>sendemail,:subject=>sendtitle)
+	end
 
 #	def invitation(invitation, signup_url)
 

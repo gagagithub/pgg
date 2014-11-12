@@ -37,9 +37,10 @@ class IdeasController < ApplicationController
 
 # => 如果是更新通知的链接
     if (params[:friend_emails].nil?) 
+      @idea = Idea.find(params[:idea_id])
       updateidea = Idea.find(params[:idea_id])
       updateidea.user_ideaships.where(relationtype:1).each do |updateemail|
-        UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea)   
+        UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea)   
       end
 
     else
