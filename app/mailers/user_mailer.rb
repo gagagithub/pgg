@@ -5,7 +5,6 @@ class UserMailer < ActionMailer::Base
 
 	def idea_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
 		@mailcontent = sendcontent
-#		@url = "http://localhost:3000/ideas/#{idea.id}"
 		@url = sendurl
 		@myidea = sendidea
 		sendinvitation.update_attribute(:sent_at, Time.now)
@@ -21,13 +20,13 @@ class UserMailer < ActionMailer::Base
 	end
 
 
-	def invitation(invitation, signup_url)
+#	def invitation(invitation, signup_url)
 
-		@signup_url = signup_url
+#		@signup_url = signup_url
 
-		mail(:to=>invitation.recipient_email,:subject=>'Invitation')
-		invitation.update_attribute(:sent_at, Time.now)
+#		mail(:to=>invitation.recipient_email,:subject=>'Invitation')
+#		invitation.update_attribute(:sent_at, Time.now)
 
-	end
+#	end
 end
 	

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   get 'ideas/:id/share' => 'ideas#share', as: :share
+  get 'ideas/:id/updatestatus' => 'ideas#updatestatus', as: :updatestatus
   post 'ideas/sendmail'
 
   resources :ideas

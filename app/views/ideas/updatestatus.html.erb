@@ -4,15 +4,13 @@
 	    <%#= bootstrap_form_tag("/ideas/sendmail",method:"get") do %>
 	    <%= bootstrap_form_tag url:'/ideas/sendmail' do |f| %>
 	      <%#= f.text_field :friend_name, label:"朋友名字" %>
-	      <%= f.text_field(:friend_email, label:"朋友邮箱",placeholder:"tom@abc.com") %>
-	      <%= f.text_field(:email_title, label:"邀请信主题",value:"最近有个很不错的创业想法，帮我看看，提提建议，多谢！") %>
-	      <%= f.text_area(:email_content,label:"邀请信内容",value:"Hi Buddy:
-
-最近有了个新想法，虽然具体实现还不够成熟，但总的来说思路还算清晰，应该能赚到钱，；）麻烦你帮忙看看，提提建议。如果能有机会产品成型赚钱后，一起加入呗，；）
-				
+	      <%= hidden_field_tag(:friend_email, nil) %>
+	      <%= f.text_field(:email_title, label:"主题",value:"之前的想法有些更新！") %>
+	      <%= f.text_area(:email_content,label:"通知信内容",value:"Hi Buddy:
+之前和你沟通的那个想法，最近有一些更新补充，进来看看呗。；）
 谢谢先啦！") %>
 	      <%= hidden_field_tag(:idea_id,params[:id]) %>
-	      <%= f.primary("邀请") %>
+	      <%= f.primary("更新") %>
 
 	    <% end %>
 	</div>

@@ -15,9 +15,9 @@
 <h1><%= @idea.name %></h1>
 <!-- <p><mark><%= @idea.intro %></mark></p> -->
 
-<a href="/ideas/updatestatus?param=@idea">更新通知</a>
 
-<%= link_to '找朋友帮忙', share_path(@idea),class:"btn btn-danger" %> 
+<%= link_to '更新通知', updatestatus_path(@idea),class:"btn btn-lg btn-info" %> 
+<%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
 <!-- <a class="btn btn-danger" href="/ideas/share?param=@idea">找朋友帮忙</a>  -->
 </div>
 

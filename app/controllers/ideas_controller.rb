@@ -31,36 +31,58 @@ class IdeasController < ApplicationController
   end
 
   def share
-#    UserMailer.idea_invite(params[:friend_email],params[:email_title]).deliver
   end
 
   def sendmail
 
-    @inviteuseridea = UserIdeaship.new
-    @inviteuseridea.idea_id = params[:idea_id]
-    @inviteuseridea.email = params[:friend_email]
-    @inviteuseridea.relationtype = 1
-    @inviteuseridea.save
-
-    @idea = Idea.find(params[:idea_id])
-
-    if (User.where(email:params[:friend_email]).empty?)
-
-        @invitation = Invitation.new
-        @invitation.sender = current_user
-        @invitation.recipient_email = params[:friend_email]
-        @invitation.sender_id = current_user.id
-        @invitation.save
-    
-        UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
-                           signup_url(@invitation.token)).deliver
+# => 如果是更新通知的链接
+    if (params[:friend_emails].nil?) 
+      updateidea = Idea.find(params[:idea_id])
+      updateidea.user_ideaships.where(relationtype:1).each do |updateemail|
+        UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea)   
+      end
 
     else
-        UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],params[:friend_email],@idea)
+# => 如果是分享想法的链接
+        friendsemails = params[:friend_emails].split(';')
 
+        friendsemails.each do |friend_email|
+
+# => 创建 idea - user的分享关系链接。 only for share.
+    
+            @inviteuseridea = UserIdeaship.new
+            @inviteuseridea.idea_id = params[:idea_id]
+            @inviteuseridea.email = friend_email
+            @inviteuseridea.relationtype = 1
+            @inviteuseridea.save
+
+            @idea = Idea.find(params[:idea_id])
+
+    # =>  创建 invitation的链接. only for share, only for new user.
+
+            if (User.where(email:friend_email).empty?)
+
+                @invitation = Invitation.new
+                @invitation.sender = current_user
+                @invitation.recipient_email = friend_email
+                @invitation.sender_id = current_user.id
+                @invitation.save
+            
+                UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
+                                   signup_url(@invitation.token)).deliver
+
+            else
+         
+                UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],friend_email,@idea)
+
+            end 
+
+        end
+# end of friendsemails.each.  
     end
 
     redirect_to @idea
+
   end
 
   # POST /ideas
