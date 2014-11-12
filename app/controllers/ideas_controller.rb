@@ -27,6 +27,9 @@ class IdeasController < ApplicationController
   def edit
   end
 
+  def updatestatus
+  end
+
   def share
 #    UserMailer.idea_invite(params[:friend_email],params[:email_title]).deliver
   end
