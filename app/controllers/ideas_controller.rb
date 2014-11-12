@@ -38,9 +38,8 @@ class IdeasController < ApplicationController
 # => 如果是更新通知的链接
     if (params[:friend_emails].nil?) 
       @idea = Idea.find(params[:idea_id])
-      updateidea = Idea.find(params[:idea_id])
-      updateidea.user_ideaships.where(relationtype:1).each do |updateemail|
-        UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea)   
+      @idea.user_ideaships.where(relationtype:1).each do |updateemail|
+        UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea).deliver   
       end
 
     else
@@ -74,7 +73,7 @@ class IdeasController < ApplicationController
 
             else
          
-                UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],friend_email,@idea)
+                UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],friend_email,@idea).deliver
 
             end 
 
