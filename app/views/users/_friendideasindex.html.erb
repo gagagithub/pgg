@@ -16,7 +16,7 @@
     <% uishipreviewers.each do |uishipreviewer| %>
       <tr>
         <td class="idea-table-id"><%= i %></td>
-        <td><%= link_to uishipreviewer.idea.name,'#' %></td>
+        <td><%= link_to uishipreviewer.idea.name,uishipreviewer.idea %></td>
         <td><%= uishipreviewer.idea.intro %></td>
         <td><%= link_to '详情', uishipreviewer.idea %></td>
       </tr>

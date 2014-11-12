@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
 	def oldfriend_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
 		@mailcontent = sendcontent
 		@myidea = sendidea
-		@url = "http://localhost:3000/ideas/#{sendidea.id}"
+		@url = "http://www.productgaga.com/ideas/#{sendidea.id}"
 		mail(:to =>sendemail,:subject=>sendtitle)
 	end
 

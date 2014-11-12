@@ -23,7 +23,7 @@
   <tbody>
     <% @ideas.each do |idea| %>
       <tr>
-        <td><%= idea.name %></td>
+        <td><%= idea.name, idea %></td>
         <td><%= idea.intro %></td>
         <!--
         <td><%= idea.customer_segments %></td>
