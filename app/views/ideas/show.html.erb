@@ -12,18 +12,21 @@
 
 <div class="user-share-part">
 
-<h1><%= @idea.name %></h1>
-<!-- <p><mark><%= @idea.intro %></mark></p> -->
+  <h1><%= @idea.name %></h1>
+  <!-- <p><mark><%= @idea.intro %></mark></p> -->
 
 
-<%= link_to '更新通知', updatestatus_path(@idea),class:"btn btn-lg btn-info" %> 
-<%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
-<!-- <a class="btn btn-danger" href="/ideas/share?param=@idea">找朋友帮忙</a>  -->
+  <div class="updatelink">
+  <%= link_to '更新通知', updatestatus_path(@idea)%> 
+</div>
+  <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
+  <!-- <a class="btn btn-danger" href="/ideas/share?param=@idea">找朋友帮忙</a>  -->
 </div>
 
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
 <h2>1、商业模型 Business Model Canvas</h2>
+<span class="glyphicon glyphicon-star"></span>
 <!--
 <a data-toggle="modal" data-target="#myModal">?</a>
 -->
@@ -287,4 +290,19 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

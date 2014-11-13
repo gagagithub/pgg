@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 .alert{
@@ -285,7 +286,21 @@ list-style-type:none
 	margin-left:0px;
 }
 
+.updatelink a{
+	color:#428bca;
+	font-size:12px;
+	font-weight: normal;
+}
+
 .keyresource{
 	height:200px;
+}
+
+.glyphicon-star{
+	font-size: 20px;
+}
+
+.glyphicon-star:active{
+	font-size: 40px;
 }
 
