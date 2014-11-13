@@ -260,6 +260,21 @@
 
       </div>
 
+<h2>2、受邀朋友</h2>
+    
+    <%  @idea.user_ideaships.where(relationtype:1).each do |friendslist| %>
+      <% if friendslist.user_id.nil? %>
+        <button type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>
+        </button> 
+      <% else  %>
+        <button type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
+        </button> 
+      <% end %>        
+    <% end %>
+
+
 
 <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
 
