@@ -1,4 +1,8 @@
-<% if uiships %>
+<% if uiships.empty? %>
+
+<p class="bg-warning">您还没有自己的想法？别偷懒了,<a href="/ideas/new">创建新想法</a></p>
+
+<% else %>
 
 <table class="table table-striped">
   <thead>
@@ -24,6 +28,7 @@
     <% end %>
   </tbody>
 </table>
+
 
 <% end %>
 

@@ -1,4 +1,8 @@
-<% if uishipreviewers %>
+<% if uishipreviewers.empty? %>
+
+<p>没有朋友邀请您，：（</p>
+
+<% else %>
 
 <table class="table table-striped">
   <thead>
@@ -24,4 +28,6 @@
     <% end %>
   </tbody>
 </table>
+
+
 <% end %>
