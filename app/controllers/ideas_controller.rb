@@ -54,7 +54,6 @@ class IdeasController < ApplicationController
             @inviteuseridea.idea_id = params[:idea_id]
             @inviteuseridea.email = friend_email
             @inviteuseridea.relationtype = 1
-            @inviteuseridea.save
 
             @idea = Idea.find(params[:idea_id])
 
@@ -72,10 +71,13 @@ class IdeasController < ApplicationController
                                    signup_url(@invitation.token)).deliver
 
             else
-         
+                @inviteuseridea.user_id = User.where(email:friend_email).first.id
                 UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],friend_email,@idea).deliver
 
             end 
+
+            @inviteuseridea.save
+   
 
         end
 # end of friendsemails.each.  
