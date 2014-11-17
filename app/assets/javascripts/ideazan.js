@@ -1,11 +1,9 @@
 var main = function(){
 
 
-$(".glyphicon-star").click(function() {
+$("#menu-toggle").click(function() {
 	
-	confirm("I'm ready to go!");
-
-    $(this).toggleClass("active");
+    $(this).toggleClass("glyphicon-heart").toggleClass("glyphicon-heart-empty");
   
   });
 

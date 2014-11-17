@@ -296,12 +296,20 @@ list-style-type:none
 	height:200px;
 }
 
+/*
 .glyphicon-star{
 	font-size: 20px;
 }
+*/
 
-.glyphicon-star:active{
-	font-size: 40px;
+#canvas-title{
+	float:left;
+}
+#menu-toggle {
+	font-size: 24px;
+	float: left;
+	margin-top:28px;
+	margin-left:30px;
 }
 
 ol li .show .help-block p{
