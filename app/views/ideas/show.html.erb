@@ -16,7 +16,7 @@
   <!-- <p><mark><%= @idea.intro %></mark></p> -->
 
 
-  <div class="updatelink">
+<div class="updatelink">
   <%= link_to '更新通知', updatestatus_path(@idea)%> 
 </div>
   <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
@@ -48,14 +48,9 @@
               <h3 class="main">
                 <div class="area-title">合作伙伴</div>
               </h3>
-              <ol class="sortable ui-sortable">
-                <li> 
-                  <div class="show">
+                <div class="show">
                     <span class="help-block"><%= simple_format @idea.key_partners %></span>
-                  </div>
-
-                </li>
-              </ol>
+                </div>
               </td>
           </tr>
         </tbody>
@@ -72,14 +67,9 @@
               <h3 class="main">
                 <div class="area-title">核心业务</div>
               </h3>
-              <ol class="sortable">
-                <li> 
                   <div class="show">
                     <span class="help-block"><%= simple_format @idea.key_activities %></span>
                   </div>
-                </li>
-
-              </ol>
             </td>
           </tr>
         </tbody>
@@ -96,13 +86,9 @@
               <h3 class="main">
                 <div class="area-title">价值主张</div>
               </h3>
-              <ol class="sortable">
-                <li> 
                   <div class="show">
                     <span class="help-block"><%= simple_format @idea.value_proposition %></span>
                   </div>
-                </li>
-              </ol>
             </td>
           </tr>
          </tbody>
@@ -118,13 +104,9 @@
           <tr>
             <td class="canvas-cell canvas-cell-main">
               <h3 class="main"><div class="area-title">客户关系</div></h3>
-              <ol class="sortable">
-                <li> 
                   <div class="show">
                     <span class="help-block"><%= simple_format @idea.customer_relationships %></span>
                   </div>
-                </li>
-              </ol>
             </td>
           </tr>
         </tbody>
@@ -141,13 +123,9 @@
                 <h3 class="main">
                   <div class="area-title">客户细分</div>
                 </h3>
-                <ol class="sortable ui-sortable">
-                  <li> 
                     <div class="show">
                       <span class="help-block" title="Click to edit"><%= simple_format @idea.customer_segments %></span>
                     </div>
-                  </li>
-                </ol>
               </td>
             </tr>
           </tbody>
@@ -165,14 +143,9 @@
                 <h3 class="main">
                   <div class="area-title">核心资源</div>
                 </h3>
-              <ol class="sortable">
-                  <li> 
                     <div class="show">
                       <span class="help-block" title="Click to edit"><%= simple_format @idea.key_resources %></span>
                     </div>
-                  </li>
-
-              </ol>
             </td>
 
           </tr>
@@ -188,13 +161,9 @@
                 <h3 class="main">
                   <div class="area-title">客户渠道</div>
                 </h3>
-                <ol class="sortable">
-                  <li> 
                     <div class="show">
                       <span class="help-block" title="Click to edit"><%= simple_format @idea.channels %></span>
                     </div>
-                  </li>          
-                </ol>
 
               </td>
             </tr>
@@ -212,15 +181,9 @@
                 <h3 class="main">
                   <div class="area-title">成本</div>
                 </h3>
-                <ol class="sortable ui-sortable">
-
-                  <li> 
                     <div class="show">
                       <span class="help-block" title="Click to edit"><%= simple_format @idea.cost_structure %></span>
                     </div>
-                  </li>       
-
-                </ol>
               </td>
             </tr>
           </tbody>
@@ -237,13 +200,9 @@
                 <h3 class="main">
                   <div class="area-title">收入来源</div>
                 </h3>
-                <ol class="sortable ui-sortable">
-                  <li> 
                     <div class="show">
                       <span class="help-block" title="Click to edit"><%= simple_format @idea.revenue_streams %></span>
                     </div>
-                  </li>  
-                </ol>
               </td>
             </tr>
           </tbody>
