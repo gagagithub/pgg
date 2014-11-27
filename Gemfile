@@ -52,6 +52,9 @@ gem 'mail'
 
 gem 'bootstrap_form'
 
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+
 #gem 'will_paginate'
 #gem 'bootstrap-will_paginate'
 

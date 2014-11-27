@@ -1,3 +1,11 @@
+<style type="text/css">
+  <%= Rails.application.assets.find_asset('ideas.css').to_s.html_safe %>
+</style>     
+
+<style type="text/css">
+  <%= Rails.application.assets.find_asset('bootstrap.css').to_s.html_safe %>
+</style>     
+
 
 <div class="container">
 
@@ -27,9 +35,10 @@
 <!-- <h2>0、受邀的朋友 </h2>  -->
 <h2 id="canvas-title">1、商业模型 Business Model Canvas</h2>
 
+<!--
 <i id="menu-toggle" class = "glyphicon glyphicon-heart-empty"></i>
-
-
+-->
+<div class ="canvas-body">
       <body class='canvas show with-canvas updateable-canvas'></body>
 
       <div class='content-container'>
@@ -221,7 +230,9 @@
 
       </div>
 
-<h2>2、受邀朋友</h2>
+</div>      
+
+<h2 class="pdfremove">2、受邀朋友</h2>
     
     <%  @idea.user_ideaships.where(relationtype:1).each do |friendslist| %>
       <% if friendslist.user_id.nil? %>
@@ -245,7 +256,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade pdfremove" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

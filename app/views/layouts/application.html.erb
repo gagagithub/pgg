@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="shortcut icon" href="/assets/favicon.ico">
-    <title>Product Gaga</title>
-<!--    <link href="/assets/canvas.css" media="screen" rel="stylesheet">  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
-    <%= stylesheet_link_tag "application", media: "all",
-                                           "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
+      <link rel="shortcut icon" href="/assets/favicon.ico">
+      <title>Product Gaga</title>
+  <!--    <link href="/assets/canvas.css" media="screen" rel="stylesheet">  -->
+
+      <%= stylesheet_link_tag "application", media: "all",
+                                             "data-turbolinks-track" => true %>
+
+<!--
+      <style type="text/css">
+          <%#= Rails.application.assets.find_asset('application.css').to_s.html_safe %>
+      </style>                                             
+-->
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
 
 
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    </head>
   <body>
       <div class="container">
       <%= render 'layouts/header' %>
