@@ -238,6 +238,8 @@
 </div>      
 
 <h2 class="pdfremove">2、受邀朋友</h2>
+
+<% if current_user.id == @idea.user_ideaships.where(relationtype:0).first.user_id %>
     
     <%  @idea.user_ideaships.where(relationtype:1).each do |friendslist| %>
       <% if friendslist.user_id.nil? %>
@@ -250,7 +252,9 @@
         </button> 
       <% end %>        
     <% end %>
-
+<% else %>
+    <p>该想法已邀请<%=@idea.user_ideaships.where(relationtype:1).count %>名朋友来围观。</p>
+<% end %>
 
 
 <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
