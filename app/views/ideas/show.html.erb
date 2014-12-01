@@ -20,23 +20,26 @@
 
 <div class="user-share-part">
 
-  <h1><%= @idea.name %></h1>
-  <!-- <p><mark><%= @idea.intro %></mark></p> -->
+<h1><%= @idea.name %></h1>
+  <p><mark><%= @idea.intro %></mark></p>
 
+<% if current_user.id == ideaowner(@idea).user_id %>
+  <div class="updatelink">
+    <%= link_to '更新通知', updatestatus_path(@idea)%> 
+  </div>
+  <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>      
+<% end %>
 
-<div class="updatelink">
-  <%= link_to '更新通知', updatestatus_path(@idea)%> 
-</div>
-  <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>
-  <!-- <a class="btn btn-danger" href="/ideas/share?param=@idea">找朋友帮忙</a>  -->
-</div>
+<%#= render 'p1donate' %>
+
+  </div>
 
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
 <h2 id="canvas-title">1、商业模型 Business Model Canvas </h2>
 <br>
 <%= link_to '下载 ', idea_path(@idea,format:'pdf') %>
-<% if current_user.id == @idea.user_ideaships.where(relationtype:0).first.user_id %>
+<% if current_user.id == ideaowner(@idea).user_id %>
   <%= link_to '修改', edit_idea_path(@idea) %>  
 <% end %>
 
@@ -239,9 +242,9 @@
 
 <h2 class="pdfremove">2、受邀朋友</h2>
 
-<% if current_user.id == @idea.user_ideaships.where(relationtype:0).first.user_id %>
+<% if current_user.id == ideaowner(@idea).user_id %>
     
-    <%  @idea.user_ideaships.where(relationtype:1).each do |friendslist| %>
+    <%  ideafollowers(@idea).each do |friendslist| %>
       <% if friendslist.user_id.nil? %>
         <button type="button" class="btn btn-default">
           <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>
@@ -253,7 +256,7 @@
       <% end %>        
     <% end %>
 <% else %>
-    <p>该想法已邀请<%=@idea.user_ideaships.where(relationtype:1).count %>名朋友来围观。</p>
+    <p>该想法已邀请<%=ideafollowers(@idea).count %>名朋友来围观。</p>
 <% end %>
 
 

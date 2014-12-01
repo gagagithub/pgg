@@ -35,10 +35,11 @@ class IdeasController < ApplicationController
 
   def sendmail
 
-# => 如果是更新通知的链接
+    @idea = Idea.find(params[:idea_id])
+
+# => 如果是更新通知的链接(更新通知里，没有friend_emails的参数)
     if (params[:friend_emails].nil?) 
-      @idea = Idea.find(params[:idea_id])
-      @idea.user_ideaships.where(relationtype:1).each do |updateemail|
+      ideafollowers(@idea).each do |updateemail|
         UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea).deliver   
       end
 
@@ -48,14 +49,13 @@ class IdeasController < ApplicationController
 
         friendsemails.each do |friend_email|
 
-# => 创建 idea - user的分享关系链接。 only for share.
     
-            @inviteuseridea = UserIdeaship.new
-            @inviteuseridea.idea_id = params[:idea_id]
-            @inviteuseridea.email = friend_email
-            @inviteuseridea.relationtype = 1
+#            @inviteuseridea = UserIdeaship.new
+#            @inviteuseridea.idea_id = params[:idea_id]
+#            @inviteuseridea.email = friend_email
+#            @inviteuseridea.relationtype = 1
 
-            @idea = Idea.find(params[:idea_id])
+
 
     # =>  创建 invitation的链接. only for share, only for new user.
 
@@ -66,17 +66,21 @@ class IdeasController < ApplicationController
                 @invitation.recipient_email = friend_email
                 @invitation.sender_id = current_user.id
                 @invitation.save
+
+                @idea.user_ideaships.build(email: friend_email, relationtype: 1);
             
                 UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
                                    signup_url(@invitation.token)).deliver
 
             else
-                @inviteuseridea.user_id = User.where(email:friend_email).first.id
+                invitedfriendid = User.where(email:friend_email).first.id
+                @idea.user_ideaships.build(email: friend_email, relationtype: 1,user_id: invitedfriendid);
+
                 UserMailer.oldfriend_idea_invite(params[:email_title],params[:email_content],friend_email,@idea).deliver
 
             end 
 
-            @inviteuseridea.save
+            @idea.save
    
 
         end
@@ -91,16 +95,11 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
      @idea = Idea.new(idea_params)
-#    @idea = current_user.ideas.build(idea_params)
-
+     @idea = current_user.ideas.build(idea_params)
      @idea.save
 
-     @user_ideaship = UserIdeaship.new
-     @user_ideaship.relationtype = '0'
-     @user_ideaship.user_id = current_user.id
-     @user_ideaship.idea_id = @idea[:id]
-     @user_ideaship.save
-
+     @idea.user_ideaships.build(user_id: @current_user.id,relationtype: 0);
+#      #new.build(user_id: @current_user.id, relationtype: 0, idea_id: @idea[:id])
 
     respond_to do |format|
       if @idea.save
@@ -112,6 +111,7 @@ class IdeasController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /ideas/1
   # PATCH/PUT /ideas/1.json

@@ -5,15 +5,11 @@ class UserIdeashipsController < ApplicationController
 	end
 
 	def create
-#		@newuser = User.new
-#		@newuser.name = params[:friend_name]
-#		@newuser.email = params[:friend_email]
-#		@newuser.save
 
 		@user_ideaship = UserIdeaship.new
-		@user_ideaship.user_id = params[:user_id]
-		@user_ideaship.idea_id = params[:idea_id]
-		@user_ideaship.relationtype = '1'
+#		@user_ideaship.user_id = params[:user_id]
+#		@user_ideaship.idea_id = params[:idea_id]
+#		@user_ideaship.relationtype = '1'
 		if @user_ideaship.save
 			redirect_to current_user 
 		else
@@ -29,7 +25,7 @@ class UserIdeashipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userideaship_params
-      params.require(:user_ideaship).permit(:user_id, :idea_id, :relationtype)
+      params.require(:user_ideaship).permit(:user_id, :idea_id, :relationtype, :p1donate)
     end
 
   
