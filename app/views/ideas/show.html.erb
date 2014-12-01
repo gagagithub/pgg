@@ -20,8 +20,9 @@
 
 <div class="user-share-part">
 
-<h1><%= @idea.name %></h1>
-  <p><mark><%= @idea.intro %></mark></p>
+<h1><%= @idea.name %>
+  <small><%= @idea.intro %></small>
+</h1>
 
 <% if current_user.id == ideaowner(@idea).user_id %>
   <div class="updatelink">
