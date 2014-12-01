@@ -186,7 +186,7 @@ body{
 }
 
 .user-share-part{
-	margin-bottom:70px;
+	margin-bottom:25px;
 	line-height: 40px;
 	padding-right:30px;
 	padding-left:55px;
@@ -334,8 +334,9 @@ list-style-type:none
 
 .updatelink a{
 	color:#428bca;
-	font-size:12px;
+	font-size:14px;
 	font-weight: normal;
+	float:right;
 }
 
 .updatelink a:hover{

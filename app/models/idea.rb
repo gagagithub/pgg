@@ -4,4 +4,6 @@ class Idea < ActiveRecord::Base
 	has_many :users, :through => :user_ideaships
 	has_many :comments
 
+
+
 end

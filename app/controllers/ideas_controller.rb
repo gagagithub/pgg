@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
   before_action :validate_user, only: [:show]
 
@@ -39,7 +40,8 @@ class IdeasController < ApplicationController
 
 # => 如果是更新通知的链接(更新通知里，没有friend_emails的参数)
     if (params[:friend_emails].nil?) 
-      ideafollowers(@idea).each do |updateemail|
+      @idea.user_ideaships.where(relationtype:1).each do |updateemail|
+#      ideafollowers(@idea).each do |updateemail|
         UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea).deliver   
       end
 
@@ -148,6 +150,7 @@ class IdeasController < ApplicationController
     def set_idea
       @idea = Idea.find(params[:id])
     end
+
 
     def validate_user
 #      @idea = Idea.find(params[:id])
