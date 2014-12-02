@@ -41,8 +41,20 @@ class IdeasController < ApplicationController
 # => 如果是更新通知的链接(更新通知里，没有friend_emails的参数)
     if (params[:friend_emails].nil?) 
       @idea.user_ideaships.where(relationtype:1).each do |updateemail|
-#      ideafollowers(@idea).each do |updateemail|
-        UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea).deliver   
+          if(updateemail.user_id.nil?)
+            # => 如果该用户，之前邀请后一直没有注册过
+                @invitation = Invitation.new
+                @invitation.sender = current_user
+                @invitation.recipient_email = friend_email
+                @invitation.sender_id = current_user.id
+                @invitation.save
+
+                UserMailer.idea_invite(params[:email_title],params[:email_content],@idea,@invitation,
+                                   signup_url(@invitation.token)).deliver                
+          else
+            # => 如果该用户，之前邀请后已经注册过
+            UserMailer.update_idea_invite(params[:email_title],params[:email_content],updateemail.email,@idea).deliver   
+          end
       end
 
     else
@@ -50,13 +62,6 @@ class IdeasController < ApplicationController
         friendsemails = params[:friend_emails].split(';')
 
         friendsemails.each do |friend_email|
-
-    
-#            @inviteuseridea = UserIdeaship.new
-#            @inviteuseridea.idea_id = params[:idea_id]
-#            @inviteuseridea.email = friend_email
-#            @inviteuseridea.relationtype = 1
-
 
 
     # =>  创建 invitation的链接. only for share, only for new user.
