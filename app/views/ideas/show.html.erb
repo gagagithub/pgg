@@ -24,23 +24,24 @@
   
 </h1>
 <small><%= @idea.intro %></small>
-<% if current_user.id == ideaowner(@idea).user_id %>
-  <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>      
-<% end %>
-  <div class="bluelink">
-  <%= link_to "（?）", '/static_pages/about' %>
-  </div>
+  <% if current_user.id == ideaowner(@idea).user_id %>
+    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>      
+  <% else %>
 
-<!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
-<% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-    <%= link_to '取消300元', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
+    <div class="bluelink">
+    <%= link_to "（?）", '/static_pages/about' %>
+    </div>
 
-<% else %>
-    <%= link_to '投资300元', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
+    <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
+    <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
+        <%= link_to '取消300元', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
 
-<% end %>
+    <% else %>
+        <%= link_to '投资300元', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
 
-  </div>
+    <% end %>
+  <% end %>
+</div>
 
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
