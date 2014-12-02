@@ -34,6 +34,23 @@ class IdeasController < ApplicationController
   def share
   end
 
+  def donate    
+    @idea = Idea.find(params[:id])
+#    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
+    donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
+    donateuser.update_attribute(:p1donate, 300)
+    redirect_to @idea        
+  end
+
+  def nodonate    
+    @idea = Idea.find(params[:id])
+#    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
+    donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
+    donateuser.update_attribute(:p1donate, 0)
+    redirect_to @idea        
+  end
+
+
   def sendmail
 
     @idea = Idea.find(params[:idea_id])

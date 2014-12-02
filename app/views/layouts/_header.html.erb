@@ -24,7 +24,9 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  
             <ul class="nav navbar-nav navbar-right">
-<!--              <li><%= link_to "首页", root_path %></li> -->
+<!--              <li><%#= link_to "首页", root_path %></li> -->
+                <li><%= link_to "Productgaga的服务", '/static_pages/about' %></li>
+
               <% if signed_in? %>
                 <li><%= link_to "您的想法集", current_user %></li>
                   <%# if current_user.invitation_limit > 0 %>

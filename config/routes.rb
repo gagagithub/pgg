@@ -11,13 +11,18 @@ Rails.application.routes.draw do
   get 'ideas/index'=>'ideas#index'
   get 'user_ideaships/new'
   get 'user_ideaships/create'
+  
 #  get 'ideas/share'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   get 'ideas/:id/share' => 'ideas#share', as: :share
   get 'ideas/:id/updatestatus' => 'ideas#updatestatus', as: :updatestatus
+  get 'ideas/:id/donate' => 'ideas#donate', as: :donate
+  get 'ideas/:id/nodonate' => 'ideas#nodonate', as: :nodonate
+  
   post 'ideas/sendmail'
+
 
   resources :ideas
   
