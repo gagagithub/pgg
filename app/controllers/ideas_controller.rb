@@ -62,7 +62,7 @@ class IdeasController < ApplicationController
             # => 如果该用户，之前邀请后一直没有注册过
                 @invitation = Invitation.new
                 @invitation.sender = current_user
-                @invitation.recipient_email = friend_email
+                @invitation.recipient_email = updateemail.email
                 @invitation.sender_id = current_user.id
                 @invitation.save
 
