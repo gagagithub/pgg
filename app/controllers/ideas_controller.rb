@@ -39,7 +39,15 @@ class IdeasController < ApplicationController
 #    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
     donateuser.update_attribute(:p1donate, 300)
+    emailtitle = "又一个朋友投资300元成为初级合伙人，你还在等什么？"
+    emailcontent = "#{donateuser.email}刚成为#{@idea.name}的初级合伙人，他将拥有未来公司的创业原始股 1%，优先于非合伙人参与股权投资。初级合伙人招募结束后，你将永远和这个想法绝缘，你想要后悔一辈子吗？！"
+
+    @idea.user_ideaships.where(relationtype:1).each do |invitedfriendrl|
+      UserMailer.idea_donate_notication(emailtitle,emailcontent,invitedfriendrl.email,@idea).deliver   
+    end
+    
     redirect_to "/ideas/#{params[:id]}#maodian1"       
+
   end
 
   def nodonate    
