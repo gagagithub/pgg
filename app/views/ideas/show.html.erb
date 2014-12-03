@@ -249,9 +249,26 @@
 
 </div>      
 
+<div class="stakeholderspart">
+  <h2 class="pdfremove">2、股东光荣榜</h2>
+
+  <% if ideastakeholders(@idea).empty? %>
+    <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
+  <% else %>
+    <% ideastakeholders(@idea).each do |stakehoder| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge">300</span>
+        <%= stakeholder.email %>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="invitedfriendspart">
 
-  <h2 class="pdfremove">2、受邀朋友</h2>
+  <h2 class="pdfremove">3、受邀朋友</h2>
 
   <% if current_user.id == ideaowner(@idea).user_id %>
     <div class="updatelink">
@@ -263,13 +280,9 @@
       
       <%  ideafollowers(@idea).each do |friendslist| %>
         <% if friendslist.user_id.nil? %>
-<!--          <button type="button" class="btn btn-default">  -->
             <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>;
-<!--          </button>   -->
         <% else  %>
-<!--          <button type="button" class="btn btn-default">  -->
             <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>;
-<!--          </button>   -->
         <% end %>        
       <% end %>
   <% else %>
