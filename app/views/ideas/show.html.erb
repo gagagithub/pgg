@@ -29,7 +29,7 @@
   <% else %>
 
     <div class="bluelink">
-    <%= link_to "（?）", '/static_pages/about#juniorparterintro' %>
+    <%= link_to "什么是初级合伙人?", '/static_pages/about#juniorparterintro' %>
     </div>
 
     <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
@@ -255,14 +255,14 @@
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
-    <% ideastakeholders(@idea).each do |stakehoder| %>
     <ul class="list-group">
+    <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
         <span class="badge">300元</span>
         <%= stakehoder.email %>
       </li>
-    </ul>
     <% end %>
+    </ul>
   <% end %>
 </div>
 
