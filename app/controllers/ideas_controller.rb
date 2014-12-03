@@ -39,7 +39,7 @@ class IdeasController < ApplicationController
 #    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
     donateuser.update_attribute(:p1donate, 300)
-    redirect_to @idea        
+    redirect_to "/ideas/#{params[:id]}#maodian1"       
   end
 
   def nodonate    
@@ -47,7 +47,7 @@ class IdeasController < ApplicationController
 #    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
     donateuser.update_attribute(:p1donate, 0)
-    redirect_to @idea        
+    redirect_to "/ideas/#{params[:id]}#maodian1"       
   end
 
 

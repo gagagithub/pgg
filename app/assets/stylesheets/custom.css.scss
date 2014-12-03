@@ -214,6 +214,7 @@ body{
 	font-size :24px;
 	font-weight: bold;
 	line-height: 44px;
+	font-style: italic;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -261,7 +262,7 @@ body{
 .ideas-list p span{
 	color:red;
 	font-style: italic;
-	font-weight: bold;
+	font-weight: normal;
 	
 }
 
@@ -271,6 +272,7 @@ body{
 }
 
 .aboutusinvite{
+	margin-top:50px;
 	margin-bottom:50px;
 	margin-left: auto;
 	margin-right: auto;

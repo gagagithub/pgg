@@ -29,15 +29,15 @@
   <% else %>
 
     <div class="bluelink">
-    <%= link_to "（?）", '/static_pages/about' %>
+    <%= link_to "（?）", '/static_pages/about#juniorparterintro' %>
     </div>
 
     <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
     <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-        <%= link_to '取消300元', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
+        <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
 
     <% else %>
-        <%= link_to '投资300元', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
+        <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
 
     <% end %>
   <% end %>
@@ -250,7 +250,7 @@
 </div>      
 
 <div class="stakeholderspart">
-  <h2 class="pdfremove">2、股东光荣榜</h2>
+  <h2 class="pdfremove"><a id="maodian1">2、股东光荣榜</a></h2>
 
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
@@ -258,7 +258,7 @@
     <% ideastakeholders(@idea).each do |stakehoder| %>
     <ul class="list-group">
       <li class="list-group-item">
-        <span class="badge">300</span>
+        <span class="badge">300元</span>
         <%= stakehoder.email %>
       </li>
     </ul>
