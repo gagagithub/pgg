@@ -28,10 +28,6 @@
     <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>      
   <% else %>
 
-    <div class="bluelink">
-    <%= link_to "什么是初级合伙人?", '/static_pages/about#juniorparterintro' %>
-    </div>
-
     <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
     <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
         <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
@@ -45,12 +41,26 @@
 
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
-<h2 id="canvas-title">1、商业模型 Business Model Canvas </h2>
-<br>
-<%= link_to '下载 ', idea_path(@idea,format:'pdf') %>
-<% if current_user.id == ideaowner(@idea).user_id %>
-  <%= link_to '修改', edit_idea_path(@idea) %>  
-<% end %>
+
+<h2>0、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
+    
+
+      <blockquote>
+      <p>a. 知情权 － <span>之后，非合伙人将被关在门外，无法得知想法商业化进展。</span></p>   
+      <p>b. 股权 - <span>将拥有未来公司的创业原始股 1% 。</span></p>
+      <p>c. 商业计划书 － <span>包括该想法的市场规模、产品研发、推广路径等。</span></p>
+      <p>d. 雏形网站 － <span>PC+移动端网站，将充分体现想法，并可收集客户反馈。</span></p>      
+      <p>e. 优先投资权 - <span>优先于非合伙人购买股权。</span></p>
+
+      </blockquote>
+
+<h2 id="canvas-title">1、商业模型 Business Model Canvas 
+  <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
+          <% if current_user.id == ideaowner(@idea).user_id %>
+            <%= link_to ' 修改', edit_idea_path(@idea) %>  
+          <% end %>
+  
+  </small></h2>
 
 <!--
 <i id="menu-toggle" class = "glyphicon glyphicon-heart-empty"></i>
@@ -250,8 +260,7 @@
 </div>      
 
 <div class="stakeholderspart">
-  <h2 class="pdfremove"><a id="maodian1">2、股东光荣榜</a></h2>
-
+  <h2 class="pdfremove"><a id="maodian1">2、股东们 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>

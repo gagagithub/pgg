@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
 #	default to: Proc.new {User.pluck(:email)
 	layout 'mailtemplate'
-	default :from => "ProductGaga,从想法到赚钱 <productgaga@163.com>"
+	default :from => "ProductGaga,帮助创业者做产品，找钱，找用户 <productgaga@163.com>"
 
 	def idea_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
 		@mailcontent = sendcontent
