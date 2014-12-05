@@ -49,7 +49,7 @@
       <p>a. 知情权 － <span>之后，非合伙人将被关在门外，无法得知想法商业化进展。</span></p>   
       <p>b. 股权 - <span>将拥有未来公司的创业原始股 1% 。</span></p>
       <p>c. 商业计划书 － <span>包括该想法的市场规模、产品研发、推广路径等。</span></p>
-      <p>d. 雏形网站 － <span>PC+移动端网站，将充分体现想法，并可收集客户反馈。</span></p>      
+      <p>d. 网站 － <span>PC+移动端网站，将充分体现想法，并可收集客户反馈。</span></p>      
       <p>e. 优先投资权 - <span>优先于非合伙人购买股权。</span></p>
 
       </blockquote>
@@ -264,6 +264,7 @@
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
+    <p>在未满10名股东之前，各位股东请耐心等待。</p>
     <ul class="list-group">
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
