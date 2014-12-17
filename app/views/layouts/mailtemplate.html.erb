@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>来自你好朋友创业想法的消息</title>
+    <title>Productgaga,2周实现你的想法，还送1000元！</title>
     <%= stylesheet_link_tag "application", media: "all",
                                            "data-turbolinks-track" => true %>
   </head>
@@ -12,19 +12,37 @@
 
           <p><%= @mailcontent %></p>
 
-          <p>想法名字叫 <strong><mark>
-                          <%= link_to @myidea.name,@url %>
-                        </mark></strong>,
-          你可以把他简单理解为: 
-                          <%= link_to @myidea.intro,@url %>
+          <p>想法名字叫<%= link_to @myidea.name,@url %>
+                        ,
+          你可以把他简单理解为: <%= @myidea.intro %>
+
+           <strong><%= link_to "点击这里，看看详情",@url %></strong>
+
           </p>
 
-          <p>我已经从客户细分、客户关系、价值主张、核心业务、合作伙伴、客户渠道、核心资源、收入来源、成本等角度考虑过这个想法，想听听你的看看法，<%= link_to "点击阅读详情",@url %>。
-          </p>
+          <p>
+          我们现在募集初级合伙人。300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。
+           <p>
+           <strong><mark><%= link_to "点击加入，成为初级合伙人！",@url %> </mark></strong>
+           </p>
+
+          <p>
+          初级合伙人将拥有如下权益：  
+            <blockquote>
+            <p>a. 知情权：<small>之后，非合伙人将被关在门外，无法得知想法商业化进展。</small></p>   
+            <p>b. 股权：<small>将拥有未来公司的创业原始股 1% 。</small></p>
+            <p>c. 商业计划书：<small>包括该想法的市场规模、产品研发、推广路径等。</small></p>
+            <p>d. 网站：<small>PC+移动端网站，将充分体现想法，并可收集客户反馈。</small></p>      
+            <p>e. 优先投资权：<small>优先于非合伙人购买股权。</small></p>
+            </blockquote>
+           </p>
+
+
           <%#= yield %>
-          <address>
-          <%= link_to "ProductGaga,2周实现你的想法，还送1000元！","http://www.productgaga.com" %>
-          </address>
+          <p><small>
+          "ProductGaga,2周实现你的想法，还送1000元!
+        </small>
+          </p>
 
       </div>
   </body>
