@@ -34,14 +34,17 @@
   <% else %>
 
     <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
-    <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-        <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
-
-    <% else %>
-        <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
-
-    <% end %>
+      <% if ideastakeholders(@idea).count > 8 %>
+        <%= link_to '初级合伙人招募结束', "#",class:"btn btn-lg btn-success" %>        
+      <% else %>
+        <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
+            <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
+        <% else %>
+            <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
+        <% end %>        
+      <% end %>
   <% end %>
+
 </div>
 
 <div class="ideas-list">
