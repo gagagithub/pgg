@@ -7,27 +7,193 @@
                                            "data-turbolinks-track" => true %>
   </head>
 
+  <style type="text/css">
+    table.gridtable {
+      font-family: verdana,arial,sans-serif;
+      font-size:11px;
+      color:#333333;
+      border-width: 1px;
+      border-color: #666666;
+      border-collapse: collapse;
+    }
+    table.gridtable th {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #dedede;
+    }
+    table.gridtable td {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #ffffff;
+      text-align: center;
+    }
+
+        .myButton {
+      -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+      -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+      box-shadow:inset 0px 1px 0px 0px #cf866c;
+      background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+      background:-moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+      background:-webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+      background:-o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+      background:-ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+      background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+      background-color:#d0451b;
+      -moz-border-radius:3px;
+      -webkit-border-radius:3px;
+      border-radius:3px;
+      border:1px solid #942911;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:arial;
+      font-size:13px;
+      padding:12px 32px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #854629;
+    }
+    .myButton:hover {
+      background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+      background:-moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+      background:-webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+      background:-o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+      background:-ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+      background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+      background-color:#bc3315;
+    }
+    .myButton:active {
+      position:relative;
+      top:1px;
+    }
+
+    .myButtongrey {
+      -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+      background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+      background-color:#ffffff;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-family:arial;
+      font-size:15px;
+      font-weight:bold;
+      padding:6px 24px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #ffffff;
+    }
+    .myButtongrey:hover {
+      background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+      background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+      background-color:#f6f6f6;
+    }
+    .myButtongrey:active {
+      position:relative;
+      top:1px;
+    }
+
+
+  </style>
+
   <body>
       <div class="container">
 
-          <p><%= @mailcontent %></p>
+          <p><%= simple_format @mailcontent %></p>
 
           <p>想法名字叫<%= link_to @myidea.name,@url %>
-                        ,
+
           你可以把他简单理解为: <%= @myidea.intro %>
-
-           <strong><%= link_to "点击这里，看看详情",@url %></strong>
-
           </p>
+
+          <p>
+           <strong><%= link_to "点击了解详情",@url, class:"myButtongrey" %></strong>
+          </p>
+
 
           <p>
           我们现在募集初级合伙人。300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。
            <p>
-           <strong><mark><%= link_to "点击加入，成为初级合伙人！",@url %> </mark></strong>
+           <strong><mark><%= link_to "点击成为初级合伙人",@url, class:"myButton" %> </mark></strong>
            </p>
 
           <p>
-          初级合伙人将拥有如下权益：  
+          初级合伙人投资回报率：  
+          </p>
+
+          <table class="gridtable">
+            <tr>
+              <th>阶段</th>
+              <th>初级合伙人资产</th>
+              <th>收益率</th>
+            </tr>
+            <tr>
+              <td>初级合伙人招募</td>
+              <td>¥300元</td>
+              <td> - </td>
+            </tr>
+            <tr>
+              <td>初级合伙人合作</td>
+              <td>¥300元</td>
+              <td> - </td>
+            </tr>
+
+            <tr>
+              <td>高级合伙人招募</td>
+              <td>¥600元</td>
+              <td> 100% </td>
+            </tr>
+
+            <tr>
+              <td>高级合伙人合作</td>
+              <td>¥600元</td>
+              <td> 100% </td>
+            </tr>
+
+            <tr>
+              <td>天使投资（内部企业）</td>
+              <td>¥2000元</td>
+              <td> 566% </td>
+            </tr>
+
+            <tr>
+              <td>天使投资</td>
+              <td>¥5000元</td>
+              <td> 1566% </td>
+            </tr>
+
+            <tr>
+              <td>VC投资</td>
+              <td>¥10000元</td>
+              <td> 3233% </td>
+            </tr>
+
+
+          </table>
+
+
+          <p>
+          初级合伙人权益：  
             <blockquote>
             <p>a. 知情权：<small>之后，非合伙人将被关在门外，无法得知想法商业化进展。</small></p>   
             <p>b. 股权：<small>将拥有未来公司的创业原始股 1% 。</small></p>
@@ -38,9 +204,10 @@
            </p>
 
 
+
           <%#= yield %>
           <p><small>
-          "ProductGaga,2周实现你的想法，还送1000元!
+          ProductGaga,2周实现你的想法，还送1000元!
         </small>
           </p>
 

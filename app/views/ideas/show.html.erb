@@ -25,7 +25,12 @@
 </h1>
 <small><%= @idea.intro %></small>
   <% if current_user.id == ideaowner(@idea).user_id %>
-    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>      
+      <% if ideastakeholders(@idea).count > 8 %>
+        <%= link_to '下一步：签约', junior_path(@idea),class:"btn btn-lg btn-danger" %>  
+      <% else %>    
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
+      <% end %> 
+  
   <% else %>
 
     <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->

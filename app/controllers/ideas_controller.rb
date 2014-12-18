@@ -34,6 +34,9 @@ class IdeasController < ApplicationController
   def share
   end
 
+  def junior
+  end
+
   def donate    
     @idea = Idea.find(params[:id])
 #    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
