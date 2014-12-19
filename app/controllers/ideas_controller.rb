@@ -46,7 +46,22 @@ class IdeasController < ApplicationController
     emailcontent = "#{donateuser.email}刚成为#{@idea.name}的初级合伙人，他将拥有未来公司的创业原始股 1%，优先于非合伙人参与股权投资。初级合伙人招募结束后，你将永远和这个想法绝缘，你想要后悔一辈子吗？！"
 
     @idea.user_ideaships.where(relationtype:1).each do |invitedfriendrl|
+      if(invitedfriendrl.user_id.nil?)
+                    # => 如果该用户，之前邀请后一直没有注册过
+                @invitation = Invitation.new
+                @invitation.sender = current_user
+                @invitation.recipient_email = invitedfriendrl.email
+                @invitation.sender_id = current_user.id
+                @invitation.save
+
+                UserMailer.idea_invite(emailtitle,emailcontent,@idea,@invitation,
+                                   signup_url(@invitation.token)).deliver                
+      else
+
       UserMailer.idea_donate_notication(emailtitle,emailcontent,invitedfriendrl.email,@idea).deliver   
+
+      end
+
     end
     
     redirect_to "/ideas/#{params[:id]}#maodian1"       
