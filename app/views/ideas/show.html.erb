@@ -6,6 +6,13 @@
   <%= Rails.application.assets.find_asset('bootstrap.css').to_s.html_safe %>
 </style>     
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#warn-one-click").click(function(){
+      alert("正在处理中，请稍等5秒，请勿重复点击！");
+    });
+  });
+</script>
 
 <div class="container">
 
@@ -40,7 +47,9 @@
         <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
             <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
         <% else %>
-            <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger" %>  
+            <%#= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger" %>
+            <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger", id:"warn-one-click" %>
+
         <% end %>        
       <% end %>
   <% end %>
