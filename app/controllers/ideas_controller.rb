@@ -35,6 +35,8 @@ class IdeasController < ApplicationController
   end
 
   def junior
+    @idea = Idea.find(params[:id])
+    
   end
 
   def donate    
