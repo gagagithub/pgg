@@ -288,7 +288,7 @@
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
         <span class="badge">300元</span>
-        <%= User.where(email:stakehoder.email).first.name %> ( <%= User.where(email:stakehoder.email).first.email %> ) 
+        <%= User.where(email:stakehoder.email).first.name %> 
       </li>
     <% end %>
     </ul>
