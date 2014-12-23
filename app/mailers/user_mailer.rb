@@ -1,9 +1,14 @@
 class UserMailer < ActionMailer::Base
 #	default to: Proc.new {User.pluck(:email)
-	layout 'mailtemplate'
 	default :from => "ProductGaga,2周实现你的想法，还送1000元！ <productgaga@163.com>"
 
+	layout 'mailtemplate', :only => [:idea_invite, :oldfriend_idea_invite, :idea_donate_notication, :update_idea_invite]
+
+	layout 'juniortemplate', :only =>[:update_junior_business]
+
 	def idea_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
+
+
 		@mailcontent = sendcontent
 		@url = sendurl
 		@myidea = sendidea
@@ -16,6 +21,8 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def oldfriend_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
+
+
 		@mailcontent = sendcontent
 		@myidea = sendidea
 		@url = "http://www.productgaga.com/ideas/#{sendidea.id}"
@@ -24,6 +31,8 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def idea_donate_notication(sendtitle,sendcontent,sendemail,sendidea)
+
+
 		@mailcontent = sendcontent
 		@myidea = sendidea
 		@url = "http://www.productgaga.com/ideas/#{sendidea.id}"
@@ -31,11 +40,23 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def update_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
+
+
 		@mailcontent = sendcontent
 		@myidea = sendidea
 		@url = "http://www.productgaga.com/ideas/#{sendidea.id}"
 		mail(:to =>sendemail,:subject=>sendtitle)
 	end
+
+	def update_junior_business(sendtitle,sendcontent,sendemail,sendidea)
+
+		@mailcontent = sendcontent
+		@myidea = sendidea
+		@url = "http://www.productgaga.com/ideas/#{sendidea.id}/junior"
+		mail(:to =>sendemail,:subject=>sendtitle)
+
+	end
+
 
 #	def invitation(invitation, signup_url)
 

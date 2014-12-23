@@ -2,6 +2,7 @@ class IdeasController < ApplicationController
 
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
   before_action :validate_user, only: [:show]
+  before_action :validate_junior_parter, only: [:junior]  
 
   # GET /ideas
   # GET /ideas.json
@@ -29,6 +30,9 @@ class IdeasController < ApplicationController
   end
 
   def updatestatus
+  end
+
+  def updatejuniorpartner
   end
 
   def share
@@ -78,6 +82,18 @@ class IdeasController < ApplicationController
     redirect_to "/ideas/#{params[:id]}#maodian1"       
   end
 
+
+  def juniorsendmail
+
+    @idea = Idea.find(params[:idea_id])
+    
+    @idea.user_ideaships.where(relationtype:1, p1donate:300).each do |juniorupdate|
+        UserMailer.update_junior_business(params[:email_title],params[:email_content],juniorupdate.email,@idea).deliver   
+    end
+
+    redirect_to @idea
+
+  end
 
   def sendmail
 
@@ -203,11 +219,22 @@ class IdeasController < ApplicationController
 
 
     def validate_user
-#      @idea = Idea.find(params[:id])
+
       validateresult = @idea.user_ideaships.where(user_id:current_user.id)
       redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
 
     end
+
+    def validate_junior_parter
+
+      @idea = Idea.find(params[:id])
+
+      validateresult = @idea.user_ideaships.where(user_id:current_user.id, p1donate: 300)
+      redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
+
+    end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params

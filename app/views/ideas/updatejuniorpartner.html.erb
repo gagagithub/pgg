@@ -1,0 +1,18 @@
+	<div class = "container">
+		<h1>向初级合伙人更新进展</h1>
+
+	    <%#= bootstrap_form_tag("/ideas/sendmail",method:"get") do %>
+	    <%= bootstrap_form_tag url:'/ideas/juniorsendmail' do |f| %>
+	      <%#= f.text_field :friend_name, label:"朋友名字" %>
+	      <%= hidden_field_tag(:friend_email, nil) %>
+	      <%= f.text_field(:email_title, label:"主题",value:"商业计划书等内容有更新！") %>
+	      <%= f.text_area(:email_content,label:"通知信内容",value:"Hi 初级合伙人们:
+
+现在商业计划书、产品原型有更新，进来看看，提提建议吧！
+
+；） ") %>
+	      <%= hidden_field_tag(:idea_id,params[:id]) %>
+	      <%= f.primary("更新") %>
+
+	    <% end %>
+	</div>

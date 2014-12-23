@@ -32,17 +32,25 @@
 </h1>
 <small><%= @idea.intro %></small>
 
+
 </div>
 
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
+
+  <% if current_user.id == ideaowner(@idea).user_id %>
+      <%= link_to '更新通知', updatejuniorpartner_path(@idea)%>
+  <% end %>
+
 <h2>0、初级合伙人合同</h2>
 
 <h2>1、商业规划书 </h2>
 
 <h2>2、功能投票 </h2>
+<p>暂时没有功能，等待想法创始人提供。</p>
 
 <h2>3、产品原型 </h2>
+<p>暂时没有产品原型，等待想法创始人提供。</p>
 
 
 <%#= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>

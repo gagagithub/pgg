@@ -19,10 +19,12 @@ Rails.application.routes.draw do
   get 'ideas/:id/share' => 'ideas#share', as: :share
   get 'ideas/:id/junior' => 'ideas#junior', as: :junior
   get 'ideas/:id/updatestatus' => 'ideas#updatestatus', as: :updatestatus
+  get 'ideas/:id/updatejuniorpartner' => 'ideas#updatejuniorpartner', as: :updatejuniorpartner
   get 'ideas/:id/donate' => 'ideas#donate', as: :donate
   get 'ideas/:id/nodonate' => 'ideas#nodonate', as: :nodonate
   
   post 'ideas/sendmail'
+  post 'ideas/juniorsendmail'
 
 
   resources :ideas
