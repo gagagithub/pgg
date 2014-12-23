@@ -36,16 +36,11 @@
 
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
+<h2>0、初级合伙人合同</h2>
 
 <h2>1、商业规划书 </h2>
-  <h3>a. 目标市场规模</h3>
-  <h3>b. 价值主张</h3>
-  <h3>c. 产品路径</h3>
-  <h3>d. 财务指标</h3>
 
-
-<h2>2、使用场景 </h2>
-<h2>2、功能 </h2>
+<h2>2、功能投票 </h2>
 
 <h2>3、产品原型 </h2>
 
@@ -54,9 +49,7 @@
 
 <%#= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
 
-<h2>4、意见反馈</h2>
-
-<h2 id="canvas-title">5、商业模型 Business Model Canvas 
+<h2 id="canvas-title">4、商业模型 Business Model Canvas 
   <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
           <% if current_user.id == ideaowner(@idea).user_id %>
             <%= link_to ' 修改', edit_idea_path(@idea) %>  
