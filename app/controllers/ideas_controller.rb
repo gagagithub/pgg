@@ -229,8 +229,11 @@ class IdeasController < ApplicationController
 
       @idea = Idea.find(params[:id])
 
+      ideaowneresult = @idea.user_ideaships.where(user_id:current_user.id, relationtype:0)
+
       validateresult = @idea.user_ideaships.where(user_id:current_user.id, p1donate: 300)
-      redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
+
+      redirect_to current_user, notice:"您不具备该用户的访问权限！" if ( validateresult.empty? & ideaowneresult.empty?)
 
     end
 
