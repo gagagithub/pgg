@@ -33,7 +33,7 @@
 <small><%= @idea.intro %></small>
   <% if current_user.id == ideaowner(@idea).user_id %>
       <% if ideastakeholders(@idea).count > 8 %>
-        <%= link_to '下一步：签约', junior_path(@idea),class:"btn btn-lg btn-danger" %>  
+        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-danger" %>  
       <% else %>    
         <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
       <% end %> 
@@ -44,14 +44,14 @@
       <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
             <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
               <% if ideastakeholders(@idea).count > 8 %>
-                <%= link_to '招募结束,点击进入下一步', junior_path(@idea),class:"btn btn-lg btn-success" %>
+                <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-danger" %>
               <% end %>
 
       <% else %>
       <!-- 非合伙人 -->
             <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger", id:"warn-one-click" %>
               <% if ideastakeholders(@idea).count > 8 %>
-                <%= link_to '招募已结束', junior_path(@idea),class:"btn btn-lg btn-success" %>
+                <%= link_to '招募已结束，欢迎下次支持', junior_path(@idea),class:"btn btn-lg btn-success" %>
               <% end %>
 
       <% end %>      
