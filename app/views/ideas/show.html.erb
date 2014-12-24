@@ -43,9 +43,6 @@
     <!-- 如果该用户没有捐过钱的话，则显示捐钱按钮，否则的话，显示取消捐钱按钮 -->
       <% if ideastakeholders(@idea).count > 8 %>
         <%= link_to '招募结束,点击进入下一步', junior_path(@idea),class:"btn btn-lg btn-success" %>        
-          <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-              <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
-
       <% else %>
         <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
             <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
