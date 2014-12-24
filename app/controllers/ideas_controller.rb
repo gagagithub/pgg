@@ -219,22 +219,27 @@ class IdeasController < ApplicationController
 
 
     def validate_user
-
+      if(current_user.nil?)
+        redirect_to root_path
+      else
       validateresult = @idea.user_ideaships.where(user_id:current_user.id)
       redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
-
+      end
     end
 
     def validate_junior_parter
 
-      @idea = Idea.find(params[:id])
+       if(current_user.nil?)
+          redirect_to root_path
+        else
+          @idea = Idea.find(params[:id])
 
-      ideaowneresult = @idea.user_ideaships.where(user_id:current_user.id, relationtype:0)
+          ideaowneresult = @idea.user_ideaships.where(user_id:current_user.id, relationtype:0)
 
-      validateresult = @idea.user_ideaships.where(user_id:current_user.id, p1donate: 300)
+          validateresult = @idea.user_ideaships.where(user_id:current_user.id, p1donate: 300)
 
-      redirect_to current_user, notice:"您不具备该用户的访问权限！" if ( validateresult.empty? & ideaowneresult.empty?)
-
+          redirect_to current_user, notice:"您不具备该用户的访问权限！" if ( validateresult.empty? & ideaowneresult.empty?)
+        end
     end
 
 
