@@ -44,34 +44,42 @@ class IdeasController < ApplicationController
   end
 
   def donate    
+
     @idea = Idea.find(params[:id])
-#    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
-    donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
+    junioruserid = params[:partnerid]
+
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts junioruserid
+
+    donateuser = @idea.user_ideaships.where(relationtype:1, user_id:junioruserid).first
     donateuser.update_attribute(:p1donate, 300)
-    emailtitle = "又一个朋友投资300元成为初级合伙人，你还在等什么？"
-    emailcontent = "#{donateuser.email}刚成为#{@idea.name}的初级合伙人，他将拥有未来公司的创业原始股 1%，优先于非合伙人参与股权投资。初级合伙人招募结束后，你将永远和这个想法绝缘，你想要后悔一辈子吗？！"
 
-    @idea.user_ideaships.where(relationtype:1).each do |invitedfriendrl|
-      if(invitedfriendrl.user_id.nil?)
-                    # => 如果该用户，之前邀请后一直没有注册过
-                @invitation = Invitation.new
-                @invitation.sender = current_user
-                @invitation.recipient_email = invitedfriendrl.email
-                @invitation.sender_id = current_user.id
-                @invitation.save
+      
+        emailtitle = "又一个朋友投资300元成为初级合伙人，你还在等什么？"
+        emailcontent = "#{donateuser.email}刚成为#{@idea.name}的初级合伙人，他将拥有未来公司的创业原始股 1%，优先于非合伙人参与股权投资。初级合伙人招募结束后，你将永远和这个想法绝缘，你想要后悔一辈子吗？！"
 
-                UserMailer.idea_invite(emailtitle,emailcontent,@idea,@invitation,
-                                   signup_url(@invitation.token)).deliver                
-      else
+        @idea.user_ideaships.where(relationtype:1).each do |invitedfriendrl|
+         if(invitedfriendrl.user_id.nil?)
+                        # => 如果该用户，之前邀请后一直没有注册过
+                    @invitation = Invitation.new
+                    @invitation.sender = current_user
+                    @invitation.recipient_email = invitedfriendrl.email
+                    @invitation.sender_id = current_user.id
+                    @invitation.save
 
-      UserMailer.idea_donate_notication(emailtitle,emailcontent,invitedfriendrl.email,@idea).deliver   
+                    UserMailer.idea_invite(emailtitle,emailcontent,@idea,@invitation,
+                                       signup_url(@invitation.token)).deliver                
+          else
 
-      end
+          UserMailer.idea_donate_notication(emailtitle,emailcontent,invitedfriendrl.email,@idea).deliver   
 
-    end
+          end
+
+        end
     
-    redirect_to "/ideas/#{params[:id]}#maodian1"       
+    redirect_to "/ideas/#{params[:id]}#maodian1"   
 
+    
   end
 
   def nodonate    
@@ -241,7 +249,6 @@ class IdeasController < ApplicationController
           redirect_to current_user, notice:"您不具备该用户的访问权限！" if ( validateresult.empty? & ideaowneresult.empty?)
         end
     end
-
 
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -6,6 +6,7 @@
   <%= Rails.application.assets.find_asset('bootstrap.css').to_s.html_safe %>
 </style>     
 
+<!--
 <script type="text/javascript">
   $(document).ready(function(){
     $("#warn-one-click").click(function(){
@@ -13,6 +14,7 @@
     });
   });
 </script>
+-->
 
 <div class="container">
 
@@ -49,7 +51,57 @@
 
       <% else %>
       <!-- 非合伙人 -->
-            <%= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger", id:"warn-one-click" %>
+            <%#= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger", id:"warn-one-click" %>
+
+
+<!-- Button trigger modal -->
+
+
+<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
+  投资300元，成为初级合伙人
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">投资流程</h4>
+      </div>
+      <div class="modal-body">
+        <h4>1. 转账</h4>
+        微信支付：cuiwei6496
+        <br>
+        支付宝支付：firefox.cui@gmail.com
+        <br>
+        转账300元时，请备注您的姓名！
+
+        <h4>2. 权限</h4>
+
+        <p>一旦想法创意人收到您的300元，他将会把您的权限提高为初级合伙人。</p>
+
+        <p>不用担心，他是你的朋友，等他的消息，等不及的话，就微信催他一下！；）</p>
+
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+        <button type="button" class="btn btn-danger" data-dismiss="modal">转账后确认</button>
+
+<!--
+        <button type="button" class="btn btn-primary">支付后确认</button>    
+-->
+        <%#= link_to '转账后确认', donate_path(@idea),class:"btn btn-danger" %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
               <% if ideastakeholders(@idea).count > 8 %>
                 <%= link_to '招募已结束，欢迎下次支持', junior_path(@idea),class:"btn btn-lg btn-success" %>
               <% end %>
@@ -302,7 +354,8 @@
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
         <span class="badge">300元</span>
-        <%= User.where(email:stakehoder.email).first.name %> 
+        <%#= User.where(email:stakehoder.email).first.name %> 
+        <%= stakehoder.email %>
       </li>
     <% end %>
     </ul>
@@ -323,13 +376,26 @@
 
   <% if current_user.id == ideaowner(@idea).user_id %>
       
+    <ul class="list-group">  
       <%  ideafollowers(@idea).each do |friendslist| %>
         <% if friendslist.user_id.nil? %>
-            <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>;
+          <li class="list-group-item">
+            <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>
+
+          </li>
         <% else  %>
-            <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>;
+          <li class="list-group-item">
+            <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
+            <% if friendslist.p1donate != 300 %>
+            <span class="badge"><%= link_to '确认转账', :controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id%></span>
+            <% end %>
+          </li>
         <% end %>        
       <% end %>
+    </ul>
+
+
+
   <% else %>
       <p>该想法已邀请<%=ideafollowers(@idea).count %>名朋友来围观。</p>
   <% end %>
