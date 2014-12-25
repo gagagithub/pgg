@@ -1,4 +1,4 @@
-<h2 class="pdfremove"> 4、朋友评论 </h2>
+<h2 class="pdfremove"> 2、应用场景 </h2>
 
 
 <table class="table table-striped pdfremove">
@@ -6,8 +6,9 @@
     <tr>
       <th class="canvas-table-attr">朋友名</th>
 <!--      <th>Idea</th>		-->
-      <th>评论内容</th>
-<!--      <th colspan="2"></th> -->
+      <th>场景介绍</th>
+
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -17,10 +18,11 @@
         <td><%= comment.user.name %></td>
 <!--        <td><%= comment.idea_id %></td>	-->
         <td><%= comment.body %></td>
-<!--        <td><%= link_to 'Show', comment %></td>		
+        <td><%= link_to '赞', "#",class:"btn btn-sm btn-danger" %></td>
+<!--        <td><%#= link_to 'Show', comment %></td>		
 
-        <td><%= link_to '修改', edit_comment_path(comment) %></td>
-        <td><%= link_to '删除', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to '修改', edit_comment_path(comment) %></td>
+        <td><%#= link_to '删除', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 -->        
       </tr>
     <% end %>

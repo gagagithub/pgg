@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
 #        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.html { redirect_to @comment.idea, notice: '评论创建成功！' }
+        format.html { redirect_to @comment.idea, notice: '新建应用场景成功！' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
