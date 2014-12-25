@@ -205,6 +205,40 @@ body{
 	float:left;
 	margin-top:10px;
 }
+
+.user-share-part a:visited {
+	color: white;
+
+}
+
+
+.ideas-brief-part{
+	margin-bottom:0px;
+	line-height: 40px;
+	padding-right:30px;
+	padding-left:55px;
+
+}
+.ideas-brief-part a{
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
+	font-size :14px;
+	font-weight: bold;
+	float:right;
+	margin-top:10px;
+	margin-left:10px;
+}
+.ideas-brief-part h1{
+	font-size:28px;
+	float:left;
+	margin-top:10px;
+}
+
+.ideas-brief-part a:visited {
+	color: white;
+
+}
+
+
 .ideas-list{
 	padding-left:55px;
 	padding-top:20px;
@@ -245,6 +279,45 @@ body{
 .ideas-list a{
 	color:#428bca;
 }
+
+.ideas-list a{
+	margin-top:20px;
+}
+
+
+/*
+.myidealist a:visited {
+	color:#428bca;
+}
+
+.partnerbenefit a:visited {
+	color:#428bca;
+}
+
+.businesscanvas a:visited {
+	color:#428bca;
+}
+
+.invitedfriendspart a:visited {
+	color:#428bca;
+}
+
+
+*/
+
+.changjinglist a:visited {
+	color:white;
+}
+
+.changjinglist a {
+	color:white;
+	margin-top:0;
+}
+
+.changjinglist a:hover {
+	color:red;
+}
+
 
 .user-share-part .bluelink a{
 	font-weight: normal;
@@ -420,10 +493,10 @@ ol li .show .help-block p{
 	color:white;
 }
 
-
-/*
-body > div > div.container > div.ideas-list > div.invitedfriendspart > ul > li:nth-child(4) > span.badge > a:visited
-{
-	color: white;
+.badge a:hover {
+	color:black;
 }
-*/
+
+.changjingauthor .badge{
+	margin-top:8px;
+}

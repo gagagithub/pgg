@@ -14,10 +14,13 @@
 	<div class="ideas-list">
 	<h2>我的想法</h2>
 
+	<div class="myidealist">
 	<%= render :partial=>"ideasindex",:locals=>{:uiships=>@user.user_ideaships.where(relationtype:"0") }%>
+
 
 	<h2>朋友的想法</h2>
 	<%= render :partial=>"friendideasindex",:locals=>{:uishipreviewers=>@user.user_ideaships.where(relationtype:"1") }%>
-
+	</div>
+	
     </div>
 </div>

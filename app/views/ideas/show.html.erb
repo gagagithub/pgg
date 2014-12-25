@@ -27,7 +27,7 @@
 <%#= link_to '关联', share_path(@idea) %> 
 <%#= link_to '点评', {:controller =>"comments", :action =>"new",:linkidea_id=>@idea.id} %>
 
-<div class="user-share-part">
+<div class="ideas-brief-part">
 
 <h1><%= @idea.name %>
   
@@ -125,7 +125,7 @@
 <div class="ideas-list">
 <!-- <h2>0、受邀的朋友 </h2>  -->
 
-
+<div class="partnerbenefit">
 <h2>1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
       <p><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
       <p>您将拥有的权益：</p>
@@ -139,12 +139,15 @@
       <p>f. 优先投资权<span><small>优先于非合伙人购买股权。</small></span></p>
     
       </blockquote>
+</div>
 
+<div class="changjinglist">
 <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
+</div>
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
-      
 
+<div class="businesscanvas">
 <h2 id="canvas-title">3、商业模型 Business Model Canvas 
   <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
           <% if current_user.id == ideaowner(@idea).user_id %>
@@ -349,13 +352,14 @@
       </div>
 
 </div>      
+</div>
 
 <div class="stakeholderspart">
   <h2 class="pdfremove"><a id="maodian1">4、股东们 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
-    <p>在未满10名股东之前，各位股东请耐心等待。</p>
+    <p>集齐10位股东后，初级合伙人招募结束。</p>
     <ul class="list-group">
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">

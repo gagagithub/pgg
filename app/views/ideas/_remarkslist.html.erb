@@ -1,24 +1,37 @@
 <h2 class="pdfremove"> 2、应用场景 </h2>
 
-
-<table class="table table-striped pdfremove">
+<table class="table table-hover pdfremove">
   <thead>
     <tr>
-      <th class="canvas-table-attr">朋友名</th>
+      <th></th>      
+      <th>赞数</th>  
 <!--      <th>Idea</th>		-->
       <th>场景介绍</th>
 
-      <th colspan="1"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% comments.each do |comment| %>
       <tr>
-        <td><%= comment.user.name %></td>
-<!--        <td><%= comment.idea_id %></td>	-->
+        <td>
+          <div class="zanpart">
+          <%= link_to '点赞', "#",class:"btn btn-success" %>
+          
+          </div>
+        </td>
+
+        <td>
+          <div class="changjingauthor">
+          <span class="badge">42</span>  
+            <%#= comment.user.name %>
+          </div>
+        </td>
+        
+<!--        <td><%#= comment.idea_id %></td>	-->
         <td><%= comment.body %></td>
-        <td><%= link_to '赞', "#",class:"btn btn-sm btn-danger" %></td>
+
 <!--        <td><%#= link_to 'Show', comment %></td>		
 
         <td><%#= link_to '修改', edit_comment_path(comment) %></td>
@@ -28,3 +41,4 @@
     <% end %>
   </tbody>
 </table>
+
