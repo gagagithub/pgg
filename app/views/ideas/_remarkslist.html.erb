@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th></th>      
-      <th>赞数</th>  
+      <th style="width: 50px;">赞数</th>  
 <!--      <th>Idea</th>		-->
       <th>场景介绍</th>
 
@@ -17,14 +17,20 @@
       <tr>
         <td>
           <div class="zanpart">
-          <%= link_to '点赞', "#",class:"btn btn-success" %>
-          
+            <% if Changjingzan.where(user_id:current_user.id, comments_id: comment.id).empty? %>
+              <%= link_to '点赞',{:controller=>"comments", :action =>"zan", :id =>comment.id}, class:"btn btn-success" %>
+            <% else %>
+              <%#= link_to '取消赞',{:controller=>"comments", :action =>"unzan", :id =>comment.id}, class:"btn btn-primary" %>
+              <%= link_to '取消',{:controller=>"comments", :action =>"unzan", :id =>comment.id}, class:"btn btn-primary" %>
+            <% end %>
           </div>
         </td>
 
         <td>
           <div class="changjingauthor">
-          <span class="badge">42</span>  
+          <span class="badge">
+          <%= Changjingzan.where(comments_id: comment.id).count %>
+          </span>  
             <%#= comment.user.name %>
           </div>
         </td>

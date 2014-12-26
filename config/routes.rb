@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get 'ideas/index'=>'ideas#index'
   get 'user_ideaships/new'
   get 'user_ideaships/create'
+  get 'changjingzan/new'
+  get 'changjingzan/create'
+
+  get 'comments/zan'
+  get 'comments/unzan'
   
 #  get 'ideas/share'
   # Example of named route that can be invoked with purchase_url(id: product.id)
@@ -22,7 +27,9 @@ Rails.application.routes.draw do
   get 'ideas/:id/updatejuniorpartner' => 'ideas#updatejuniorpartner', as: :updatejuniorpartner
   get 'ideas/:id/donate' => 'ideas#donate', as: :donate
   get 'ideas/:id/nodonate' => 'ideas#nodonate', as: :nodonate
-  
+  get 'comments/:id/zan' => 'comments#zan', as: :zan
+  get 'comments/:id/unzan' => 'comments#unzan', as: :unzan
+
   post 'ideas/sendmail'
   post 'ideas/juniorsendmail'
 
@@ -32,6 +39,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :user_ideaships, only: [:new, :create, :destroy]
+  resources :changjingzan, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 

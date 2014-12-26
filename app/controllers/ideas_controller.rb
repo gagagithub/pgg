@@ -48,9 +48,6 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     junioruserid = params[:partnerid]
 
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    puts junioruserid
-
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id:junioruserid).first
     donateuser.update_attribute(:p1donate, 300)
 

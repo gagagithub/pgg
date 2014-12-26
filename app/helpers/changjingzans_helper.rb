@@ -1,0 +1,2 @@
+module ChangjingzansHelper
+end

@@ -21,6 +21,35 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  def zan
+
+    @comment = Comment.find(params[:id])
+
+    @changjingzan = Changjingzan.new
+    @changjingzan.user_id = current_user.id
+    @changjingzan.idea_id = @comment.idea_id
+    @changjingzan.comments_id = @comment.id
+    @changjingzan.zan = 1
+    @changjingzan.save
+
+    redirect_to @comment.idea
+
+  end
+
+  def unzan
+    @comment = Comment.find(params[:id])
+
+
+    @changjingunzan = Changjingzan.where(user_id:current_user.id, idea_id:@comment.idea_id, comments_id: @comment.id)
+
+    if (!@changjingunzan.empty?)
+      @changjingunzan.first.destroy
+    end
+
+    redirect_to @comment.idea
+
+  end
+
   # POST /comments
   # POST /comments.json
   def create
