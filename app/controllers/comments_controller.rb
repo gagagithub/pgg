@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     @changjingzan.zan = 1
     @changjingzan.save
 
-    redirect_to @comment.idea
+    redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id
 
   end
 
@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
       @changjingunzan.first.destroy
     end
 
-    redirect_to @comment.idea
+    redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id
 
   end
 

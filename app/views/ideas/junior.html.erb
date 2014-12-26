@@ -34,14 +34,21 @@
       <%= link_to '更新通知', updatejuniorpartner_path(@idea)%>
   <% end %>
 
+
+<div class="changjinglist">
+<h2 class="pdfremove"> 1、应用场景 </h2>
+<%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
+</div>
+
+<%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
+
+
 <h2>1、初级合伙人合同</h2>
 
-<embed src="http://www.docin.com/DocinViewer-1000148508-144.swf" width="826" height="675" type="application/x-shockwave-flash" ALLOWFULLSCREEN="true" ALLOWSCRIPTACCESS="always"></embed>
 
 
 <h2>2、商业规划书 </h2>
 
-<embed src="http://www.docin.com/DocinViewer-1000148507-144.swf" width="826" height="675" type="application/x-shockwave-flash" ALLOWFULLSCREEN="true" ALLOWSCRIPTACCESS="always"></embed>
 
 <h2>3、功能投票 </h2>
 <p>暂时没有功能，等待想法创始人提供。</p>
