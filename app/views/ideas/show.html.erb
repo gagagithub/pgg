@@ -126,11 +126,11 @@
 <!-- <h2>0、受邀的朋友 </h2>  -->
 
 <div class="partnerbenefit">
-<h2>1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
-      <p><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
-      <p>您将拥有的权益：</p>
+<h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
+      <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
+      <p class="pdfremove">您将拥有的权益：</p>
     
-      <blockquote>
+      <blockquote class="pdfremove">
       <p>a. 知情权<span><small>之后，非合伙人将被关在门外，无法得知想法商业化进展。</small></span></p>   
       <p>b. 股权<span><small>将拥有未来公司的创业原始股 10% 。</small></span></p>
       <p>c. 商业计划书<span><small>包括该想法的市场规模、产品研发、推广路径等。</small></span></p>
@@ -355,8 +355,8 @@
 </div>      
 </div>
 
-<div class="stakeholderspart">
-  <h2 class="pdfremove"><a id="maodian1">4、股东们 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
+<div class="stakeholderspart pdfremove">
+  <h2><a id="maodian1">4、股东们 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
@@ -373,9 +373,9 @@
   <% end %>
 </div>
 
-<div class="invitedfriendspart">
+<div class="invitedfriendspart pdfremove">
 
-  <h2 class="pdfremove">5、受邀朋友
+  <h2>5、受邀朋友
 
   <% if current_user.id == ideaowner(@idea).user_id %>
 <!--    <div class="updatelink">  -->
