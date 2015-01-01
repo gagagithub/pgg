@@ -2,9 +2,11 @@ class UserMailer < ActionMailer::Base
 #	default to: Proc.new {User.pluck(:email)
 	default :from => "ProductGaga,2周实现你的想法，还送1000元！ <productgaga@163.com>"
 
-	layout 'mailtemplate', :only => [:idea_invite, :oldfriend_idea_invite, :idea_donate_notication, :update_idea_invite]
+	layout 'mailtemplate'
 
-	layout 'juniortemplate', :only =>[:update_junior_business]
+#	layout 'mailtemplate', :only => [:idea_invite, :oldfriend_idea_invite, :idea_donate_notication, :update_idea_invite]
+
+#	layout 'juniortemplate', :only =>[:update_junior_business]
 
 	def idea_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
 

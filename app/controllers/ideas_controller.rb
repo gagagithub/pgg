@@ -124,7 +124,7 @@ class IdeasController < ApplicationController
       end
 
     else
-# => 如果是分享想法的链接
+# => 如果是"找人帮忙"的链接
         friendsemails = params[:friend_emails].split(';')
 
         friendsemails.each do |friend_email|
