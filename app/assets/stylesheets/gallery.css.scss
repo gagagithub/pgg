@@ -1,3 +1,28 @@
 // Place all the styles related to the gallery controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin-bottom:0;
+	overflow: hidden;
+	max-height: 100%;
+	background-image: url("/assets/kuailv.jpg");
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	background-position: center;
+}
+
+.jumbotron h1, .jumbotron h2
+{
+	color: cornsilk;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
