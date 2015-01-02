@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'gallery/kuailv'
+
   resources :invitations
 
   resources :comments
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   get 'user_ideaships/create'
   get 'changjingzan/new'
   get 'changjingzan/create'
+  get 'gallery/kuailv'
 
   get 'comments/zan'
   get 'comments/unzan'
