@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'teasersets/new'
+
   get 'gallery/kuailv'
 
   resources :invitations
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
 
 
   resources :ideas
+  resources :teasersets, only: [:new, :create]
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

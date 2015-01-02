@@ -1,0 +1,41 @@
+class TeasersetsController < ApplicationController
+
+  def new
+    @teaserset = Teaserset.new
+  end
+
+  def create
+    @teaserset = Teaserset.new(teaserset_params)
+#    @invitation.sender = current_user
+
+#    respond_to do |format|
+#	@teaserset.idea_id = 12
+#	@teaserset.email = "aa@aa.com"
+
+     if @teaserset.save
+
+        flash[:notice] ="申请已接受，一旦受理将及时邮件反馈您!"
+        redirect_to :controller=>"gallery", :action =>"kuailv"
+         
+
+
+      else
+        format.html { render :new }
+#        format.json { render json: @teaserset.errors, status: :unprocessable_entity }
+      end
+  end
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_teaserset
+      @teaserset = Teaserset.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def teaserset_params
+      params.require(:teaserset).permit(:idea_id, :inviter_id, :phone, :email)
+    end
+
+
+end
