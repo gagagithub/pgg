@@ -22,7 +22,7 @@ class UserIdeashipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userideaship_params
-      params.require(:user_ideaship).permit(:user_id, :idea_id, :relationtype, :p1donate)
+      params.require(:user_ideaship).permit(:user_id, :idea_id, :relationtype, :p1donate, :p2donate)
     end
 
   

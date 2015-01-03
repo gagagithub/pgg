@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102080217) do
+ActiveRecord::Schema.define(version: 20150103052513) do
 
   create_table "changjingzans", force: true do |t|
     t.integer  "user_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150102080217) do
     t.integer  "relationtype"
     t.string   "email"
     t.integer  "p1donate"
+    t.integer  "p2donate"
   end
 
   create_table "users", force: true do |t|

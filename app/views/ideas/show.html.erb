@@ -349,26 +349,26 @@
 <% if ideastakeholders(@idea).count > 8 %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a id="maodian1">4、高级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
+  <h2><a id="maodian1">高级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideaseniorstakeholders(@idea).empty? %>
     <p>暂时还没有高级合伙人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
-    <p>集齐5位股东后，高级合伙人招募结束。</p>
-    <ul class="list-group">
-    <% ideaseniorstakeholders(@idea) do |stakehoder| %>
-      <li class="list-group-item">
-        <span class="badge">10000元</span>
-        <%#= User.where(email:stakehoder.email).first.name %> 
-        <%= stakehoder.email %>
-      </li>
-    <% end %>
-    </ul>
+      <p>集齐5位股东后，高级合伙人招募结束。</p>
+      <ul class="list-group">
+        <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
+          <li class="list-group-item">
+            <span class="badge">10000元</span>
+            <%#= User.where(email:stakehoder.email).first.name %> 
+            <%= stakehoder.email %>
+          </li>
+      <% end %>
+      </ul>
   <% end %>
 </div>
 <% end %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a id="maodian1">4、初级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
+  <h2><a id="maodian1">初级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
@@ -387,7 +387,7 @@
 
 <div class="invitedfriendspart pdfremove">
 
-  <h2>5、受邀朋友
+  <h2>受邀朋友
 
   <% if current_user.id == ideaowner(@idea).user_id %>
 <!--    <div class="updatelink">  -->
