@@ -33,9 +33,11 @@
   
 </h1>
 <small><%= @idea.intro %></small>
+    <!-- Onwer -->
   <% if current_user.id == ideaowner(@idea).user_id %>
       <% if ideastakeholders(@idea).count > 8 %>
-        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-danger" %>  
+        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>  
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
       <% else %>    
         <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
       <% end %> 
@@ -44,9 +46,15 @@
 
       <!-- 是合伙人  -->
       <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-            <%= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
+            <%#= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
+              <!-- 初级合伙人结束 -->
               <% if ideastakeholders(@idea).count > 8 %>
-                <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-danger" %>
+                <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>
+                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
+                  投资10000元，成为高级合伙人
+                </button>
+              <% else %>
+              <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info" %>
               <% end %>
 
       <% else %>
@@ -56,54 +64,18 @@
 
 <!-- Button trigger modal -->
 
-
-<button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
-  投资300元，成为初级合伙人
-</button>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">投资流程</h4>
-      </div>
-      <div class="modal-body">
-        <h4>1. 转账</h4>
-        微信支付：cuiwei6496
-        <br>
-        支付宝支付：firefox.cui@gmail.com
-        <br>
-        转账300元时，请备注您的姓名！
-
-        <h4>2. 权限</h4>
-
-        <p>一旦想法创意人收到您的300元，他将会把您的权限提高为初级合伙人。</p>
-
-        <p>不用担心，他是你的朋友，等他的消息，等不及的话，就微信催他一下！；）</p>
-
-      </div>
-      <div class="modal-footer">
-
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-
-        <button type="button" class="btn btn-danger" data-dismiss="modal">转账后确认</button>
-
-<!--
-        <button type="button" class="btn btn-primary">支付后确认</button>    
--->
-        <%#= link_to '转账后确认', donate_path(@idea),class:"btn btn-danger" %>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
               <% if ideastakeholders(@idea).count > 8 %>
-                <%= link_to '招募已结束，欢迎下次支持', junior_path(@idea),class:"btn btn-lg btn-success" %>
+
+                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
+                投资10000元，成为高级合伙人
+                </button>
+              <% else %>
+
+                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
+                投资300元，成为初级合伙人
+                </button>
+
+
               <% end %>
 
       <% end %>      
@@ -126,6 +98,20 @@
 <!-- <h2>0、受邀的朋友 </h2>  -->
 
 <div class="partnerbenefit">
+
+<% if ideastakeholders(@idea).count > 8 %>
+
+
+<h2 class="pdfremove">1、高级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#seniorparterintro' %></small></h2>
+      <p class="pdfremove"><span>投资10000元，成为高级合伙人，做自己的老板。</span></p>
+      <p class="pdfremove">您将拥有的权益：</p>
+    
+      <blockquote class="pdfremove">
+      <p>a. 股权<span><small>将拥有未来公司的创业原始股 10% 。</small></span></p>
+      <p>b. 网站产品 + APP产品<span><small>实现想法的MVP产品，可直接市场推广，用户使用。</small></span></p>    
+    
+      </blockquote>
+<% else %>
 <h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
       <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
       <p class="pdfremove">您将拥有的权益：</p>
@@ -139,6 +125,8 @@
       <p>f. 优先投资权<span><small>优先于非合伙人购买股权。</small></span></p>
     
       </blockquote>
+<% end %>
+
 </div>
 
 <div class="changjinglist">
@@ -358,9 +346,29 @@
 
 <footer><cite title="Source Title">Productgaga出品( www.productgaga.com) : 2周实现你的想法，还送1000元！</cite></footer>
 
+<% if ideastakeholders(@idea).count > 8 %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a id="maodian1">4、股东们 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
+  <h2><a id="maodian1">4、高级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
+  <% if ideaseniorstakeholders(@idea).empty? %>
+    <p>暂时还没有高级合伙人投资，赶快邀请朋友们过来吧！</p>
+  <% else %>
+    <p>集齐5位股东后，高级合伙人招募结束。</p>
+    <ul class="list-group">
+    <% ideaseniorstakeholders(@idea) do |stakehoder| %>
+      <li class="list-group-item">
+        <span class="badge">10000元</span>
+        <%#= User.where(email:stakehoder.email).first.name %> 
+        <%= stakehoder.email %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+<% end %>
+
+<div class="stakeholderspart pdfremove">
+  <h2><a id="maodian1">4、初级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideastakeholders(@idea).empty? %>
     <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
@@ -421,7 +429,51 @@
 </div>
 </div>
 
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                          <h4 class="modal-title" id="myModalLabel">投资流程</h4>
+                        </div>
+                        <div class="modal-body">
+                          <h4>1. 转账</h4>
+                          微信支付：cuiwei6496
+                          <br>
+                          支付宝支付：firefox.cui@gmail.com
+                          <br>
+                          转账300元时，请备注您的姓名！
+
+                          <h4>2. 权限</h4>
+                          <% if ideastakeholders(@idea).count > 8 %>
+                            <p>一旦想法创意人收到您的10000元，他将会把您的权限提高为高级合伙人。</p>
+                          <% else %>
+                            <p>一旦想法创意人收到您的300元，他将会把您的权限提高为初级合伙人。</p>
+                          <% end %>
+
+                          <p>不用担心，他是你的朋友，等他的消息，等不及的话，就微信催他一下！；）</p>
+
+                        </div>
+                        <div class="modal-footer">
+
+                          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">转账后确认</button>
+
+                  <!--
+                          <button type="button" class="btn btn-primary">支付后确认</button>    
+                  -->
+                          <%#= link_to '转账后确认', donate_path(@idea),class:"btn btn-danger" %>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
 <!-- Modal -->
+<!--
 <div class="modal fade pdfremove" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -433,7 +485,7 @@
       <p>
     Business Model Canvas 是销售过百万、被翻译成 30 种语言的畅销书的核心思想。其设计简单易懂，主要用来帮创业者建立、可视化、测试自身的商业模式的可行性，从而避免挥霍资金或者盲目得叠加功能。小公司用它开辟新领域，GE, PG 以及 3M 之类的大公司也可以通过它探索新模式，维持行业竞争力。 
     </p>
-    <%= image_tag("business-model-canvas.jpg",height:'300',width:'500') %>
+    <%#= image_tag("business-model-canvas.jpg",height:'300',width:'500') %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -442,7 +494,7 @@
   </div>
 </div>
 
-
+-->
 
 
 

@@ -32,7 +32,8 @@ class CommentsController < ApplicationController
     @changjingzan.zan = 1
     @changjingzan.save
 
-    redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id
+#    redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id
+    redirect_to @comment.idea
 
   end
 
@@ -46,8 +47,8 @@ class CommentsController < ApplicationController
       @changjingunzan.first.destroy
     end
 
-    redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id
-
+#    redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id
+    redirect_to @comment.idea
   end
 
   # POST /comments
@@ -58,7 +59,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
 #        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.html { redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id }
+#        format.html { redirect_to :controller=>"ideas", :action =>"junior", :id =>@comment.idea_id }
+        format.html { redirect_to @comment.idea }
+        
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
