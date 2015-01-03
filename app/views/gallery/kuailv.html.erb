@@ -1,80 +1,758 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="zh">
   <head>
-    <title>快驴</title>
-    <%= stylesheet_link_tag "application", media: "all",
-                                           "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-  <div class="jumbotron">  	
-    <div class="container">
 
-      <% flash.each do |key, value| %>
-        <div class="alert alert-warning" role="alert"><%= value %></div>
-      <% end %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.875, user-scalable=0" />
+    <title>快驴 - 寻找旅伴、旅友或驴友、假期交友网站</title>
+    <meta property="og:image" content="http://tourbar.com/favicon.ico" />
 
-      <div class="row">
+    <!-- tbr:css:common -->
+    <link rel="stylesheet" href="//images.tourbar.com/css/min/common.7626355d.css" />
+    <!-- endtbr -->
 
-      <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0  signupForm">
-        <h1 class="fontlato">快驴，寻找前往世界各地的驴友。</h1>
-        <h2 class="fontlato">最快最简单的方式寻找驴友。</h2>
+    <style>
+        @font-face{font-family:Oxygen;font-style:normal;font-weight:300;src:local('Oxygen Light'),local('Oxygen-Light'),url(http://fonts.gstatic.com/s/oxygen/v5/AwBqWF2kjhlybWamaKMPcYX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2'),url(http://fonts.gstatic.com/s/oxygen/v5/AwBqWF2kjhlybWamaKMPcbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}@font-face{font-family:Oxygen;font-style:normal;font-weight:400;src:local('Oxygen'),local('Oxygen-Regular'),url(http://fonts.gstatic.com/s/oxygen/v5/qBSyz106i5ud7wkBU-FrPX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2'),url(http://fonts.gstatic.com/s/oxygen/v5/eAWT4YudG0otf3rlsJD6zOvvDin1pK8aKteLpeZ5c0A.woff) format('woff')}@font-face{font-family:Oxygen;font-style:normal;font-weight:700;src:local('Oxygen Bold'),local('Oxygen-Bold'),url(http://fonts.gstatic.com/s/oxygen/v5/yVHpdQrmTj9Kax1tmFSx2oX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2'),url(http://fonts.gstatic.com/s/oxygen/v5/yVHpdQrmTj9Kax1tmFSx2rO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}
+    </style>
 
-		<fieldset>
-			<div class="signup-form-block">
-				<div class="row">
+    <script src="//images.tourbar.com/js/lib/jquery-1.10.2.min.js"></script>
 
-					<%#= form_tag teasersets_path,:class =>"form-horizontal",:role =>'form' do %>
-					<%= bootstrap_form_for Teaserset.new do |f| %>
+    <!-- start Mixpanel -->
+    <script type="text/javascript">
+        (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+                typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
+            b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+        mixpanel.init("2c63595990fd9de2b480e31d12ac17b8");
 
-						<div class="col-md-4 col-sm-4 ">
-<!--							<input type="text" placeholder="电话号码" class="form-control input-lg input-bigger" name="phone" id="phone" value="" autofocus="">	-->
-							<%= f.text_field :phone,hide_label: :true,placeholder:"电话号码", class:"form-control input-lg input-bigger" %>
-
-						</div>
-
-						<div class="col-md-4 col-sm-4 ">
-<!--							<input type="text" placeholder="受邀密码" class="form-control input-lg input-bigger" name="inviter_id" id="inviter_id" value="">	-->
-        				<%= f.text_field :inviter_id,hide_label: :true,placeholder:"受邀密码", class:"form-control input-lg input-bigger" %>
-						</div>
-
-						<div class="col-md-4 col-sm-4">
-<!--
-						<button type="submit" id="validation" class="btn btn-lg btn-block btn-success btn-uppercase btn-bigger">尽 快 使 用</button>-->
-						<%= f.submit "尽快使用", class:"btn btn-lg btn-block btn-success btn-uppercase btn-bigger" %>
-						</div>
-
-
-					<% end %>
-
-
-      <%#= bootstrap_form_for Teaserset.new do |f| %>
-
-        <%#= f.text_field :phone,hide_label: :true,placeholder:"电话号码", class:"input-lg" %>
-
-        <%#= f.text_field :inviter_id,hide_label: :true,placeholder:"受邀密码", class:"input-lg" %>
         
+            </script>
+    <!-- end Mixpanel -->
 
-        <%#= f.submit "登记", class:"btn btn-success btn-lg" %>
-      <%# end %>
+        <link rel="canonical" href="http://tourbar.com" />
+    
+                    <link rel="alternate" hreflang="x-default" href="http://tourbar.com" />
+                <link rel="alternate" hreflang="bg" href="http://tourbar.com/bg" />
+                <link rel="alternate" hreflang="zh" href="http://tourbar.com/zh" />
+                <link rel="alternate" hreflang="fi" href="http://tourbar.com/fi" />
+                <link rel="alternate" hreflang="de" href="http://tourbar.com/de" />
+                <link rel="alternate" hreflang="el" href="http://tourbar.com/el" />
+                <link rel="alternate" hreflang="hi" href="http://tourbar.com/hi" />
+                <link rel="alternate" hreflang="id" href="http://tourbar.com/id" />
+                <link rel="alternate" hreflang="it" href="http://tourbar.com/it" />
+                <link rel="alternate" hreflang="ko" href="http://tourbar.com/ko" />
+                <link rel="alternate" hreflang="ms" href="http://tourbar.com/ms" />
+                <link rel="alternate" hreflang="pl" href="http://tourbar.com/pl" />
+                <link rel="alternate" hreflang="pt" href="http://tourbar.com/pt" />
+                <link rel="alternate" hreflang="ro" href="http://tourbar.com/ro" />
+                <link rel="alternate" hreflang="ru" href="http://tourbar.com/ru" />
+                <link rel="alternate" hreflang="sr" href="http://tourbar.com/sr" />
+                <link rel="alternate" hreflang="es" href="http://tourbar.com/es" />
+                <link rel="alternate" hreflang="sv" href="http://tourbar.com/sv" />
+                <link rel="alternate" hreflang="th" href="http://tourbar.com/th" />
+                <link rel="alternate" hreflang="vi" href="http://tourbar.com/vi" />
+            
+        <meta name="keywords" content="旅伴、旅友或驴友、假期交友
+tourbar， tourbar.com，畅游吧" />
+    <meta name="description" content="使用TourBar，在全球范围内寻找旅伴、旅友或驴友。快乐、安全的假期交友网站，结交当地人、度过快乐的时光。">
+
+    <!-- tbr:css:landing -->
+    <link rel="stylesheet" href="//images.tourbar.com/css/min/landing.a8d179aa.css" />
+    <!-- endtbr -->
+  </head>
+<body>
+
+<!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-WRB2Z6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<script type="text/javascript">
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-WRB2Z6');
+</script>
+<!-- End Google Tag Manager -->
+
+<!--[if lt IE 9]>
+<p class="browsehappy">你正在使用<strong>旧版</strong>浏览器。请 <a href="http://browsehappy.com/">升级你的浏览器</a>，改善你的使用体验。</p>
+<![endif]-->
+<div id="overlay" class="loader-layer">
+    <object data='//images.tourbar.com/images/preloader.svg' type='image/svg+xml'></object>
+</div>
+    <div id="fb-root"></div><div class="wrapper clearfix" id="main-wrapper"><div class="main-tile"><div class="main-logo-block"><a href="/zh"><img class="main-logo-block__logo" src="//images.tourbar.com/images/logo/logo_main.png" alt="寻找旅伴或旅友" /></a><span class="main-logo-block__txt">聊天和旅行<br/>玩得开心！</span></div><a href="#registration" class="main-chat block_bg_thrush js-popup"><div class="item"><div class="block-middle text-align block_bg_thrush"><i class="icon-chat"></i></div></div><div class="item"><span class="block-middle block_bg_thrush chat arrow"><span class="txt">聊天</span><span class="small pr10">来着世界各地的人们</span></span></div></a><div class="main-functional"><div class="main-helper main-hidden-mobile block_bg_light-cherry"><div class="item"></div><div class="item"><div class="block-middle text-align"><i class="icon-user"></i></div></div></div><div class="main-helper block_bg_light-cherry"><div class="item main-hidden-mobile"></div><div class="item"><a href="#login" class="block-middle block_bg_light-cherry sign-in js-popup"><span class="txt">登录</span><span class="small pr10 sign-in__txt">寻找新朋友</span></a></div></div><div class="main-helper main-helper-horizontal"><a id="link_main_about" href="#main_about" class="item"><span class="block-middle block_bg_cherry text-align"><span class="txt">关于</span><span class="small inline-block">项目和<br/>隐私</span></span></a><a href="#languages" class="js-popup item"><span class="block-rel block_bg_sea"><span class="lang"><i class="tbi-eath lang__icon"></i><span class="lang__txt">Chinese (simplified)</span></span></span></a></div><div class="main-helper main-helper-horizontal"><div class="item"><a href="/zh/profile/80617/connie_25_miami_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/6/1/7/80617/11890/1179_small.jpg?updated=1420245968" alt="Connie, 25, Miami, United States"><span class="person__bottom clearfix"><span class="person__name">
+                            Connie, 25
+                        </span></span></a></div><div class="item"><a href="/zh/profile/86250/Виктория_20_samara_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/2/5/0/86250/12642/1237_small.jpg?updated=1419593134" alt="Виктория, 20, Samara, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                            Виктори..., 20
+                        </span></span></a></div></div></div><!-- /main-functional --><div class="registration-block js-reg-block"><div class="alert alert__error alert_margin_none registration-alert" style="display: none;"><i class="alert__icon-qu icon-attention"></i><span class="alert__txt">请填写必要字段。谢谢！</span><i class="alert__close-icon icon-delete js-close-alert"></i></div><div class="registration-block__wrapper"><div class="login-social login-social_border_red"><!--
+            --><a href="#" class="login-social__item" data-type="fb" style="background: #567e01;"><i class="icon-facebook login-social__icon-fb"></i><span class="login-social__txt">脸谱</span></a><!--
+            --><a href="#" class="login-social__item login-social_bg_gp" style="background: #6fa201;"><i class="icon-g-plus login-social__icon-g-plus"></i><span class="login-social__txt">谷歌</span></a></div><div class="auth-form"><form class="signup-form"><div class="auth-form__female clearfix"><div class="control-group auth-form__female-item"><input type="hidden" name="gender" value="" /><label class="control-group__label auth-form__label">我是：</label><span class="radio-group"><input type="radio" class="form-radio" id="gender_m" name="gender" value="M" /><label for="gender_m" class="form-label bullet auth-form__radio">男性</label></span><span class="radio-group"><input type="radio" class="form-radio" id="gender_f" name="gender" value="F" /><label for="gender_f" class="form-label bullet auth-form__radio">女性</label></span></div></div><div class="control-group"><input type="text" name="name" placeholder="姓名" maxlength="25" /></div><div class="control-group"><input type="text" name="email" placeholder="邮箱" /></div><div class="control-group p-r"><input type="hidden" class="location-text-hidden" value="Nanjing, Jiangsu, China" /><input type="text" name="location_text" class="location-input" placeholder="输入城市名称" value="Nanjing, Jiangsu, China" autocomplete="off" /><ul class="location js-location-picker" style="display: none;"><li class="geoip-country" style="color: #6e6d7c; padding-bottom: 10px;">你所在的国家是China。选择你所在的城市：</li><li class="location__item nothing-found js-location-item">未发现任何场所</li></ul><input type="hidden" name="city_id" value="26883627" /><input type="hidden" name="region_id" value="26819668" /><input type="hidden" name="country_id" value="2374" /><a href="#" class="auth__choose-place">地点错误？另选一个</a><script type="text/javascript">
+
+var bound = bound || [];
+
+$(function () {
+    var timeout = null;
+
+    $('input[name=location_text]').each(function(index) {
+        if (bound.hasOwnProperty(index)) {
+            return true; // Continue
+        }
+
+        bound[index] = true;
+
+        $(document).on('keyup', 'input[name=location_text]:eq(' + index + ')', function(e) {
+            var $this = $(this);
+            var val = $.trim($this.val()),
+                locationPicker = $this.next('.js-location-picker');
+
+            if (e.keyCode == 27) {
+                locationPicker.hide();
+            }
+
+            if (val != '' && val == $.trim($this.siblings('.location-text-hidden').val())) {
+                return false;
+            } else {
+                $this.siblings('input[name=country_id]').val(0);
+                $this.siblings('input[name=region_id]').val(0);
+                $this.siblings('input[name=city_id]').val(0);
+            }
+
+            if (val.length < 3 || e.keyCode == 27) {
+                return false;
+            }
+
+            if (timeout) {
+                window.clearTimeout(timeout);
+            }
+
+            timeout = window.setTimeout(function() {
+                var data = {
+                    q: val
+                };
+
+                
+                
+                                data['country_id'] = 2374;
+                
+                $.get('/ws/geo', data, function(response) {
+                    locationPicker.children('.js-location-item').show().not('.nothing-found').remove();
+                    locationPicker.children().show();
+                    if (response.resultCode == 0) {
+                        locationPicker.children().not('.geoip-country').hide();
+                        var empty = true;
+                        for (x in response.locations) {
+                            empty = false;
+                            break;
+                        }
+
+                        if (!empty) {
+                            for (var x in response.locations) {
+                                var location = response.locations[x];
+                                var text = location['country_name'];
+                                if (location['city_id'] != 0 && location['city_name']) {
+                                                                        text = location['city_name'] + ', ' + location['region_name'];
+                                                                    }
+                                var value = location['country_id'] + '_' + location['region_id'] + '_' + location['city_id'];
+                                var el = $('<li class="location__item js-location-item">'+text+'</li>').data('value', value);
+                                el.data('country_name', location['country_name']);
+                                locationPicker.append(el);
+
+                                if (typeof FastClick !== 'undefined') {
+                                    el.each(function() {
+                                        FastClick.attach(this);
+                                    });
+                                }
+                            }
+                        } else {
+                            locationPicker.children('.nothing-found').show();
+                        }
+                    }
+
+                    locationPicker.show();
+                });
+            }, 150);
+        });
+
+        return false; // Break
+    });
+
+    $(document).on('click', '.js-location-item', function(e) {
+        var $this = $(this);
+
+        if ($this.hasClass('nothing-found')) {
+            return false;
+        }
+
+        var parent = $this.parent();
+        var location = $this.data('value').split('_');
+        parent.siblings('input[name=country_id]').val(location[0]);
+        parent.siblings('input[name=region_id]').val(location[1]);
+        parent.siblings('input[name=city_id]').val(location[2]);
+
+        var text = $this.text();
+        if (text.split(', ').length < 3 && text.split(', ').length > 1) {
+            text += ', ' + $this.data('country_name');
+        }
+
+//        parent.siblings('input[name=location_text]').val(text).removeClass('is-error').css('margin-top', '0px');
+        parent.siblings('input[name=location_text]').val(text);
+        parent.siblings('input.location-text-hidden').val(text);
+        $this.closest('.js-location-picker').hide();
+    });
+});
+</script></div><div class="control-group"><select name="date" id="reg_date" class="auth__select-day"><option value="0">日期</option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select><select name="month" id="reg_month" class="auth__select-month"><option value="0">月份</option><option value="1">一月</option><option value="2">二月</option><option value="3">三月</option><option value="4">四月</option><option value="5">五月</option><option value="6">六月</option><option value="7">七月</option><option value="8">八月</option><option value="9">九月</option><option value="10">十月</option><option value="11">十一月</option><option value="12">十二月</option></select><select name="year" id="reg_year" class="auth__select-year"><option value="0">年份</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option></select></div><div class="auth__required">*所有领域都需要</div><div class="auth__police">你继续确认，你已阅读并同意我们<a class="auth__police-a" href="/zh/rules">的条款和条件</a>和<a class="auth__police-a" href="/zh/privacy">隐私政策</a>。</div><div class="auth-button clearfix"><input type="submit" class="auth__submit register-button" value="让我们开始吧" style="background: #6fa201;" /></div></form></div></div></div><!-- registration --><div class="main-add-trip block_bg_herb"><a href="#registration" class="js-popup"><div class="item item_width_2"><div class="block-rel block_bg_herb item_width_2"><div class="link__wrapper"><span class="icon-briefcase ml20 pr10"></span><span class="link">添加你的旅行</span></div></div></div><div class="item item_width_2"><div class="block-rel block_bg_herb item_width_2"><span class="txt txt_padding_all">与我们一起计划你的旅行，并寻找一家公司</span></div></div></a></div><div class="main-travel block_bg_sea"><a href="#registration" class="js-popup"><div class="item"><div class="block-middle text-align block_bg_sea"><i class="icon-departure"></i></div></div><div class="item"><span class="block-middle block_bg_sea departure arrow"><span class="txt">旅行</span><span class="small pr10">在每个国家寻找一位向导</span></span></div></a></div></div><!-- /main-tile --><div class="item"><a href="/zh/profile/7795/ksenia-petrova_18_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/7/9/5/7795/894/120_small.jpg?updated=1397204384" alt="Ksenia Petrova, 18, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Ksenia..., 18
+            </span><span class="person__online"></span></span></a></div><div class="item"><a href="/zh/profile/60481/anastasia_26_barnaul_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/4/8/1/60481/9318/948_small.jpg?updated=1418636382" alt="Anastasia, 26, Barnaul, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Anastas..., 26
+            </span><span class="person__online"></span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/88296/lady_21_shenyang_china" class="block-rel person"><img src="http://media.tourbar.com/photos/2/9/6/88296/13042/1565_small.jpg?updated=1419926867" alt="Lady, 21, Shenyang, China"><span class="person__bottom clearfix"><span class="person__name">
+                Lady, 21
+            </span><span class="person__online"></span></span></a></div><div class="item"><a href="/zh/profile/34281/tomaszinho_37_paris_france" class="block-rel person"><img src="http://media.tourbar.com/photos/2/8/1/34281/4934/639_small.jpg?updated=1413317542" alt="tomaszinho, 37, Paris, France"><span class="person__bottom clearfix"><span class="person__name">
+                tomaszi..., 37
+            </span><span class="person__online"></span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/83112/Віка_25_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/1/1/2/83112/12239/1275_small.jpg?updated=1419842948" alt="Віка, 25, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Віка, 25
+            </span><span class="person__online"></span></span></a></div><div class="item"><a href="/zh/profile/54155/tatiana_22_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/1/5/5/54155/8230/846_small.jpg?updated=1413222837" alt="Tatiana, 22, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Tatiana, 22
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/19907/yulia_21_minsk_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/9/0/7/19907/2706/1242_small.jpg?updated=1419869330" alt="Yulia, 21, Minsk, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Yulia, 21
+            </span></span></a></div><div class="item"><a href="/zh/profile/53983/veronika_26_mozyr_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/9/8/3/53983/8279/836_small.jpg?updated=1413221581" alt="Veronika, 26, Mozyr, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Veronik..., 26
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/55290/vincenzo-colonna_38_bari_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/2/9/0/55290/8514/790_small.jpg?updated=1413471757" alt="vincenzo colonna, 38, Bari, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                vincenz..., 38
+            </span></span></a></div><div class="item"><a href="/zh/profile/8543/angelina_19_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/5/4/3/8543/1018/189_small.jpg?updated=1397736059" alt="Angelina, 19, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Angelin..., 19
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/11601/lina_24_minsk_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/6/0/1/11601/1478/252_small.jpg?updated=1398964698" alt="Lina, 24, Minsk, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Lina, 24
+            </span></span></a></div><div class="item"><a href="/zh/profile/33157/michael-morgen_39_zurich_switzerland" class="block-rel person"><img src="http://media.tourbar.com/photos/1/5/7/33157/4708/979_small.jpg?updated=1413236054" alt="Michael Morgen, 39, Zurich, Switzerland"><span class="person__bottom clearfix"><span class="person__name">
+                Michael..., 39
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/89838/angelkova12_23_lugansk_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/8/3/8/89838/13247/1510_small.jpg?updated=1420222272" alt="Angelkova12, 23, Lugansk, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Angelko..., 23
+            </span></span></a></div><div class="item"><a href="/zh/profile/89128/brenda-_21_mexico_mexico" class="block-rel person"><img src="http://media.tourbar.com/photos/1/2/8/89128/13131/1323_small.jpg?updated=1420090142" alt="Brenda , 21, Mexico, Mexico"><span class="person__bottom clearfix"><span class="person__name">
+                Brenda , 21
+            </span></span></a></div><div class="item"><a href="/zh/profile/4945/nadin_24_gomel_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/9/4/5/4945/485/691_small.jpg?updated=1408898074" alt="Nadin, 24, Gomel, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Nadin, 24
+            </span></span></a></div><div class="item"><a href="/zh/profile/9432/angelina_23_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/4/3/2/9432/1199/132_small.jpg?updated=1410856167" alt="Angelina, 23, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Angelin..., 23
+            </span></span></a></div><div class="item"><a href="/zh/profile/53934/asya_20_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/9/3/4/53934/8147/852_small.jpg?updated=1413213012" alt="Asya, 20, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Asya, 20
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/54253/juliya001_19_gorlovka_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/2/5/3/54253/8240/1004_small.jpg?updated=1413230084" alt="Juliya001, 19, Gorlovka, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Juliya0..., 19
+            </span></span></a></div><div class="item"><a href="/zh/profile/44256/maryna_21_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/2/5/6/44256/6611/640_small.jpg?updated=1410375806" alt="Maryna, 21, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Maryna, 21
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/71840/paul_37_versailles_france" class="block-rel person"><img src="http://media.tourbar.com/photos/8/4/0/71840/10591/1166_small.jpg?updated=1418123305" alt="Paul, 37, Versailles, France"><span class="person__bottom clearfix"><span class="person__name">
+                Paul, 37
+            </span></span></a></div><div class="item"><a href="/zh/profile/48731/irina-baleevskikh_21_ekaterinburg_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/7/3/1/48731/7318/760_small.jpg?updated=1411627546" alt="Irina Baleevskikh, 21, Ekaterinburg, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Irina B..., 21
+            </span></span></a></div><div class="item"><a href="/zh/profile/85165/felix-natz_49_manchester_united-kingdom" class="block-rel person"><img src="http://media.tourbar.com/photos/1/6/5/85165/12646/1338_small.jpg?updated=1419408807" alt="Felix Natz, 49, Manchester, United Kingdom"><span class="person__bottom clearfix"><span class="person__name">
+                Felix N..., 49
+            </span></span></a></div><div class="item"><a href="/zh/profile/89859/valerie_22_xian_china" class="block-rel person"><img src="http://media.tourbar.com/photos/8/5/9/89859/13223/1533_small.jpg?updated=1420222309" alt="Valerie, 22, Xian, China"><span class="person__bottom clearfix"><span class="person__name">
+                Valerie, 22
+            </span></span></a></div><div class="item"><a href="/zh/profile/54779/jason-cordoba_35_miami-beach_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/7/7/9/54779/8400/844_small.jpg?updated=1413399195" alt="Jason Cordoba, 35, Miami Beach, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Jason C..., 35
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/4994/lyudmila-kosianova_20_vitebsk_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/9/9/4/4994/501/139_small.jpg?updated=1396606561" alt="Lyudmila Kosianova, 20, Vitebsk, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Lyudmil..., 20
+            </span></span></a></div><div class="item"><a href="/zh/profile/5228/mete_40_london_united-kingdom" class="block-rel person"><img src="http://media.tourbar.com/photos/2/2/8/5228/585/692_small.jpg?updated=1412848486" alt="Mete, 40, London, United Kingdom"><span class="person__bottom clearfix"><span class="person__name">
+                Mete, 40
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/88475/tan-tan_21_portmore_jamaica" class="block-rel person"><img src="http://media.tourbar.com/photos/4/7/5/88475/12972/1254_small.jpg?updated=1419950894" alt="tan tan, 21, Portmore, Jamaica"><span class="person__bottom clearfix"><span class="person__name">
+                tan tan, 21
+            </span></span></a></div><div class="item"><a href="/zh/profile/54163/veronika-andreeva_25_zhlobin_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/1/6/3/54163/8297/766_small.jpg?updated=1413225324" alt="Veronika Andreeva, 25, Zhlobin, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Veronik..., 25
+            </span></span></a></div><div class="item"><a href="/zh/profile/9122/yliya-stepanova_26_saransk_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/1/2/2/9122/1114/150_small.jpg?updated=1397931561" alt="Yliya Stepanova, 26, Saransk, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Yliya S..., 26
+            </span></span></a></div><div class="item"><a href="/zh/profile/3654/fgnakata_37_milano_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/6/5/4/3654/510/223_small.jpg?updated=1412843368" alt="fgnakata, 37, Milano, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                fgnakat..., 37
+            </span></span></a></div><div class="item"><a href="/zh/profile/4898/nastia_22_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/8/9/8/4898/493/124_small.jpg?updated=1397750283" alt="Nastia, 22, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Nastia, 22
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/84230/for-you_25_zhitomir_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/2/3/0/84230/12374/1183_small.jpg?updated=1419234998" alt="For you, 25, Zhitomir, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                For you, 25
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/62712/matthias_47_berlin_germany" class="block-rel person"><img src="http://media.tourbar.com/photos/7/1/2/62712/9694/1001_small.jpg?updated=1415654915" alt="Matthias, 47, Berlin, Germany"><span class="person__bottom clearfix"><span class="person__name">
+                Matthia..., 47
+            </span></span></a></div><div class="item"><a href="/zh/profile/54646/francisco-kinchen_35_miami_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/6/4/6/54646/8308/741_small.jpg?updated=1413399218" alt="Francisco Kinchen, 35, Miami, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Francis..., 35
+            </span></span></a></div><div class="item"><a href="/zh/profile/14244/nataly_23_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/2/4/4/14244/1865/674_small.jpg?updated=1410609746" alt="Nataly, 23, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Nataly, 23
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/9329/Марина_21_donetsk_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/3/2/9/9329/1181/897_small.jpg?updated=1413207287" alt="Марина, 21, Donetsk, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Марина, 21
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/32617/frans_47_rome_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/6/1/7/32617/4650/1095_small.jpg?updated=1416658904" alt="Frans, 47, Rome, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                Frans, 47
+            </span></span></a></div><div class="item"><a href="/zh/profile/24308/Марта-Костюченко_27__" class="block-rel person"><img src="http://media.tourbar.com/photos/3/0/8/24308/3310/415_small.jpg?updated=1404243217" alt="Марта Костюченко, 27, , "><span class="person__bottom clearfix"><span class="person__name">
+                Марта К..., 27
+            </span></span></a></div><div class="item"><a href="/zh/profile/89920/natali_23_kahovka_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/9/2/0/89920/13007/1467_small.jpg?updated=1420228398" alt="natali, 23, Kahovka, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                natali, 23
+            </span><span class="person__online"></span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/85166/donald_33_monroe_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/1/6/6/85166/12648/1265_small.jpg?updated=1419716342" alt="Donald, 33, Monroe, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Donald, 33
+            </span><span class="person__online"></span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/52404/rina_27_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/4/0/4/52404/8049/677_small.jpg?updated=1412782345" alt="Rina, 27, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Rina, 27
+            </span><span class="person__online"></span></span></a></div><div class="item"><a href="/zh/profile/77126/salvo_38_agrigento_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/1/2/6/77126/11228/1320_small.jpg?updated=1418054408" alt="Salvo, 38, Agrigento, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                Salvo, 38
+            </span><span class="person__online"></span></span></a></div><div class="item"><a href="/zh/profile/89899/Софья_23_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/8/9/9/89899/13284/1339_small.jpg?updated=1420225641" alt="Софья, 23, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Софья, 23
+            </span></span></a></div><div class="item"><a href="/zh/profile/65700/dilya_20_semipalatinsk_kazakhstan" class="block-rel person"><img src="http://media.tourbar.com/photos/7/0/0/65700/9989/1223_small.jpg?updated=1417286279" alt="Dilya, 20, Semipalatinsk, Kazakhstan"><span class="person__bottom clearfix"><span class="person__name">
+                Dilya, 20
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/85652/Милена_19_kostanai_kazakhstan" class="block-rel person"><img src="http://media.tourbar.com/photos/6/5/2/85652/12536/1100_small.jpg?updated=1419506863" alt="Милена, 19, Kostanai, Kazakhstan"><span class="person__bottom clearfix"><span class="person__name">
+                Милена, 19
+            </span></span></a></div><div class="item"><a href="/zh/profile/54067/lana_24_ekaterinburg_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/0/6/7/54067/8281/898_small.jpg?updated=1413217875" alt="Lana, 24, Ekaterinburg, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Lana, 24
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/82614/anna_27_kobenhavn_denmark" class="block-rel person"><img src="http://media.tourbar.com/photos/6/1/4/82614/12157/1072_small.jpg?updated=1418900658" alt="anna, 27, Kobenhavn, Denmark"><span class="person__bottom clearfix"><span class="person__name">
+                anna, 27
+            </span></span></a></div><div class="item"><a href="/zh/profile/89251/marry_22_almaty-(alma-ata)_kazakhstan" class="block-rel person"><img src="http://media.tourbar.com/photos/2/5/1/89251/13086/1519_small.jpg?updated=1420114363" alt="Marry, 22, Almaty (Alma-Ata), Kazakhstan"><span class="person__bottom clearfix"><span class="person__name">
+                Marry, 22
+            </span></span></a></div><div class="item"><a href="/zh/profile/43183/nicolas-braunstein_44_strasbourg_france" class="block-rel person"><img src="http://media.tourbar.com/photos/1/8/3/43183/6427/654_small.jpg?updated=1413314868" alt="Nicolas Braunstein, 44, Strasbourg, France"><span class="person__bottom clearfix"><span class="person__name">
+                Nicolas..., 44
+            </span></span></a></div><div class="item"><a href="/zh/profile/83536/anya_19_yaroslavl_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/5/3/6/83536/12368/1299_small.jpg?updated=1419188243" alt="Anya, 19, Yaroslavl, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Anya, 19
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/55410/kyle-terrill_36_euless_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/4/1/0/55410/8444/870_small.jpg?updated=1413494469" alt="Kyle Terrill, 36, Euless, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Kyle Te..., 36
+            </span></span></a></div><div class="item"><a href="/zh/profile/87168/Эдуард_25_genova_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/1/6/8/87168/12940/1430_small.jpg?updated=1419841798" alt="Эдуард, 25, Genova, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                Эдуард, 25
+            </span></span></a></div><div class="item"><a href="/zh/profile/81324/Кэтрин_26_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/3/2/4/81324/11782/1288_small.jpg?updated=1418736756" alt="Кэтрин, 26, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Кэтрин, 26
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/38007/bondie_27_new-york_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/0/0/7/38007/5588/671_small.jpg?updated=1410529929" alt="Bondie, 27, New York, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Bondie, 27
+            </span></span></a></div><div class="item"><a href="/zh/profile/80965/Брюнеточка_24_samara_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/9/6/5/80965/12048/1567_small.jpg?updated=1418641612" alt="Брюнеточка, 24, Samara, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Брюнето..., 24
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/75799/Даша_25_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/7/9/9/75799/11332/1353_small.jpg?updated=1420197152" alt="Даша, 25, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Даша, 25
+            </span></span></a></div><div class="item"><a href="/zh/profile/73173/geoffrey_40_montreal_canada" class="block-rel person"><img src="http://media.tourbar.com/photos/1/7/3/73173/10922/1077_small.jpg?updated=1417652792" alt="Geoffrey, 40, Montreal, Canada"><span class="person__bottom clearfix"><span class="person__name">
+                Geoffre..., 40
+            </span></span></a></div><div class="item"><a href="/zh/profile/84547/Вера_25_stavropol_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/5/4/7/84547/12357/1140_small.jpg?updated=1419283216" alt="Вера, 25, Stavropol, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Вера, 25
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/54056/jack-lieske_51_chicago_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/0/5/6/54056/8215/898_small.jpg?updated=1413471778" alt="Jack Lieske, 51, Chicago, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Jack Li..., 51
+            </span></span></a></div><div class="item"><a href="/zh/profile/7877/katia_26_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/8/7/7/7877/943/110_small.jpg?updated=1397260403" alt="Katia, 26, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Katia, 26
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/54547/katrin-valova_27_sochi_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/5/4/7/54547/8288/1244_small.jpg?updated=1418060123" alt="Katrin Valova, 27, Sochi, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Katrin..., 27
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/53961/diana_21_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/9/6/1/53961/8261/1174_small.jpg?updated=1418069162" alt="Diana, 21, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Diana, 21
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/88734/capitanloco_44_milano_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/7/3/4/88734/13088/1410_small.jpg?updated=1419982650" alt="capitanloco, 44, Milano, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                capitan..., 44
+            </span></span></a></div><div class="item"><a href="/zh/profile/20664/Оli_22_penza_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/6/6/4/20664/2714/1224_small.jpg?updated=1419794113" alt="Оli, 22, Penza, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Оli, 22
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/85617/antonio_23_bari_italy" class="block-rel person"><img src="http://media.tourbar.com/photos/6/1/7/85617/12376/1449_small.jpg?updated=1419502179" alt="Antonio, 23, Bari, Italy"><span class="person__bottom clearfix"><span class="person__name">
+                Antonio, 23
+            </span></span></a></div><div class="item"><a href="/zh/profile/82792/Татьяна_18_kazan_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/7/9/2/82792/12255/1284_small.jpg?updated=1418929101" alt="Татьяна, 18, Kazan, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Татьяна, 18
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/60306/stella_23_odessa_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/3/0/6/60306/9329/1227_small.jpg?updated=1418848281" alt="Stella, 23, Odessa, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Stella, 23
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/82754/Алена_20_brest_belarus" class="block-rel person"><img src="http://media.tourbar.com/photos/7/5/4/82754/12106/1411_small.jpg?updated=1418922043" alt="Алена, 20, Brest, Belarus"><span class="person__bottom clearfix"><span class="person__name">
+                Алена, 20
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/85831/christie_22_jacksonville_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/8/3/1/85831/12633/1083_small.jpg?updated=1419525364" alt="Christie, 22, Jacksonville, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Christi..., 22
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/28931/hal_38_alexandria_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/9/3/1/28931/4170/646_small.jpg?updated=1413315321" alt="Hal, 38, Alexandria, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Hal, 38
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/33298/erci-kohen_33_paris_france" class="block-rel person"><img src="http://media.tourbar.com/photos/2/9/8/33298/4840/724_small.jpg?updated=1412842028" alt="Erci KOHEN, 33, Paris, France"><span class="person__bottom clearfix"><span class="person__name">
+                Erci KO..., 33
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/81108/iness_27_kiev_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/1/0/8/81108/11962/1265_small.jpg?updated=1418657638" alt="Iness, 27, Kiev, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Iness, 27
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/79820/Настасья_23_moscow_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/8/2/0/79820/11594/1185_small.jpg?updated=1418464394" alt="Настасья, 23, Moscow, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Настась..., 23
+            </span><span class="person__check icon-check"></span></span></a></div><div class="item"><a href="/zh/profile/16122/christina_21_odessa_ukraine" class="block-rel person"><img src="http://media.tourbar.com/photos/1/2/2/16122/2125/365_small.jpg?updated=1401205012" alt="Christina, 21, Odessa, Ukraine"><span class="person__bottom clearfix"><span class="person__name">
+                Christi..., 21
+            </span></span></a></div><div class="item"><a href="/zh/profile/80617/connie_25_miami_united-states" class="block-rel person"><img src="http://media.tourbar.com/photos/6/1/7/80617/11890/1179_small.jpg?updated=1420245968" alt="Connie, 25, Miami, United States"><span class="person__bottom clearfix"><span class="person__name">
+                Connie, 25
+            </span></span></a></div><div class="item"><a href="/zh/profile/86250/Виктория_20_samara_russia" class="block-rel person"><img src="http://media.tourbar.com/photos/2/5/0/86250/12642/1237_small.jpg?updated=1419593134" alt="Виктория, 20, Samara, Russia"><span class="person__bottom clearfix"><span class="person__name">
+                Виктори..., 20
+            </span></span></a></div></div><!-- /wrapper --><div class="main-blog" id="main_about"><div class="main-blog__wrapper"><div class="main-blog-magazine"><span class="main-blog-magazine__title">如所见：</span><img src="//images.tourbar.com/images/main/techcrunch.png" class="main-blog-magazine__item" alt=""><img src="//images.tourbar.com/images/main/newswire.png" class="main-blog-magazine__item" alt=""><img src="//images.tourbar.com/images/main/mobile.png" class="main-blog-magazine__item" alt=""><img src="//images.tourbar.com/images/main/aawp.png" class="main-blog-magazine__item" alt=""></div><div class="main-blog__about main-blog_align_center"><h1 class="main-blog__title">使用TourBar，寻找旅伴、旅友或驴友</h1><p class="main-blog__about-txt">欢迎访问TourBar，我们提供的令人希望的新型服务能够帮助你在游览世界时享受你的人生。使用TourBar，你可以很容易、安全地找到一位非常适合你的旅伴或旅友。这取决于你的兴趣、你想参加的活动类型以及你是渴望找到一位朋友还是渴望在度假交友中享受其他事情。</p><p class="main-blog__about-txt">现在你可以看到所有真实存在的本地网站和活动，跳过人群拥挤的景点。另外，你可以与那些知晓如何快乐度假的人一起共度旅行时光，分享你的兴趣爱好。进行假期交友、再找个当地的驴友，这样你就体验了两种最佳的度假方式，选择你希望共度旅行时光的旅伴以及你希望进行的活动。</p><p class="main-blog__about-txt">TourBar 让这一过程简单而安全。我们的用户均通过了网上验证，我们的个人主页带有照片和个人信息，还有会员服务。其意思就是你已经信任你结识的朋友，并且感到很自在地跟这位新认识的朋友一同出游、探索新景点。</p><p class="main-blog__about-txt">因此，到处看一看，寻找你下一位旅友或驴友，在游览世界时享有你的人生，遇见许多棒的朋友。</p></div><div class="blog clearfix main-blog_align_center"><div class="blog__item clearfix"><h2 class="main-blog__title">驴友博客</h2><h4 class="blog__title">
+                                        What You Must See and Do in Dubai while Travel Dating
+                </h4><div class="blog__info">
+                                        
+                                                                邮寄：            12月23, 2014
+    <br/>由Emily Walker
+                                    </div><div class="blog__content"><p>Over the past decade, Dubai has risen to global prominence as one of the most unique cities in the world. It's a must-visit destination for many tourists, and it's also a popular location for business...
+                </div><a href="/zh/blog/What-You-Must-See-and-Do-in-Dubai-while-Travel-Dating-11/" class="button blog__button">阅读全文</a></div><div class="blog__item clearfix"><h2 class="main-blog__title blog__item-about">提供验证用户的安全国际性交友网站</h2><div class="blog__content">TourBar很仔细地验证其用户，其意思就是，我们可以向你们提供更安全的国际交友网站。当你现在旅伴或与某个人联系共同度假时，请相信我们已验证的用户绝对是真实的，不存在任何虚假信息。</div><a href="/zh/verified-travel-companions" class="button blog__button">阅读全文</a></div><a href="https://plus.google.com/u/0/113827496985718115179/?rel=publisher"></a></div></div></div><div class="footer clearfix"><div class="col5"><div class="footer__item"><a href="/zh"><img src="//images.tourbar.com/images/logo/logo_footer.png" alt="" class="footer__logo"></a><span class="copyright">2013 &mdash; 2015 © TourBar</span><a href="#languages" class="footer__languages js-popup"><i class="tbi-eath footer__languages-icon"></i>Chinese (simplified)</a></div></div><div class="col5"><div class="footer__item"><span>下载TourBar app：</span><div class="footer__apps"><a href="https://play.google.com/store/apps/details?id=com.tourbar" target="_blank"><img src="//images.tourbar.com/images/icon_google.png" alt="" class="footer__store"></a><a href="http://www.windowsphone.com/en-us/store/app/tourbar-com/8ba4f9b8-50c5-484e-85aa-9fd81d63cb34" target="_blank"><img src="//images.tourbar.com/images/icon_winfone.png" alt="" class="footer__store"></a><a href="https://itunes.apple.com/app/tourbar-find-travel-buddy/id767432923" target="_blank"><img src="//images.tourbar.com/images/icon_apple.png" alt="" class="footer__store"></a></div></div></div><div class="footer__col-menu"><div class="footer__item"><ul class="menu-footer"><li class="menu-footer__item"><a href="/zh/about" class="menu-footer__a">关于</a></li><li class="menu-footer__item"><a href="/zh/privacy" class="menu-footer__a">隐私</a></li><li class="menu-footer__item"><a href="/zh/rules" class="menu-footer__a">规则</a></li><li class="menu-footer__item"><a href="/zh/blog" class="menu-footer__a">博客</a></li><li class="menu-footer__item"><a href="http://partner.tourbar.com" class="menu-footer__a">会员</a></li></ul></div></div><div class="footer__col-menu"><div class="footer__item"><ul class="menu-footer"><li class="menu-footer__item"><a href="/zh/tips" class="menu-footer__a">有用的建议</a></li><li class="menu-footer__item"><a href="/zh/verified-travel-companions" class="menu-footer__a">已验证的用户</a></li><li class="menu-footer__item"><a href="/zh/customer-service" class="menu-footer__a">客服</a></li><li class="menu-footer__item"><a href="/zh/faq" class="menu-footer__a">帮助</a></li><li class="menu-footer__item"><a href="/zh/sitemap" class="menu-footer__a">Sitemap</a></li></ul></div></div><div class="footer__col-soc"><div class="footer__item social"><span class="social__title">他们信任TourBar</span><ul class="social-button social-button-footer"><li class="social-button__item"><div class="fb-like" data-href="http://tourbar.com/" data-width="54" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false" data-colorscheme="dark"></div></li><li class="social-button__item social-button_width_g-plus"><div class="g-plusone" data-size="medium" data-href="http://tourbar.com"></div></li><li class="social-button__item social-button_width_twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="http://tourbar.com">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li></ul><div class="footer-security"><div id="footer_security" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications." data-image="//images.tourbar.com/images/footer_security.png" style="padding-top: 10px;"><script type="text/javascript" src="//images.tourbar.com/js/getnortonsealimaget.js?v=16"></script></div><div style="margin: 5px 0 0 9px;"><script type="text/javascript" src="https://sealserver.trustwave.com/seal.js?style=invert&size=65x36&code=12006239fc7d48ca9d97fa0ac45848e9"></script></div></div></div></div></div><!-- /footer --><div id="languages" class="popup languages-popup mfp-hide"><h2>选择语言</h2><div class="languages-popup__list"><a class="languages-popup__list-item" href="#" data-lang="en">English</a><a class="languages-popup__list-item" href="#" data-lang="bg">Bulgarian</a><a class="languages-popup__list-item" href="#" data-lang="zh">Chinese (simplified)</a><a class="languages-popup__list-item" href="#" data-lang="fi">Finnish</a><a class="languages-popup__list-item" href="#" data-lang="de">German</a><a class="languages-popup__list-item" href="#" data-lang="el">Greek</a><a class="languages-popup__list-item" href="#" data-lang="hi">Hindi</a><a class="languages-popup__list-item" href="#" data-lang="id">Indonesian</a><a class="languages-popup__list-item" href="#" data-lang="it">Italian</a><a class="languages-popup__list-item" href="#" data-lang="ko">Korean</a><a class="languages-popup__list-item" href="#" data-lang="ms">Malay</a><a class="languages-popup__list-item" href="#" data-lang="pl">Polish</a><a class="languages-popup__list-item" href="#" data-lang="pt">Portuguese</a><a class="languages-popup__list-item" href="#" data-lang="ro">Romanian</a><a class="languages-popup__list-item" href="#" data-lang="ru">Russian</a><a class="languages-popup__list-item" href="#" data-lang="sr">Serbian</a><a class="languages-popup__list-item" href="#" data-lang="es">Spanish</a><a class="languages-popup__list-item" href="#" data-lang="sv">Swedish</a><a class="languages-popup__list-item" href="#" data-lang="th">Thai</a><a class="languages-popup__list-item" href="#" data-lang="vi">Vietnamese</a></div></div><!-- /languages --><script type="text/javascript">
+$(function() {
+    $(document).on('click', '#languages .languages-popup__list-item', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        $.get('/ws/language', {'lang': $this.data('lang')}, function(response) {
+                        window.setTimeout(function() {
+                var path = window.location.pathname;
+                var lang = getLanguageFromUrl();
+
+                if (lang) {
+                    path = path.replace('/' + lang, '/' + $this.data('lang'));
+                }
+
+                window.location.assign(path);
+            }, 500);
+        });
+    });
+});
+</script><div id="login" class="popup login mfp-hide"><div class="login-social"><!--
+    --><a href="#" class="login-social__item login-social_bg_red" data-type="fb"><i class="icon-facebook login-social__icon-fb"></i><span class="login-social__txt">脸谱</span></a><!--
+    --><a href="#" class="login-social__item login-social_bg_gp_red"><i class="icon-g-plus login-social__icon-g-plus"></i><span class="login-social__txt">谷歌</span></a></div><div class="auth-title clearfix"><h2 class="auth-title__txt">进入系统</h2><a href="#registration" class="auth-title__a js-popup"><i class="icon-adduser"></i><span class="auth-title__a-txt">登录</span></a></div><div id="login_alert" class="alert alert__error alert__shift" style="display: none;"><i class="alert__icon-qu icon-attention"></i><span class="alert__txt"></span><i class="alert__close-icon icon-delete js-close-alert"></i></div><div class="auth-form"><form id="signin_form"><div class="control-group"><input type="text" name="email" class="input_bg_red" placeholder="邮箱" /></div><div class="control-group"><input type="password" name="password" class="input_bg_red" placeholder="密码" /></div><div class="login-button clearfix"><div class="login-button__left"><div class="p-r"><input type="checkbox" class="form-checkbox" id="keep_logged" name="remember" value="1" /><label for="keep_logged" class="form-label logged">登录</label></div><a href="#restore_password" class="login__forgot js-popup">忘记密码？</a></div><input type="submit" class="auth__submit input_bg_red signin-button" value="进入系统" /></div></form></div></div><!-- login --><div id="restore_password" class="popup login mfp-hide"><div class="login-social"><!--
+    --><a href="#" class="login-social__item login-social_bg_red" data-type="fb"><i class="icon-facebook login-social__icon-fb"></i><span class="login-social__txt">脸谱</span></a><!--
+    --><a href="#" class="login-social__item login-social_bg_gp_red"><i class="icon-g-plus login-social__icon-g-plus"></i><span class="login-social__txt">谷歌</span></a></div><div class="auth-title clearfix"><h2 class="auth-title__txt">密码帮助</h2><a href="#registration" class="auth-title__a js-popup"><i class="icon-adduser"></i><span class="auth-title__a-txt">登录</span></a></div><div id="restore_pwd_alert" class="alert alert__error alert__shift" style="display: none;"><i class="alert__icon-qu icon-attention"></i><span class="alert__txt"></span><i class="alert__close-icon icon-delete js-close-alert"></i></div><div class="restore-password">请检查地址<a href="#registration" class="restore-password__a js-popup">，创建账户。</a></div><div class="auth-form"><form id="restore_password_form"><div class="control-group"><input type="text" name="email" class="input_bg_red" placeholder="邮箱" /></div><div class="login-button clearfix"><input type="submit" class="auth__submit input_bg_red restore-pwd-button" value="继续" /></div></form></div></div><!-- restore_password --><div id="registration" class="popup registration mfp-hide js-reg-block"><div class="login-social login-social_border_red"><!--
+    --><a href="#" class="login-social__item" data-type="fb"><i class="icon-facebook login-social__icon-fb"></i><span class="login-social__txt">脸谱</span></a><!--
+    --><a href="#" class="login-social__item login-social_bg_gp"><i class="icon-g-plus login-social__icon-g-plus"></i><span class="login-social__txt">谷歌</span></a></div><div class="auth-title clearfix"><h2 class="auth-title__txt">登录</h2><a href="#login" class="auth-title__a auth-title_a_left js-popup"><i class="icon-user-small"></i><span class="auth-title__a-txt">我已建立个人主页</span></a></div><div id="registration_alert" class="alert alert__error alert__shift registration-alert"  style="display: none;"><i class="alert__icon-qu icon-attention"></i><span class="alert__txt">请填写必要字段。谢谢！</span><i class="alert__close-icon icon-delete js-close-alert"></i></div><div class="auth-form"><form id="signup_form"><div class="auth-form__female clearfix"><div class="control-group auth-form__female-item"><input type="hidden" name="gender" value="" /><label class="control-group__label auth-form__label">我是：</label><span class="radio-group"><input type="radio" class="form-radio" id="gender_m" name="gender" value="M" /><label for="gender_m" class="form-label bullet auth-form__radio">男性</label></span><span class="radio-group"><input type="radio" class="form-radio" id="gender_f" name="gender" value="F" /><label for="gender_f" class="form-label bullet auth-form__radio">女性</label></span></div></div><div class="control-group"><input type="text" name="name" placeholder="姓名" maxlength="25" /></div><div class="control-group"><input type="text" name="email" placeholder="邮箱" /></div><div class="control-group"><input type="password" name="password" placeholder="密码" /></div><div class="control-group p-r"><input type="hidden" class="location-text-hidden" value="Nanjing, Jiangsu, China" /><input type="text" name="location_text" class="location-input" placeholder="输入城市名称" value="Nanjing, Jiangsu, China" autocomplete="off" /><ul class="location js-location-picker" style="display: none;"><li class="geoip-country" style="color: #6e6d7c; padding-bottom: 10px;">你所在的国家是China。选择你所在的城市：</li><li class="location__item nothing-found js-location-item">未发现任何场所</li></ul><input type="hidden" name="city_id" value="26883627" /><input type="hidden" name="region_id" value="26819668" /><input type="hidden" name="country_id" value="2374" /><a href="#" class="auth__choose-place">地点错误？另选一个</a><script type="text/javascript">
+
+var bound = bound || [];
+
+$(function () {
+    var timeout = null;
+
+    $('input[name=location_text]').each(function(index) {
+        if (bound.hasOwnProperty(index)) {
+            return true; // Continue
+        }
+
+        bound[index] = true;
+
+        $(document).on('keyup', 'input[name=location_text]:eq(' + index + ')', function(e) {
+            var $this = $(this);
+            var val = $.trim($this.val()),
+                locationPicker = $this.next('.js-location-picker');
+
+            if (e.keyCode == 27) {
+                locationPicker.hide();
+            }
+
+            if (val != '' && val == $.trim($this.siblings('.location-text-hidden').val())) {
+                return false;
+            } else {
+                $this.siblings('input[name=country_id]').val(0);
+                $this.siblings('input[name=region_id]').val(0);
+                $this.siblings('input[name=city_id]').val(0);
+            }
+
+            if (val.length < 3 || e.keyCode == 27) {
+                return false;
+            }
+
+            if (timeout) {
+                window.clearTimeout(timeout);
+            }
+
+            timeout = window.setTimeout(function() {
+                var data = {
+                    q: val
+                };
+
+                
+                
+                                data['country_id'] = 2374;
+                
+                $.get('/ws/geo', data, function(response) {
+                    locationPicker.children('.js-location-item').show().not('.nothing-found').remove();
+                    locationPicker.children().show();
+                    if (response.resultCode == 0) {
+                        locationPicker.children().not('.geoip-country').hide();
+                        var empty = true;
+                        for (x in response.locations) {
+                            empty = false;
+                            break;
+                        }
+
+                        if (!empty) {
+                            for (var x in response.locations) {
+                                var location = response.locations[x];
+                                var text = location['country_name'];
+                                if (location['city_id'] != 0 && location['city_name']) {
+                                                                        text = location['city_name'] + ', ' + location['region_name'];
+                                                                    }
+                                var value = location['country_id'] + '_' + location['region_id'] + '_' + location['city_id'];
+                                var el = $('<li class="location__item js-location-item">'+text+'</li>').data('value', value);
+                                el.data('country_name', location['country_name']);
+                                locationPicker.append(el);
+
+                                if (typeof FastClick !== 'undefined') {
+                                    el.each(function() {
+                                        FastClick.attach(this);
+                                    });
+                                }
+                            }
+                        } else {
+                            locationPicker.children('.nothing-found').show();
+                        }
+                    }
+
+                    locationPicker.show();
+                });
+            }, 150);
+        });
+
+        return false; // Break
+    });
+
+    $(document).on('click', '.js-location-item', function(e) {
+        var $this = $(this);
+
+        if ($this.hasClass('nothing-found')) {
+            return false;
+        }
+
+        var parent = $this.parent();
+        var location = $this.data('value').split('_');
+        parent.siblings('input[name=country_id]').val(location[0]);
+        parent.siblings('input[name=region_id]').val(location[1]);
+        parent.siblings('input[name=city_id]').val(location[2]);
+
+        var text = $this.text();
+        if (text.split(', ').length < 3 && text.split(', ').length > 1) {
+            text += ', ' + $this.data('country_name');
+        }
+
+//        parent.siblings('input[name=location_text]').val(text).removeClass('is-error').css('margin-top', '0px');
+        parent.siblings('input[name=location_text]').val(text);
+        parent.siblings('input.location-text-hidden').val(text);
+        $this.closest('.js-location-picker').hide();
+    });
+});
+</script></div><div class="control-group"><select name="date" id="reg_date" class="auth__select-day"><option value="0">日期</option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select><select name="month" id="reg_month" class="auth__select-month"><option value="0">月份</option><option value="1">一月</option><option value="2">二月</option><option value="3">三月</option><option value="4">四月</option><option value="5">五月</option><option value="6">六月</option><option value="7">七月</option><option value="8">八月</option><option value="9">九月</option><option value="10">十月</option><option value="11">十一月</option><option value="12">十二月</option></select><select name="year" id="reg_year" class="auth__select-year"><option value="0">年份</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option></select></div><div>*所有领域都需要</div><div class="auth__police">你继续确认，你已阅读并同意我们<a class="auth__police-a" href="/zh/rules">的条款和条件</a>和<a class="auth__police-a" href="/zh/privacy">隐私政策</a>。</div><div class="auth-button clearfix"><input type="submit" class="auth__submit register-button" value="完成注册" /></div></form></div></div><!-- registration --><script src="//images.tourbar.com/js/lib/templater.js?v=16"></script><div id="reg_success" class="popup mfp-hide"><h2>恭喜！<br/>你已成功登录！</h2><p class="popup__txt">
+        激活邮件已发送至<br/><a class="popup__a reg-email" href="#"></a></p><p class="popup__txt"><a href="#" class="popup__a">我还没有收到注册邮件</a></p></div><!-- /reg-success --><script src="//connect.facebook.net/en_US/fbds.js" async="async"></script><script type="text/javascript">
+
+function runYengoTrack() {
+    var yImg=document.createElement("img");var dImg=document.createElement("img"); var yT = new Date().getTime();
+    yImg.setAttribute('src', ((window.location.protocol != "https:") ? 'http' : 'https') + '://www.yengo.com/track/cpa.gif');
+    if (window.location.protocol != "https:") { dImg.setAttribute('src', 'http://code.directadvert.ru/track/cpa.gif?t=' + yT)}
+    document.body.appendChild(yImg);document.body.appendChild(dImg);
+}
+
+function facebookStat()
+{
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6021892238546', {'value':'0.01','currency':'USD'}]);
+}
+
+function addRegistrationStat(userData, type)
+{
+    sendGA('/registration_success', 'Success registration');
+
+    var created = userData['created'].split(' ');
+    var date = created[0].split('-');
+    var time = created[1].split(':');
+
+    mixpanel.track("Signup", {'type':type, 'Gender': userData['gender']});
+    mixpanel.alias(userData['user_id']);
+    mixpanel.people.set({
+        "$email": userData['email'],
+        "$name": userData['name'],
+        "Gender": userData['gender'],
+        "Birthday": userData['birthday'],
+        "$created": new Date(date[0], parseInt(date[1]) - 1, parseInt(date[2]), time[0], time[1], time[2]),
+        "Status": (type == 'nonconfirmed' ? 'Nonconfirmed' : 'Active')
+    });
+
+    runYengoTrack();
+    facebookStat();
+
+    // Exoclick
+    var exoclickImg = new Image();
+    exoclickImg.src = 'http://main.exoclick.com/tag.php?goal=315b1acf4b02f647bee12e61eff66c05';
+}
+
+function addLoginStat(userId, type, gender)
+{
+    mixpanel.identify(userId);
+    var data = {'type':type};
+    if (gender) {
+        data['Gender'] = gender;
+    }
+    mixpanel.track("Signin", data);
+}
+
+$(function () {
+    
+    $(document).on('submit', '#signup_form, .signup-form', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var checkData = form.serializeArray();
+        var error = false;
+        var genderError = false;
+
+        for (x in checkData) {
+            if (!checkData[x]['value'] || checkData[x]['value'] == '0') {
+                if (checkData[x]['name'] == 'gender') {
+                    genderError = true;
+                    form.find('[name=gender]').addClass('is-error');
+                    continue;
+                } else if (checkData[x]['name'] == 'city_id') {
+                    var locationText = form.find('[name=location_text]');
+                    locationText.addClass('is-error');
+
+                    if (locationText.val()) {
+                        locationText.css('margin-top', '-5px')
+                    }
+                } else {
+                    var name = checkData[x]['name'].replace('[', '\\[').replace(']', '\\]');
+                    form.find('[name=' + name + ']').addClass('is-error');
+                }
+                error = true;
+            } else {
+                if (checkData[x]['name'] == 'location_text') {
+                    continue;
+                }
+
+                if (checkData[x]['name'] == 'gender') {
+                    genderError = false;
+                    form.find('[name=gender]').removeClass('is-error');
+                } else if (checkData[x]['name'] == 'city_id') {
+                    form.find('[name=location_text]').removeClass('is-error');
+                } else {
+                    var name = checkData[x]['name'].replace('[', '\\[').replace(']', '\\]');
+                    form.find('[name=' + name + ']').removeClass('is-error');
+                }
+            }
+        }
+
+        if (error || genderError) {
+            form.closest('.js-reg-block').find('.registration-alert').show();
+            return false;
+        }
+
+        $('div.mfp-bg.mfp-ready').hide();
+        $('#overlay').show();
+        var data = form.serialize();
+        var path = window.location.pathname;
+
+        if (path.search(/^\/[a-zA-Z]{2}(\/|$)/) > -1 && path.substr(1, 2) != 'ws') {
+            data += '&lang=' + path.substr(1, 2);
+        }
+
+        $.get('/ws/signup', data, function(response) {
+            $('#overlay').hide();
+            $('div.mfp-bg.mfp-ready').show();
+
+            if (response.resultCode == 0) {
+                $('#registration_alert').hide();
+                $('a.reg-email').html($('input[name=email]').val());
+                $('#signup_form').each(function() { this.reset(); });
+                openPopUp('reg_success');
+                addRegistrationStat(response, 'nonconfirmed');
+                var timeout = window.setTimeout(function() {
+                    $.get('/ws/signup/mp', function(response) {});
+                    window.clearTimeout(timeout);
+                }, 500);
+            } else {
+                if (response.resultCode == 2) {
+                    form.find('input[name=name]').addClass('is-error');
+                }
+                form.closest('.js-reg-block').find('.registration-alert span').html(response.error);
+                form.closest('.js-reg-block').find('.registration-alert').attr('data-id', response.alertId);
+                form.closest('.js-reg-block').find('.registration-alert').show();
+                alertActions();
+                return false;
+            }
+        });
+    });
+
+    $(document).on('submit', '#signin_form', function(e) {
+        e.preventDefault();
+        $('div.mfp-bg.mfp-ready').hide();
+        $('#overlay').show();
+
+        var form = $(this);
+        var data = form.serialize();
+        var path = window.location.pathname;
+
+        if (path.search(/^\/[a-zA-Z]{2}(\/|$)/) > -1 && path.substr(1, 2) != 'ws') {
+            data += '&lang=' + path.substr(1, 2);
+        }
+
+        $.get('/ws/signin', data, function(response) {
+            form.each(function() { this.reset(); });
+
+            if (response.resultCode == 0) {
+                addLoginStat(response.user_id, 'email', response.gender);
+                window.setTimeout(function() {
+                    window.location.assign(response.redirect);
+                }, 1000);
+            } else {
+                $('#overlay').hide();
+                $('div.mfp-bg.mfp-ready').show();
+                $('#login_alert span').html(response.error);
+                $('#login_alert').attr('data-id', response.alertId);
+                $('#login_alert').show();
+                alertActions();
+                return false;
+            }
+        });
+    });
+
+    $(document).on('submit', '#restore_password_form', function(e) {
+        e.preventDefault();
+        $('div.mfp-bg.mfp-ready').hide();
+        $('#overlay').show();
+
+        var form = $(this);
+        var data = form.serialize();
+        var path = window.location.pathname;
+
+        if (path.search(/^\/[a-zA-Z]{2}(\/|$)/) > -1 && path.substr(1, 2) != 'ws') {
+            data += '&lang=' + path.substr(1, 2);
+        }
+
+        $.get('/ws/restore-password', data, function(response) {
+            $('#overlay').hide();
+            $('div.mfp-bg.mfp-ready').show();
+
+            form.each(function() { this.reset(); });
+            form.find('input[name=email]').removeClass('is-error');
+
+            var alert = $('#restore_pwd_alert');
+            if (response.resultCode == 0) {
+                form.hide();
+                alert.removeClass('alert__error').addClass('alert__information');
+                alert.find('.alert__txt').html(response.message);
+                alert.attr('data-id', response.alertId);
+                alert.show();
+            } else {
+                form.find('input[name=email]').addClass('is-error');
+                alert.find('.alert__txt').html(response.error);
+                alert.attr('data-id', response.alertId);
+                alert.show();
+            }
+            alertActions();
+        });
+    });
+
+    $(document).on('click', '.login-social__item', function(e) {
+        e.preventDefault();
+        var icon = $(this).children('i').first();
+
+        if (icon.hasClass('icon-facebook')) {
+            facebook.login();
+        } else if (icon.hasClass('icon-g-plus')) {
+            googleApi.login();
+        }
+    });
+
+    $(document).on('click', '.auth__choose-place', function(e) {
+        e.preventDefault();
+        $('input[name=location_text]').addClass('is-error').focus();
+    });
+
+    $('body').on('click', function(e) {
+        if ($(e.target).closest('.js-location-picker').length == 0) {
+            $(".js-location-picker").css("display","none");
+        }
+    });
+});
+</script><script type="text/javascript">
+    $(function() {
+        mixpanel.track("Pages.Landing", {'type':'index'});
+    });
+</script>
+<!-- tbr:js:common -->
+    <script src="//images.tourbar.com/js/min/common.85d4ca4a.js"></script>
+    <!-- endtbr -->
+    <!-- tbr:js:landing -->
+    <script src="//images.tourbar.com/js/min/landing.8543e74a.js"></script>
+    <!-- endtbr -->
 
 
-
-				</div>
-			</div>
-		</fieldset>
-
-
-
-      </div>        
-      </div>
-  	</div>
-
-  </div>
-
-  </body>
+<script type="text/javascript">
+adroll_adv_id = "S7I2SKEGJ5AG5O2ADZRIBK";
+adroll_pix_id = "XHXWWYFURZEJ7CIBTQJSH2";
+(function () {
+    var oldonload = window.onload;
+    window.onload = function() {
+        __adroll_loaded=true; var scr = document.createElement("script");
+        var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+        scr.setAttribute('async', 'true'); scr.type = "text/javascript"; scr.src = host + "/j/roundtrip.js";
+        ((document.getElementsByTagName('head') || [null])[0] || document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        if(oldonload){oldonload()}
+    };
+}());
+</script>
+</body>
 </html>
