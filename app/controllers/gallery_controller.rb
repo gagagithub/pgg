@@ -1,5 +1,5 @@
 class GalleryController < ApplicationController
   def kuailv
-  	  		render layout:false
+#  	  		render layout:false
   end
 end
