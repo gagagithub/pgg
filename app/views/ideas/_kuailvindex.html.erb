@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>初级合伙人-inviteid</th>
+      <th>种子用户email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% teasersets.each do |teaserset| %>
+      <tr>
+        <td><%= teaserset.inviter_id %></td>
+        <td><%= teaserset.email %></td>
+<!--
+        <td><%#= comment.body %></td>
+        <td><%#= link_to 'Show', comment %></td>
+        <td><%#= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%#= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+-->        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

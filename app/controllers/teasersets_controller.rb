@@ -1,5 +1,9 @@
 class TeasersetsController < ApplicationController
 
+  def index
+    @teasersets = Teaserset.all
+  end
+
   def new
     @teaserset = Teaserset.new
   end

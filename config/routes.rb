@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'teasersets/new'
+  get 'teasersets/index'
 
   get 'gallery/kuailv'
 
