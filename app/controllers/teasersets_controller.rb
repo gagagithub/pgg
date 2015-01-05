@@ -24,7 +24,8 @@ class TeasersetsController < ApplicationController
 
 
       else
-        format.html { render :new }
+        flash[:notice] = "请输入您的邮箱名称，和推荐人号码！"
+        redirect_to :controller=>"gallery", :action =>"kuailv"
 #        format.json { render json: @teaserset.errors, status: :unprocessable_entity }
       end
   end
