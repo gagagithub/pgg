@@ -440,9 +440,9 @@
                         </div>
                         <div class="modal-body">
                           <h4>1. 转账</h4>
-                          微信支付：<%= current_user.wechatid %>
+                          微信支付：<%=User.where(id:ideaowner(@idea).user_id).first.wechatid %>
                           <br>
-                          支付宝支付：<%= current_user.alipayid %>
+                          支付宝支付：<%=User.where(id:ideaowner(@idea).user_id).first.alipayid %>
                           <br>
                           转账300元时，请备注您的姓名！
 
