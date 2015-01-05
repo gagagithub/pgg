@@ -176,7 +176,8 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to @idea, notice: '已成功创建想法.' }
+#        format.html { redirect_to @idea, notice: '已成功创建想法.' }
+        format.html { redirect_to :controller=>"users", :action =>"edit",:id =>current_user.id, notice: '已成功创建想法.' }
         format.json { render :show, status: :created, location: @idea }
       else
         format.html { render :new }
