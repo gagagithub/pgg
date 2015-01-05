@@ -50,9 +50,8 @@
               <!-- 初级合伙人结束 -->
               <% if ideastakeholders(@idea).count > 8 %>
                 <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>
-                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
-                  投资10000元，成为高级合伙人
-                </button>
+              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资10000元，成为高级合伙人<a>
+
               <% else %>
               <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info" %>
               <% end %>
@@ -66,15 +65,15 @@
 
               <% if ideastakeholders(@idea).count > 8 %>
 
-                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
-                投资10000元，成为高级合伙人
-                </button>
+              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资10000元，成为高级合伙人<a>
+
               <% else %>
 
-                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
+<!--                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
                 投资300元，成为初级合伙人
                 </button>
-
+-->        
+              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
 
               <% end %>
 
