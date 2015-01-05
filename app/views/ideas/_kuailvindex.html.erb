@@ -8,16 +8,19 @@
 
   <tbody>
     <% teasersets.each do |teaserset| %>
-      <tr>
-        <td><%= teaserset.inviter_id %></td>
-        <td><%= teaserset.email %></td>
+      <% if(!teaserset.email.blank?)  %>
+        <tr>
+          <td><%= teaserset.inviter_id %></td>
+          <td><%= teaserset.email %></td>
+        </tr>
+     <% end %>
+    <% end %>
+  </tbody>
+</table>
+
 <!--
         <td><%#= comment.body %></td>
         <td><%#= link_to 'Show', comment %></td>
         <td><%#= link_to 'Edit', edit_comment_path(comment) %></td>
         <td><%#= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 -->        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
