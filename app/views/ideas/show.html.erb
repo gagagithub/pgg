@@ -143,7 +143,7 @@
 
 <% if ideastakeholders(@idea).count > 8 %>
 
-  <h2>3、推荐人股份 </h2>
+  <h2>3、推荐人股份(非合伙人) </h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -408,8 +408,8 @@
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
         <span class="badge">300元</span>
-        <%#= User.where(email:stakehoder.email).first.name %> 
-        <%= stakehoder.email %>
+        <%= User.where(email:stakehoder.email).first.name %> 
+        <%#= stakehoder.email %>
       </li>
     <% end %>
     </ul>
