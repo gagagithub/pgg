@@ -148,12 +148,15 @@
 
   <tbody>
     <% for gudongid in 100..Teaserset.last.id %>
+      <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
         <tr>
           <td><%= gudongid %></td>          
           <td><%= Teaserset.find(gudongid).email %></td>
           <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
           <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
         </tr>
+      <% end %>  
+
     <% end %>  
   </tbody>
 </table>
