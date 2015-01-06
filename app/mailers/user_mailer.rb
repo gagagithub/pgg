@@ -4,10 +4,6 @@ class UserMailer < ActionMailer::Base
 
 	layout 'mailtemplate'
 
-#	layout 'mailtemplate', :only => [:idea_invite, :oldfriend_idea_invite, :idea_donate_notication, :update_idea_invite]
-
-#	layout 'juniortemplate', :only =>[:update_junior_business]
-
 	def idea_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
 
 
