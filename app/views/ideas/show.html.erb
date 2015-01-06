@@ -135,8 +135,31 @@
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
 
+<h2>3、推荐人股份 </h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>推荐人号码</th>
+      <th>推荐人邮箱</th>
+      <th>推荐人已有股份</th>
+      <th>已邀请人数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for gudongid in 80..Teaserset.last.id %>
+        <tr>
+          <td><%= gudongid %></td>          
+          <td><%= Teaserset.find(gudongid).email %></td>
+          <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
+          <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
+        </tr>
+    <% end %>  
+  </tbody>
+</table>
+
 <div class="businesscanvas">
-<h2 id="canvas-title">3、商业模型 Business Model Canvas 
+<h2 id="canvas-title">4、商业模型 Business Model Canvas 
   <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
           <% if current_user.id == ideaowner(@idea).user_id %>
             <%= link_to ' 修改', edit_idea_path(@idea) %>  
@@ -470,32 +493,6 @@
                       </div>
                     </div>
                   </div>
-
-<!-- Modal -->
-<!--
-<div class="modal fade pdfremove" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">商业模型介绍</h4>
-      </div>
-      <div class="modal-body">
-      <p>
-    Business Model Canvas 是销售过百万、被翻译成 30 种语言的畅销书的核心思想。其设计简单易懂，主要用来帮创业者建立、可视化、测试自身的商业模式的可行性，从而避免挥霍资金或者盲目得叠加功能。小公司用它开辟新领域，GE, PG 以及 3M 之类的大公司也可以通过它探索新模式，维持行业竞争力。 
-    </p>
-    <%#= image_tag("business-model-canvas.jpg",height:'300',width:'500') %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-      </div>
-    </div>
-  </div>
-</div>
-
--->
-
-
 
 
 

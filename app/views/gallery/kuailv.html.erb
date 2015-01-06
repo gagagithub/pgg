@@ -33,7 +33,7 @@
 
             <div class="col-md-4 col-sm-4 ">
 <!--              <input type="text" placeholder="电话号码" class="form-control input-lg input-bigger" name="phone" id="phone" value="" autofocus=""> -->
-              <%= f.text_field :email,hide_label: :true,placeholder:"填写您的电子邮箱", class:"form-control input-lg input-bigger" %>
+              <%= f.email_field :email,hide_label: :true,placeholder:"填写您的电子邮箱", class:"form-control input-lg input-bigger" %>
 
             </div>
 
@@ -46,7 +46,7 @@
 -->
 						<div class="col-md-4 col-sm-4 ">
 <!--							<input type="text" placeholder="受邀密码" class="form-control input-lg input-bigger" name="inviter_id" id="inviter_id" value="">	-->
-        				<%= f.text_field :inviter_id,hide_label: :true,placeholder:"推荐人号码", class:"form-control input-lg input-bigger" %>
+        				<%= f.number_field :inviter_id,hide_label: :true,placeholder:"推荐人号码", class:"form-control input-lg input-bigger" %>
 						</div>
 
 						<div class="col-md-4 col-sm-4">

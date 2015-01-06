@@ -18,13 +18,13 @@ class TeasersetsController < ApplicationController
 
      if @teaserset.save
 
-        flash[:notice] ="申请已接受，一旦受理将及时邮件反馈您!"
+        flash[:notice] ="您自己的推荐人号码是#{@teaserset.id}，赶快到你朋友圈里分享推广，成为我们的股东吧!"
         redirect_to :controller=>"gallery", :action =>"kuailv"
          
 
 
       else
-        flash[:notice] = "请输入您的邮箱名称，和推荐人号码！"
+        flash[:notice] = "请正确输入您的邮箱名称，和推荐人号码！"
         redirect_to :controller=>"gallery", :action =>"kuailv"
 #        format.json { render json: @teaserset.errors, status: :unprocessable_entity }
       end
