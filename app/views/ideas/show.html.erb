@@ -141,8 +141,9 @@
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
 
-<<<<<<< HEAD
-<h2>3、推荐人股份 </h2>
+<% if ideastakeholders(@idea).count > 8 %>
+
+<h2>3、推荐人股份 (非合伙人)</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -167,33 +168,9 @@
     <% end %>  
   </tbody>
 </table>
-=======
-<% if ideastakeholders(@idea).count > 8 %>
 
-  <h2>3、推荐人股份(非合伙人) </h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>推荐人号码</th>
-        <th>推荐人邮箱</th>
-        <th>推荐人已有股份</th>
-        <th>已邀请人数</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% for gudongid in 80..Teaserset.last.id %>
-          <tr>
-            <td><%= gudongid %></td>          
-            <td><%= Teaserset.find(gudongid).email %></td>
-            <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
-            <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
-          </tr>
-      <% end %>  
-    </tbody>
-  </table>
 <% end %>
->>>>>>> p1broadcast
+
 
 <div class="businesscanvas">
 <h2 id="canvas-title">4、商业模型 Business Model Canvas 
@@ -417,8 +394,8 @@
         <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
           <li class="list-group-item">
             <span class="badge">10000元</span>
-            <%= User.where(email:stakehoder.email).first.name %> 
-            <%#= stakehoder.email %>
+            <%#= User.where(email:stakehoder.email).first.name %> 
+            <%= stakehoder.email %>
           </li>
       <% end %>
       </ul>
