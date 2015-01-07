@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   get 'ideas/:id/share' => 'ideas#share', as: :share
+  get 'ideas/:id/invitesharer' => 'ideas#invitesharer', as: :invitesharer
+
   get 'ideas/:id/junior' => 'ideas#junior', as: :junior
   get 'ideas/:id/updatestatus' => 'ideas#updatestatus', as: :updatestatus
   get 'ideas/:id/updatejuniorpartner' => 'ideas#updatejuniorpartner', as: :updatejuniorpartner
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
 
   post 'ideas/sendmail'
   post 'ideas/juniorsendmail'
+  post 'ideas/invitesharersendmail'
 
 
   resources :ideas
