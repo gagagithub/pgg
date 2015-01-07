@@ -38,11 +38,11 @@
       <% if ideastakeholders(@idea).count > 8 %>
         <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>  
         <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>         
+        <%= link_to '邀请传播人', invitesharer_path(@idea),class:"btn btn-lg btn-primary"%>
 
       <% else %>    
         <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
         <%= link_to '更新通知', updatestatus_path(@idea),class:"btn btn-lg btn-primary"%>
-        <%= link_to '邀请传播人', invitesharer_path(@idea),class:"btn btn-lg btn-primary"%>
 
       <% end %> 
   
