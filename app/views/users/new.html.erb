@@ -42,7 +42,8 @@
                 l-0.857-4.377l4.375,1.029C16.896,16.443,15.229,17.48,14.325,17.928z"></path>
             </svg>
 
-            <h1>ProductGaga 注册</h1>
+            <h1>ProductGaga 注册<br><small>2周实现你的想法，还送1000元！</small></h1>
+            
 
       <%= bootstrap_form_for(@user) do |f| %>
 
@@ -54,7 +55,7 @@
         <%#= f.label :invitation_id %>
         <%= f.hidden_field :invitation_id %>
         
-        <%= f.text_field :name,label:"姓名" %>
+        <%= f.text_field :name,label:"用户名" %>
 
         <%= f.hidden_field :email,hide_label: :true,placeholder:"电子邮件" %>
 

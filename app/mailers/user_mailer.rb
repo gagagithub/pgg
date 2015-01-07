@@ -7,9 +7,6 @@ class UserMailer < ActionMailer::Base
 	# 新用户邀请
 	def idea_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
 
-
-		render :action=>'idea_invite', :layout=>'juniortemplate'
-
 		@mailcontent = sendcontent
 		@url = sendurl
 		@myidea = sendidea
@@ -22,9 +19,9 @@ class UserMailer < ActionMailer::Base
 #		mail(:to =>email_with_name, :subject =>sendtitle)
 	end
 
+
 	# 老用户邀请
 	def oldfriend_idea_invite(sendtitle,sendcontent,sendemail,sendidea)
-
 
 		@mailcontent = sendcontent
 		@myidea = sendidea
@@ -53,7 +50,7 @@ class UserMailer < ActionMailer::Base
 
 	def update_junior_business(sendtitle,sendcontent,sendemail,sendidea)
 
-#		render :action=>'update_junior_business', :layout=>'juniortemplate'
+		render :action=>'update_junior_business', :layout=>'juniortemplate'
 
 		@mailcontent = sendcontent
 		@myidea = sendidea
@@ -61,6 +58,17 @@ class UserMailer < ActionMailer::Base
 		mail(:to =>sendemail,:subject=>sendtitle)
 
 	end
+
+	def sharer_invite(sendtitle,sendcontent,sendidea,sendinvitation,sendurl)
+
+		@mailcontent = sendcontent
+		@url = sendurl
+		@myidea = sendidea
+		sendinvitation.update_attribute(:sent_at, Time.now)
+		
+		mail(:to =>sendinvitation.recipient_email, :subject =>sendtitle) 
+	end
+
 
 
 #	def invitation(invitation, signup_url)
