@@ -24,12 +24,12 @@
 		<fieldset>
 			<div class="signup-form-block">
 				<div class="row">
-|					<%= bootstrap_form_for Teaserset.new do |f| %>
+					<%= bootstrap_form_for Teaserset.new do |f| %>
             <div class="col-md-4 col-sm-4 ">
-              <%= f.email_field :email,hide_label: :true,placeholder:"填写您的电子邮箱", class:"form-control input-lg input-bigger" %>
+              <%= f.email_field :email,hide_label: :true,placeholder:"您的电子邮箱", class:"form-control input-lg input-bigger" %>
             </div>
 						<div class="col-md-4 col-sm-4 ">
-        				<%= f.number_field :inviter_id,hide_label: :true,placeholder:"推荐人号码", class:"form-control input-lg input-bigger" %>
+        				<%= f.number_field :inviter_id,hide_label: :true,placeholder:"推荐人号码",class:"form-control input-lg input-bigger" %>
 						</div>
 						<div class="col-md-4 col-sm-4">
 						<%= f.submit "第一时间通知我", class:"btn btn-lg btn-block btn-success btn-uppercase btn-bigger" %>
