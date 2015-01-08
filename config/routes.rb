@@ -35,13 +35,14 @@ Rails.application.routes.draw do
   get 'ideas/:id/updatejuniorpartner' => 'ideas#updatejuniorpartner', as: :updatejuniorpartner
   get 'ideas/:id/donate' => 'ideas#donate', as: :donate
   get 'ideas/:id/nodonate' => 'ideas#nodonate', as: :nodonate
+  get 'ideas/:id/p2donate' => 'ideas#p2donate', as: :p2donate
+  get 'ideas/:id/p2nodonate' => 'ideas#p2nodonate', as: :p2nodonate
   get 'comments/:id/zan' => 'comments#zan', as: :zan
   get 'comments/:id/unzan' => 'comments#unzan', as: :unzan
 
   post 'ideas/sendmail'
   post 'ideas/juniorsendmail'
   post 'ideas/invitesharersendmail'
-
 
   resources :ideas
   resources :teasersets, only: [:new, :create]

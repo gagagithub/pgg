@@ -54,7 +54,7 @@
               <!-- 初级合伙人结束 -->
               <% if ideastakeholders(@idea).count > 8 %>
                 <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>
-              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为高级合伙人<a>
+                <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为高级合伙人<a>
 
               <% else %>
               <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info" %>
@@ -110,7 +110,7 @@
       <p class="pdfremove">您将拥有的权益：</p>
     
       <blockquote class="pdfremove">
-      <p>a. 股权<span><small>将拥有未来公司的创业原始股 10% 。</small></span></p>
+      <p>a. 股权<span><small>将拥有未来公司的创业原始股 3% 。</small></span></p>
       <p>b. 网站产品 + APP产品<span><small>实现想法的MVP产品，可直接市场推广，用户使用。</small></span></p>    
     
       </blockquote>
@@ -387,7 +387,7 @@
   <% if ideaseniorstakeholders(@idea).empty? %>
     <p>暂时还没有高级合伙人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
-      <p>集齐5位股东后，高级合伙人招募结束。</p>
+      <p>集齐10位股东后，高级合伙人招募结束。</p>
       <ul class="list-group">
         <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
           <li class="list-group-item">
@@ -437,8 +437,12 @@
           <li class="list-group-item">
             <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
             <% if friendslist.p1donate != 300 %>
-            <span class="badge"><%= link_to '确认转账', :controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id%></span>
+            <span class="badge"><%= link_to '确认为初级合伙人', :controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id%></span>
             <% end %>
+            <% if friendslist.p2donate != 3000 %>
+            <span class="badge"><%= link_to '确认为高级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
+            <% end %>
+
           </li>
         <% end %>        
       <% end %>

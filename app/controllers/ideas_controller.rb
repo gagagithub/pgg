@@ -45,6 +45,7 @@ class IdeasController < ApplicationController
   def invitesharer
   end
 
+
   def donate    
 
     @idea = Idea.find(params[:id])
@@ -76,8 +77,18 @@ class IdeasController < ApplicationController
 
         end
     
-    redirect_to "/ideas/#{params[:id]}#maodian1"   
+    redirect_to "/ideas/#{params[:id]}#maodian1"
+    
+  end
 
+  def p2donate    
+
+    @idea = Idea.find(params[:id])
+    junioruserid = params[:partnerid]
+
+    donateuser = @idea.user_ideaships.where(relationtype:1, user_id:junioruserid).first
+    donateuser.update_attribute(:p2donate, 3000)
+    redirect_to "/ideas/#{params[:id]}"   
     
   end
 
@@ -87,6 +98,14 @@ class IdeasController < ApplicationController
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
     donateuser.update_attribute(:p1donate, 0)
     redirect_to "/ideas/#{params[:id]}#maodian1"       
+  end
+
+  def p2nodonate    
+    @idea = Idea.find(params[:id])
+#    @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first.p1donate
+    donateuser = @idea.user_ideaships.where(relationtype:1, user_id: current_user.id).first
+    donateuser.update_attribute(:p2donate, 0)
+    redirect_to "/ideas/#{params[:id]}"       
   end
 
 
