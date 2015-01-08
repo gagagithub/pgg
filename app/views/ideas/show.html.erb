@@ -437,7 +437,10 @@
           <li class="list-group-item">
             <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
             <% if friendslist.p1donate != 300 %>
-            <span class="badge"><%= link_to '确认为初级合伙人', :controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id%></span>
+
+            <span class="badge"><%= link_to '确认为初级合伙人',:controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id %></span>
+        <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>         
+
             <% end %>
             <% if friendslist.p2donate != 3000 %>
             <span class="badge"><%= link_to '确认为高级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
