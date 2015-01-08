@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
 		  end
 
 		  def set_invitation_limit
-		  	self.invitation_limit = 100
+		  	self.invitation_limit = 1000
 		  end
 
 end
