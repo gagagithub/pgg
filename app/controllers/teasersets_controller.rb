@@ -18,7 +18,7 @@ class TeasersetsController < ApplicationController
 
      if @teaserset.save
 
-        flash[:notice] ="邀请朋友登记，即刻奖励创业原始股。您的推荐人号码是#{@teaserset.id}，详情可咨询qq:1846246903。"
+        flash[:notice] ="邀请朋友登记，即刻奖励创业原始股。您的推荐人号码是#{@teaserset.id}，详情可咨询qq:1846246903，微信号：kuailvclub"
         redirect_to :controller=>"gallery", :action =>"kuailv"
          
 
