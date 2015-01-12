@@ -87,7 +87,7 @@ class IdeasController < ApplicationController
     junioruserid = params[:partnerid]
 
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id:junioruserid).first
-    donateuser.update_attribute(:p2donate, 3000)
+    donateuser.update_attribute(:p2donate, 6000)
     redirect_to "/ideas/#{params[:id]}"   
     
   end
