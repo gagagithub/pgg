@@ -140,39 +140,10 @@
 
 <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
 
-<% if ideastakeholders(@idea).count > 8 %>
-
-<h2>3、推荐人股份 (非合伙人)</h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>推荐人号码</th>
-      <th>推荐人邮箱</th>
-      <th>推荐人已有股份</th>
-      <th>已邀请人数</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% for gudongid in 100..Teaserset.last.id %>
-      <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
-        <tr>
-          <td><%= gudongid %></td>          
-          <td><%= Teaserset.find(gudongid).email %></td>
-          <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
-          <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
-        </tr>
-      <% end %>  
-
-    <% end %>  
-  </tbody>
-</table>
-
-<% end %>
 
 
 <div class="businesscanvas">
-<h2 id="canvas-title">4、商业模型 Business Model Canvas 
+<h2 id="canvas-title">3、商业模型 Business Model Canvas 
   <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
           <% if current_user.id == ideaowner(@idea).user_id %>
             <%= link_to ' 修改', edit_idea_path(@idea) %>  
@@ -383,6 +354,37 @@
 
 <% if ideastakeholders(@idea).count > 8 %>
 
+<h2>4、推荐人股份 (非合伙人)</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>推荐人号码</th>
+      <th>推荐人邮箱</th>
+      <th>推荐人已有股份</th>
+      <th>已邀请人数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for gudongid in 100..Teaserset.last.id %>
+      <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
+        <tr>
+          <td><%= gudongid %></td>          
+          <td><%= Teaserset.find(gudongid).email %></td>
+          <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
+          <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
+        </tr>
+      <% end %>  
+
+    <% end %>  
+  </tbody>
+</table>
+
+<% end %>
+
+
+<% if ideastakeholders(@idea).count > 8 %>
+
 <div class="stakeholderspart pdfremove">
   <h2><a id="maodian1">高级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideaseniorstakeholders(@idea).empty? %>
@@ -438,7 +440,10 @@
           <li class="list-group-item">
             <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
             <% if friendslist.p1donate != 300 %>
-            <span class="badge"><%= link_to '确认为初级合伙人', :controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id%></span>
+
+            <span class="badge"><%= link_to '确认为初级合伙人',:controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id %></span>
+        <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>         
+
             <% end %>
             <% if friendslist.p2donate != 6000 %>
             <span class="badge"><%= link_to '确认为高级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
