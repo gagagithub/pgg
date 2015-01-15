@@ -16,6 +16,14 @@ class UserIdeashipsController < ApplicationController
 	end
 
 	def destroy
+
+    @user_ideaship = UserIdeaship.find(params[:id])
+
+    @user_ideaship.destroy
+    respond_to do |format|
+      format.html { redirect_to current_user, notice: '已成功删除被邀请的朋友。' }
+      format.json { head :no_content }
+    end		
 	end
 
   private

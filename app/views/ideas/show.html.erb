@@ -434,6 +434,7 @@
         <% if friendslist.user_id.nil? %>
           <li class="list-group-item">
             <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>
+            <span class="badge"><%= link_to '删除', friendslist, method: :delete, data: { confirm: '您确定吗?' } %></span>
 
           </li>
         <% else  %>
