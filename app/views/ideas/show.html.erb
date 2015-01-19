@@ -54,7 +54,7 @@
               <!-- 初级合伙人结束 -->
               <% if ideastakeholders(@idea).count > 8 %>
                 <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>
-                <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资6000元，成为高级合伙人<a>
+                <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
 
               <% else %>
               <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info" %>
@@ -69,7 +69,7 @@
 
               <% if ideastakeholders(@idea).count > 8 %>
 
-              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资6000元，成为高级合伙人<a>
+              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
 
               <% else %>
 
@@ -105,12 +105,12 @@
 <% if ideastakeholders(@idea).count > 8 %>
 
 
-<h2 class="pdfremove">1、高级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#seniorparterintro' %></small></h2>
-      <p class="pdfremove"><span>投资6000元，成为高级合伙人，做自己的老板。</span></p>
+<h2 class="pdfremove">1、中级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#seniorparterintro' %></small></h2>
+      <p class="pdfremove"><span>投资3000元，成为中级合伙人，做自己的老板。</span></p>
       <p class="pdfremove">您将拥有的权益：</p>
     
       <blockquote class="pdfremove">
-      <p>a. 股权<span><small>将拥有未来公司的创业原始股 3% 。</small></span></p>
+      <p>a. 股权<span><small>将拥有未来公司的创业原始股 1.5% 。</small></span></p>
       <p>b. APP产品<span><small>实现想法的MVP产品，可直接市场推广，用户使用。</small></span></p>    
       <p>c. 产品推广<span><small>前期推广，初级用户数在5000-10000。</small></span></p>    
     
@@ -386,15 +386,15 @@
 <% if ideastakeholders(@idea).count > 8 %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a id="maodian1">高级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
+  <h2><a id="maodian1">中级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
   <% if ideaseniorstakeholders(@idea).empty? %>
-    <p>暂时还没有高级合伙人投资，赶快邀请朋友们过来吧！</p>
+    <p>暂时还没有中级合伙人投资，赶快邀请朋友们过来吧！</p>
   <% else %>
-      <p>集齐10位股东后，高级合伙人招募结束。</p>
+      <p>集齐10位股东后，中级合伙人招募结束。</p>
       <ul class="list-group">
         <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
           <li class="list-group-item">
-            <span class="badge">6000元</span>
+            <span class="badge">3000元</span>
             <%#= User.where(email:stakehoder.email).first.name %> 
             <%= stakehoder.email %>
           </li>
@@ -446,8 +446,8 @@
         <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>         
 
             <% end %>
-            <% if friendslist.p2donate != 6000 %>
-            <span class="badge"><%= link_to '确认为高级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
+            <% if friendslist.p2donate != 3000 %>
+            <span class="badge"><%= link_to '确认为中级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
             <% end %>
 
           </li>
@@ -486,7 +486,7 @@
 
                           <h4>2. 权限</h4>
                           <% if ideastakeholders(@idea).count > 8 %>
-                            <p>一旦想法创意人收到您的6000元，他将会把您的权限提高为高级合伙人。</p>
+                            <p>一旦想法创意人收到您的3000元，他将会把您的权限提高为中级合伙人。</p>
                           <% else %>
                             <p>一旦想法创意人收到您的300元，他将会把您的权限提高为初级合伙人。</p>
                           <% end %>

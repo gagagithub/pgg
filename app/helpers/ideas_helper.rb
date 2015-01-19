@@ -15,7 +15,7 @@ module IdeasHelper
     end
 
     def ideaseniorstakeholders(idea)
-      @ideastakeholders = idea.user_ideaships.where(relationtype:1,p2donate:6000)
+      @ideastakeholders = idea.user_ideaships.where(relationtype:1,p2donate:3000)
     end
     
 end
