@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'weixin/show'
-  get 'weixin/create'
+#  get 'weixin/show'
+#  get 'weixin/create'
   get 'weixin' =>'weixin#show'
+  put 'weixin/create'
 
   get 'teasersets/new'
   get 'teasersets/index'
@@ -12,8 +13,6 @@ Rails.application.routes.draw do
   resources :invitations
 
   resources :comments
-
-#  resources :weixin
 
   get 'static_pages/about' =>'static_pages#about'
 
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
   get 'comments/zan'
   get 'comments/unzan'
   
-#  get 'ideas/share'
+  #  get 'ideas/share'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
@@ -45,6 +44,7 @@ Rails.application.routes.draw do
   get 'ideas/:id/p2nodonate' => 'ideas#p2nodonate', as: :p2nodonate
   get 'comments/:id/zan' => 'comments#zan', as: :zan
   get 'comments/:id/unzan' => 'comments#unzan', as: :unzan
+
 
   post 'ideas/sendmail'
   post 'ideas/juniorsendmail'
