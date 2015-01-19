@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'weixin/show'
-
-  get 'weixin/create'
-
   get 'teasersets/new'
   get 'teasersets/index'
 
