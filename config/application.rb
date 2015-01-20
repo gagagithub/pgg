@@ -7,7 +7,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
-require 'action_dispatch/xml_params_parser'
+#require 'action_dispatch/xml_params_parser'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -29,6 +29,6 @@ module PggApp
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
-    config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::XmlParamsParser
+#    config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::XmlParamsParser
   end
 end

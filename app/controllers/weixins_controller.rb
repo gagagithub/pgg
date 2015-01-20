@@ -6,7 +6,9 @@ class WeixinsController < ApplicationController
   end
 
   def create
-  	if params[:xml][MsgType] == "text"
+    xml_msg = Hash.from_xml(request.body.read)
+
+  	if xml_msg['xml']['MsgType'] == "text"
   		render "echo", :formats => :xml
   	end 
   end
