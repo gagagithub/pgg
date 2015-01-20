@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resource :weixins
+  resource :weixin
 
   get 'static_pages/about' =>'static_pages#about'
 
