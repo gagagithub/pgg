@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
 
-#  get 'weixin/show'
-#  get 'weixin/create'
 
-
-  get 'weixin' =>'weixin#show'
-  put 'weixin/create'
+#  get 'weixin' =>'weixin#show'
+#  put 'weixin/create'
 
   get 'teasersets/new'
   get 'teasersets/index'
@@ -15,6 +12,8 @@ Rails.application.routes.draw do
   resources :invitations
 
   resources :comments
+
+  resource :weixin
 
   get 'static_pages/about' =>'static_pages#about'
 
@@ -70,8 +69,8 @@ Rails.application.routes.draw do
   match '/signout', to:'sessions#destroy', via:'delete'
 
 
-  get ':controller(/:action(/:id))(.:format)'
-  post ':controller(/:action(/:id))(.:format)'
+#  get ':controller(/:action(/:id))(.:format)'
+#  post ':controller(/:action(/:id))(.:format)'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
