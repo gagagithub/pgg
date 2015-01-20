@@ -6,9 +6,10 @@ class WeixinsController < ApplicationController
   end
 
   def create
-  	if params[:xml][MsgType] == "text"
-  		render "echo", :formats => :xml
-  	end 
+#  	if params[:xml][MsgType] == "text"
+#  		render "echo", :formats => :xml
+    render "create", :formats => :html
+#  	end 
   end
 
 
