@@ -1,4 +1,4 @@
-class WeixinController < ApplicationController
+class WeixinsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :check_weixin_legality
   def show
@@ -10,6 +10,7 @@ class WeixinController < ApplicationController
   		render "echo", :formats => :xml
   	end 
   end
+
 
   private
   # 根据参数校验请求是否合法，如果非法返回错误页面
