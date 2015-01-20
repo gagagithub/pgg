@@ -89,14 +89,14 @@ class IdeasController < ApplicationController
     donateuser = @idea.user_ideaships.where(relationtype:1, user_id:senioruserid).first
     donateuser.update_attribute(:p2donate, 3000)
 
-    emailtitle = "又一个朋友投资3000元成为中级合伙人，你还在等什么？"
-    emailcontent = "#{donateuser.email}刚成为#{@idea.name}的中级合伙人，他将拥有未来公司的创业原始股 1.5%，招募结束后这个产品将不再向个人投资人开放，你想要后悔一辈子吗？！"
+#    emailtitle = "又一个朋友投资3000元成为中级合伙人，你还在等什么？"
+#    emailcontent = "#{donateuser.email}刚成为#{@idea.name}的中级合伙人，他将拥有未来公司的创业原始股 1.5%，招募结束后这个产品将不再向个人投资人开放，你想要后悔一辈子吗？！"
 
-    @idea.user_ideaships.where(relationtype:1).each do |invitedfriendrl|
+#    @idea.user_ideaships.where(relationtype:1).each do |invitedfriendrl|
 
-    UserMailer.idea_donate_notication(emailtitle,emailcontent,invitedfriendrl.email,@idea).deliver   
+#    UserMailer.idea_donate_notication(emailtitle,emailcontent,invitedfriendrl.email,@idea).deliver   
 
-    end
+#    end
 
 
     redirect_to "/ideas/#{params[:id]}"   
