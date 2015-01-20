@@ -55,6 +55,8 @@ gem 'bootstrap_form'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 
+gem 'actionpack-xml_parser'
+
 #gem 'will_paginate'
 #gem 'bootstrap-will_paginate'
 
