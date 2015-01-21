@@ -29,6 +29,8 @@ module PggApp
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
+
+
     config.middleware.insert_after ActionDispatch::ParamsParser, ActionDispatch::XmlParamsParser
   end
 end

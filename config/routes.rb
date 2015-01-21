@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-
-#  get 'weixin' =>'weixin#show'
-#  put 'weixin/create'
+  get 'weixin' => 'weixins#show'
+  post 'weixin' => 'weixins#create'
 
   get 'teasersets/new'
   get 'teasersets/index'
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resource :weixin
+  resources :weixins
 
   get 'static_pages/about' =>'static_pages#about'
 
