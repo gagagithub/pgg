@@ -20,6 +20,9 @@ before_filter :check_weixin_legality
           when "V202"
               render "rtn202", :formats => :xml
 
+          when "V203"
+              render "rtn203", :formats => :xml    
+
         end
       end
   end
