@@ -16,6 +16,10 @@ before_filter :check_weixin_legality
         case params[:xml][:EventKey]
           when "V110"
               render "rtn110", :formats => :xml
+
+          when "V202"
+              render "rtn202", :formats => :xml
+
         end
       end
   end
