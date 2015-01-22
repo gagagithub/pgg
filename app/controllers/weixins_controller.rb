@@ -8,9 +8,16 @@ before_filter :check_weixin_legality
   end
 
   def create
-    if params[:xml][:MsgType] == "text"
-      render "echo", :formats => :xml
-    end  	
+#    if params[:xml][:MsgType] == "text"
+#      render "echo", :formats => :xml
+#    end  	
+
+      if params[:xml][:Event] == "CLICK"
+        case params[:xml][:EventKey]
+          when "V110"
+              render "rtn110", :formats => :xml
+        end
+      end
   end
 
   private

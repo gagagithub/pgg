@@ -18,7 +18,7 @@ puts token
 # 设置菜单
 params = {"button"=>[
 
-{"type"=>"click","name"=>"财务分析","key"=>"V110"},{"name"=>"每日理财","sub_button"=>[{"type"=>"click","name"=>"理财技巧","key"=>"V202"},{"type"=>"click","name"=>"理财产品","key"=>"V203"}]},{"name"=>"关于我们","sub_button"=>[{"type"=>"click","name"=>"团队介绍","key"=>"V301"},{"type"=>"click","name"=>"媒体介绍","key"=>"V302"},{"type"=>"click","name"=>"服务介绍","key"=>"V303"},{"type"=>"click","name"=>"理论依据","key"=>"V304"}]}]}
+{"type"=>"click","name"=>"邀请码","key"=>"V110"},{"name"=>"产品","sub_button"=>[{"type"=>"click","name"=>"推荐产品","key"=>"V202"},{"type"=>"click","name"=>"我的产品","key"=>"V203"}]},{"name"=>"关于","sub_button"=>[{"type"=>"click","name"=>"新手必读","key"=>"V301"},{"type"=>"click","name"=>"服务介绍","key"=>"V302"},{"type"=>"click","name"=>"合伙人","key"=>"V304"}]}]}
 
 http = Net::HTTP.new("api.weixin.qq.com")
 request = Net::HTTP::Post.new("/cgi-bin/menu/create?access_token="+token,{'Content-Type' => 'application/json'})
