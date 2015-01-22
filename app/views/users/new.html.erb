@@ -49,15 +49,11 @@
 
         <%= render 'shared/error_messages' %>
 
-        <%#= f.label :token %>
-        <%#= f.hidden_field :invitation_token %>
-
-        <%#= f.label :invitation_id %>
         <%= f.hidden_field :invitation_id %>
         
         <%= f.text_field :name,label:"用户名" %>
 
-        <%= f.hidden_field :email,hide_label: :true,placeholder:"电子邮件" %>
+        <%= f.email_field :email,label: "电子邮件" %>
 
         <%= f.password_field :password, label:"密码" %>
 
