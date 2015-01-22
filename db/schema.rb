@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105031210) do
+ActiveRecord::Schema.define(version: 20150122083436) do
 
   create_table "changjingzans", force: true do |t|
     t.integer  "user_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20150105031210) do
     t.boolean  "admin",            default: false
     t.string   "alipayid"
     t.string   "wechatid"
+    t.string   "weixincode"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
