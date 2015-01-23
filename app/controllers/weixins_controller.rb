@@ -8,9 +8,19 @@ before_filter :check_weixin_legality
   end
 
   def create
-#    if params[:xml][:MsgType] == "text"
-#      render "echo", :formats => :xml
-#    end  	
+
+      if params[:xml][:FromUserName]!=nil
+        puts params[:xml][:FromUserName]
+        userweixincode = params[:xml][:FromUserName]
+      end
+
+
+      if User.where(weixincode:userweixincode).empty?
+        @webuser = nil
+      else
+        @webuser = User.where(weixincode:userweixincode).first
+      end
+
 
       if params[:xml][:Event] == "CLICK"
         case params[:xml][:EventKey]
@@ -18,7 +28,11 @@ before_filter :check_weixin_legality
               render "rtn110", :formats => :xml
 
           when "V202"
-              render "rtn202", :formats => :xml
+              if @webuser.nil?
+                render "bangding", :formats => :xml
+              else
+                render "rtn202", :formats => :xml
+              end
 
           when "V203"
               render "rtn203", :formats => :xml    

@@ -3,6 +3,7 @@
      <FromUserName><![CDATA[<%= params[:xml][:ToUserName] %>]]></FromUserName>
      <CreateTime><%= Time.now.to_i %></CreateTime>
      <MsgType><![CDATA[text]]></MsgType>
-     <Content><![CDATA[请输入您的姓名]]></Content>
+     <Content><![CDATA[您好，<%= @webuser.email %>
+]]></Content>
      <FuncFlag>0</FuncFlag>
  </xml>
