@@ -7,7 +7,9 @@ class SessionsController < ApplicationController
 
 		user = User.where(name: params[:name]).first
 		if user && user.authenticate(params[:password])
-    		user.update_attribute(:weixincode, params[:myweixincode].join)
+			if(!params[:myweixincode].nil?)
+    			user.update_attribute(:weixincode, params[:myweixincode].join)
+    		end
 			sign_in user
 			redirect_to user
 		else
