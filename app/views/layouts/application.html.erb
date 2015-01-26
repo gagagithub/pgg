@@ -2,16 +2,18 @@
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="zh-CH">
     <head>
       <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <link rel="shortcut icon" href="/assets/favicon.ico">
       <title>ProductGaga,2周实现你的想法，还送1000元！</title>
       <meta name="keywords" content="创业者服务" />
-      <meta name="description" content="ProductGaga,帮助创业者募集资金，实现产品，寻找用户，迭代，盈利。" />
+      <meta name="description" content="ProductGaga,帮助创业者募集资金，实现产品，寻找用户。" />
   <!--    <link href="/assets/canvas.css" media="screen" rel="stylesheet">  -->
 
       <%= stylesheet_link_tag "application", media: "all",
                                              "data-turbolinks-track" => true %>
+
+      <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">                                       
 
 <!--
       <style type="text/css">
@@ -27,23 +29,10 @@
       <![endif]-->
     </head>
   <body>
-      <div class="container">
+
       <%= render 'layouts/header' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-<!--      <%= debug(params) if Rails.env.development? %>	-->
-    </div>
 
   </body>
 </html>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-58365626-1', 'auto');
-  ga('send', 'pageview');
-
-</script>

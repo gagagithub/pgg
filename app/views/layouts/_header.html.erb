@@ -1,7 +1,16 @@
 
     <nav class="navbar navbar-default" role="navigation">
+
         <div class="container-fluid">
+
           <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>            
+
           <a class="navbar-brand" href="#">  
             <svg class="svg-icon" viewBox="0 0 20 20">
               <path fill="none" d="M11.015,11.009l5.063,1.191c0.288,0.068,0.579-0.088,0.682-0.364c0.35-0.931,0.528-1.909,0.528-2.91
@@ -14,38 +23,27 @@
                 c0.064,0,0.127-0.01,0.188-0.031c0.154-0.052,3.75-1.311,5.134-4.931C19.272,14.223,19.261,14.046,19.183,13.897z M14.325,17.928
                 l-0.857-4.377l4.375,1.029C16.896,16.443,15.229,17.48,14.325,17.928z"></path>
             </svg>  
-            <div class="brand--title">       
-              <h1>Product Gaga</h1>
-              <h2>2周实现你的想法，还送1000元！</h2> 
-            </div>           
           </a>
+         <p class="navbar-text">ProductGaga </p>
+
           </div>  
 
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  
             <ul class="nav navbar-nav navbar-right">
-<!--              <li><%#= link_to "首页", root_path %></li> -->
-                <li><%= link_to "Productgaga的服务", '/static_pages/about' %></li>
 
+                  <li><%= link_to "我们的服务", '/static_pages/about' %></li>
               <% if signed_in? %>
-                <li><%= link_to "您的想法集", current_user %></li>
-                  <%# if current_user.invitation_limit > 0 %>
-                  <!--
+                  <li><%= link_to "创意集", current_user %></li>
+
                   <li>
-                      <%#= link_to "发送邀请", new_invitation_path %>
-                      <%#= current_user.invitation_limit %>
-                  </li>
-                -->
-                  <%# end %>
-                <li>
                     <%= link_to "注销", signout_path, method: "delete" %>
-                </li>
-                  <% else %>
-                  <li><%#= link_to "登陆",signin_path %></li>
-                  <% end %>
+                  </li>
+              <% end %>
             </ul>
           </div>
 
 
         </div>
     </nav>
+

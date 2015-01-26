@@ -15,28 +15,12 @@
  *= require rails_bootstrap_forms
  */
 
-.navbar-brand h1
-{
-	color: #4691f6;
-	font-size: 20px;
-	font-weight: 900;
-	margin-top: -1px;
-}
-
-.navbar-brand h2
-{
-	color: #999999;
-	font-size: 16px;
-	font-weight: 500;
-	margin-top:-5px;
-}
 
 .navbar-default{
 	border-top-color: white;
 	border-left-color: white;
 	border-right-color: white;
 	border-bottom-color: #e7e7e7;
-	border-bottom-width: 1px;
 	background-color: white;
 }
 
@@ -46,7 +30,6 @@ width: 45px;
 height: 45px;
 float: left;
 }
-*/
 
 .brand--title{
 	float: left;
@@ -67,6 +50,7 @@ margin-bottom: 10px;
 .nav li a {
 	font-size: 14px;
 }
+*/
 
 /* -----
 SVG Icons - svgicons.sparkk.fr
