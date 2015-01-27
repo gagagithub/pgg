@@ -1,38 +1,26 @@
+  <div class="container-fluid">  
+
+    <div class= "page-keypart">
+      <h1>登陆</h1>
+    </div>
+
+    <div class= "page-content">
+
+        <%= bootstrap_form_tag url:'/sessions' do |f| %>
+
+        <%= f.hidden_field :myweixincode, value: params[:weixincode] %>
+        
+        <%= f.text_field :name,label:"用户名" %>
+
+        <%= f.password_field :password, label:"密码" %>
+
+        <%= f.primary " 登陆 " %>
+      <% end %>
 
 
-<h2>登 陆</h2>
+    </div>
 
-<div class = "container">
-
-	<%= form_tag sessions_path,:class =>"form-horizontal",:role =>'form' do %>
-
-		<%#= params[:weixincode] %>
-		<%= text_field :myweixincode, params[:myweixincode],type:'hidden',value: params[:weixincode] %>
+  </div>
 
 
-		<div class="form-group">
-			<label for="inputEmail3" class="col-sm-2 control-label">用户名:</label>
-			<div class="col-xs-4">
-			<%= text_field :name, params[:name],class:'form-control',id:'inputEmail3',type:'text' %>
-			</div>
-		</div>
 
-		<div class="form-group">
-		    <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
-		    <div class="col-xs-4">
-		      <input type="password" class="form-control" id="inputPassword3" name="password">
-		    </div>
-		</div>
-
-		<div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
-		      <button type="submit" class="btn btn-primary">登 陆</button>
-		    </div>
-		</div>		
-
-		<%#= submit_tag "登 陆",class:"btn btn-primary" %>		
-
-	<% end %>
-
-<!--	<p> 新用户? <%#= link_to "现在就注册!", signup_path %></p>	-->
-</div>
