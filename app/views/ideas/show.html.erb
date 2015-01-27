@@ -16,7 +16,7 @@
 </script>
 -->
 
-<div class="container">
+<div class="container-fluid">
 
 <% flash.each do |key, value| %>
         <div class="alert alert-success" role="alert"><%= notice %></div>
@@ -41,8 +41,8 @@
         <%= link_to '邀请传播人', invitesharer_path(@idea),class:"btn btn-lg btn-primary"%>
 
       <% else %>    
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %> 
-        <%= link_to '更新通知', updatestatus_path(@idea),class:"btn btn-lg btn-primary"%>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+        <%= link_to '更新通知', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
 
       <% end %> 
   
@@ -83,16 +83,6 @@
 
       <% end %>      
 
-      <%# if ideastakeholders(@idea).count > 8 %>
-        <%#= link_to '招募结束,点击进入下一步', junior_path(@idea),class:"btn btn-lg btn-success" %>        
-
-      <%# else %>
-        <%# if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-            <%#= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
-        <%# else %>
-            <%#= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger", id:"warn-one-click" %>
-        <%# end %>        
-      <%# end %>
   <% end %>
 
 </div>
@@ -143,7 +133,7 @@
 
 
 <div class="businesscanvas">
-<h2 id="canvas-title">3、商业模型 Business Model Canvas 
+<h2 id="canvas-title">3、商业模型 
   <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
           <% if current_user.id == ideaowner(@idea).user_id %>
             <%= link_to ' 修改', edit_idea_path(@idea) %>  
