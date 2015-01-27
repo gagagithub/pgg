@@ -14,7 +14,7 @@
 	height: auto;
 	overflow: hidden;
 	min-height: 600px;
-	width: 1024px;
+	width: 1200px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -640,8 +640,8 @@
 	display: block;
 	float: left;
 	margin-top: 8px;
-	margin-left:-10px;
-	width: 1024px
+	margin-left:100px;
+	width: 1024px;
 }
 
 

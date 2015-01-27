@@ -36,9 +36,9 @@
     <!-- Onwer -->
   <% if current_user.id == ideaowner(@idea).user_id %>
       <% if ideastakeholders(@idea).count > 8 %>
-        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>  
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger" %>         
-        <%= link_to '邀请传播人', invitesharer_path(@idea),class:"btn btn-lg btn-primary"%>
+        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>  
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %>         
+        <%= link_to '邀请传播人', invitesharer_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
 
       <% else %>    
         <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
@@ -53,11 +53,11 @@
             <%#= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
               <!-- 初级合伙人结束 -->
               <% if ideastakeholders(@idea).count > 8 %>
-                <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info" %>
-                <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+                <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
 
               <% else %>
-              <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info" %>
+              <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
               <% end %>
 
       <% else %>
@@ -69,7 +69,7 @@
 
               <% if ideastakeholders(@idea).count > 8 %>
 
-              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+              <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
 
               <% else %>
 
@@ -77,7 +77,7 @@
                 投资300元，成为初级合伙人
                 </button>
 -->        
-              <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
+              <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
 
               <% end %>
 
