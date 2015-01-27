@@ -4,30 +4,33 @@
 
 <% else %>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th class="idea-table-id"><p>#</p></th>
-        <th class="idea-table-name"><p>创意名称</p></th>
-        <th class="idea-table-intro"><p>简介</p></th>
-        <th class="idea-table-oper"><p>操作</p></th>
-
-      </tr>
-    </thead>
-
-    <tbody>
-      <% i=1 %>
-      <% uiships.each do |uiship| %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= i %></td>
-          <td><%= link_to uiship.idea.name,uiship.idea %></td>
-          <td><%= uiship.idea.intro %></td>
-          <td><%= link_to '详情', uiship.idea %>｜<%= link_to '修改', edit_idea_path(uiship.idea) %>｜<%= link_to '删除', uiship.idea, method: :delete, data: { confirm: '您确定吗?' } %></td>
+          <th class="idea-table-id"><p>#</p></th>
+          <th class="idea-table-name"><p>创意名称</p></th>
+          <th class="idea-table-intro"><p>简介</p></th>
+          <th class="idea-table-oper"><p>操作</p></th>
+
         </tr>
-        <% i=i+1 %>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% i=1 %>
+        <% uiships.each do |uiship| %>
+          <tr>
+            <td><%= i %></td>
+            <td><%= link_to uiship.idea.name,uiship.idea %></td>
+            <td><%= uiship.idea.intro %></td>
+            <td><%= link_to '详情', uiship.idea %>｜<%= link_to '修改', edit_idea_path(uiship.idea) %>｜<%= link_to '删除', uiship.idea, method: :delete, data: { confirm: '您确定吗?' } %></td>
+          </tr>
+          <% i=i+1 %>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
 
 <% end %>
 
