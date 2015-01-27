@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     
     end
     
-    render layout:false
+#    render layout:false
 
 #    @user.invitation_id = @user.invitation.id
   end
