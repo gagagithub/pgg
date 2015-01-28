@@ -46,41 +46,43 @@
             <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>  
           <% end %>        
     
-    <% end %>
+    <% else %>
 
     
-    <% if user_is_ideaparter(@idea,current_user) %>
+        <% if user_is_ideaparter(@idea,current_user) %>
 
-          <% if idea_stage(@idea) == 1 %>
+              <% if idea_stage(@idea) == 1 %>
 
-                <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
 
-          <% end %>
+              <% end %>
 
-          <% if idea_stage(@idea) == 2 %>
+              <% if idea_stage(@idea) == 2 %>
 
-                <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+              <% end %>    
+        <% end %>
+
+
+        <% if (!user_is_ideaowner(@idea,current_user) && !user_is_ideaparter(@idea,current_user))%>
+
+              <% if idea_stage(@idea) == 1 %>
+
                 <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-          <% end %>    
-    <% end %>
 
+              <% end %>
 
-    <% if (!user_is_ideaowner(@idea,current_user) && !user_is_ideaparter(@idea,current_user))%>
+              <% if idea_stage(@idea) == 2 %>
 
-          <% if idea_stage(@idea) == 1 %>
+                <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
 
-            <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+              <% end %>
 
-          <% end %>
+        <% end %>     
 
-          <% if idea_stage(@idea) == 2 %>
-
-            <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
-
-          <% end %>
-
-    <% end %>      
+    <% end %> 
 
   <% end %>
 
@@ -89,10 +91,6 @@
 <div class="ideas-list">
 
     <div class="partnerbenefit">
-
-    ideas_stage = <%= idea_stage(@idea) %>
-    ideastakeholders(idea).count =   <%= ideastakeholders(@idea).count  %>
-    ideaseniorstakeholders(idea).count = <%= ideaseniorstakeholders(@idea).count  %>
 
     <% if idea_stage(@idea) == 1 %>
 
@@ -354,7 +352,7 @@
 <% if idea_stage(@idea) == 2 %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a>中级合伙人 </a><small> 想法创始人(<%=ideaowner(@idea).email %>)</small></h2>
+  <h2>中级合伙人</h2>
 
       <ul class="list-group">
         <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
@@ -368,7 +366,7 @@
 <% end %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a>初级合伙人 </a><small> 想法创始人(<%=ideaowner(@idea).email %>)</small></h2>
+  <h2>初级合伙人</h2>
     <ul class="list-group">
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
@@ -382,7 +380,7 @@
 
 <% if idea_stage(@idea) == 2 %>
 
-  <h2 class="pdfremove">4、推荐人股份 (非合伙人)</h2>
+  <h2 class="pdfremove">推荐人股份 (非合伙人)</h2>
   <div class="table-responsive pdfremove">
   <table class="table table-striped">
     <thead>
