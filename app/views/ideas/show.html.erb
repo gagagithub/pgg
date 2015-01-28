@@ -36,53 +36,34 @@
     <!-- Onwer -->
 
   <% if !current_user.nil? %>    
-
-    <% if user_is_ideaowner(@idea,current_user) %>
-
-          <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-          <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
-
-          <% if idea_stage(@idea) == 2 %>
-            <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>  
-          <% end %>        
-    
-    <% else %>
-
-    
-        <% if user_is_ideaparter(@idea,current_user) %>
-
-              <% if idea_stage(@idea) == 1 %>
-
-                    <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-
-              <% end %>
-
-              <% if idea_stage(@idea) == 2 %>
-
-                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-              <% end %>    
-        <% end %>
-
-
-        <% if (!user_is_ideaowner(@idea,current_user) && !user_is_ideaparter(@idea,current_user))%>
-
-              <% if idea_stage(@idea) == 1 %>
-
-                <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-
-              <% end %>
-
-              <% if idea_stage(@idea) == 2 %>
-
-                <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
-
-              <% end %>
-
-        <% end %>     
-
-    <% end %> 
+    <% case idea_user_type(@idea) %>
+      <% when 1 %>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+        <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
+      <% when 2 %>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+        <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+      <% when 3 %>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+      <% when 4 %>
+        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>      
+      <% when 5 %>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+        <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+      <% when 6 %>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+      <% when 7 %>
+        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+        <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
+      <% when 8 %>
+        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+      <% else %>
+        puts "Hi !"
+    <% end %>
 
   <% end %>
 
