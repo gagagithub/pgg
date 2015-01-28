@@ -42,8 +42,8 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])    
   end
 
-  def invitesharer
-  end
+#  def invitesharer
+#  end
 
 
   def donate    
@@ -132,41 +132,6 @@ class IdeasController < ApplicationController
 
   end
 
-  def invitesharersendmail
-    @idea = Idea.find(params[:idea_id])
-
-# => 如果是"找人帮忙"的链接
-        friendsemails = params[:friend_emails].split(';')
-
-        friendsemails.each do |friend_email|
-
-
-    # =>  创建 invitation的链接. only for share, only for new user.
-
-
-                @invitation = Invitation.new
-                @invitation.sender = current_user
-                @invitation.recipient_email = friend_email
-                @invitation.sender_id = current_user.id
-                @invitation.save
-
-                @idea.user_ideaships.build(email: friend_email, relationtype: 1);
-            
-                UserMailer.sharer_invite(params[:email_title],params[:email_content],@idea,@invitation,
-                                   signup_url(@invitation.token)).deliver
-
-
-      @idea.save
-   
-
-        end
-# end of friendsemails.each.  
-
-
-    redirect_to @idea
-
-
-  end
 
   def sendmail
 

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   get 'ideas/:id/share' => 'ideas#share', as: :share
-  get 'ideas/:id/invitesharer' => 'ideas#invitesharer', as: :invitesharer
+#  get 'ideas/:id/invitesharer' => 'ideas#invitesharer', as: :invitesharer
 
   get 'ideas/:id/junior' => 'ideas#junior', as: :junior
   get 'ideas/:id/updatestatus' => 'ideas#updatestatus', as: :updatestatus
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
   post 'ideas/sendmail'
   post 'ideas/juniorsendmail'
-  post 'ideas/invitesharersendmail'
+#  post 'ideas/invitesharersendmail'
 
   resources :ideas
   resources :teasersets, only: [:new, :create]

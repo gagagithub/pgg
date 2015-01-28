@@ -34,112 +34,117 @@
 </h1>
 <small><%= @idea.intro %></small>
     <!-- Onwer -->
-  <% if current_user.id == ideaowner(@idea).user_id %>
-      <% if ideastakeholders(@idea).count > 8 %>
-        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>  
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %>         
-        <%= link_to '邀请传播人', invitesharer_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
 
-      <% else %>    
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-        <%= link_to '更新通知', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
+  <% if !current_user.nil? %>    
 
-      <% end %> 
-  
-  <% else %>
+    <% if user_is_ideaowner(@idea,current_user) %>
 
-      <!-- 是合伙人  -->
-      <% if ideafollowers(@idea).where(user_id:current_user.id).first.p1donate == 300 %> 
-            <%#= link_to '退出合伙', nodonate_path(@idea),class:"btn btn-lg btn-success" %>
-              <!-- 初级合伙人结束 -->
-              <% if ideastakeholders(@idea).count > 8 %>
+          <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+          <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
+
+          <% if idea_stage(idea) == 2 %>
+            <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>  
+          <% end %>        
+    
+    <% end %>
+
+    
+    <% if user_is_ideaparter(@idea,current_user) %>
+
+          <% if idea_stage(@idea) == 1 %>
+
+                <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+
+          <% end %>
+
+          <% if idea_stage(@idea) == 2 %>
+
                 <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
                 <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-
-              <% else %>
-              <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-              <% end %>
-
-      <% else %>
-      <!-- 非合伙人 -->
-            <%#= link_to '投资300元，成为初级合伙人', donate_path(@idea),class:"btn btn-lg btn-danger", id:"warn-one-click" %>
+          <% end %>    
+    <% end %>
 
 
-<!-- Button trigger modal -->
+    <% if (!user_is_ideaowner(@idea,current_user) && !user_is_ideaparter(@idea,current_user))%>
 
-              <% if ideastakeholders(@idea).count > 8 %>
+          <% if idea_stage(@idea) == 1 %>
 
-              <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+            <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
 
-              <% else %>
+          <% end %>
 
-<!--                <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#myModal">
-                投资300元，成为初级合伙人
-                </button>
--->        
-              <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
+          <% if idea_stage(@idea) == 2 %>
 
-              <% end %>
+            <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>
 
-      <% end %>      
+          <% end %>
+
+    <% end %>      
 
   <% end %>
 
 </div>
 
 <div class="ideas-list">
-<!-- <h2>0、受邀的朋友 </h2>  -->
 
-<div class="partnerbenefit">
+    <div class="partnerbenefit">
 
-<% if ideastakeholders(@idea).count > 8 %>
+    <% if idea_stage(@idea) == 1 %>
+
+    <h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
+          <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
+          <p class="pdfremove">您将拥有的权益：</p>
+        
+          <blockquote class="pdfremove">
+          <p>a. 知情权<span><small>之后，非合伙人将被关在门外，无法得知想法商业化进展。</small></span></p>   
+          <p>b. 股权<span><small>将拥有未来公司的创业原始股 1% 。</small></span></p>
+          <p>c. 商业计划书<span><small>包括该想法的市场规模、产品研发、推广路径等。</small></span></p>
+          <p>d. 网站<span><small>PC+移动端网站，将充分体现想法，并可收集客户反馈。</small></span></p>    
+          <p>e. 微信公众服务<span><small>公众账号服务，便于服务更多的群体。</small></span></p>   
+          <p>f. 优先投资权<span><small>优先于非合伙人购买股权。</small></span></p>
+        
+          </blockquote>
+
+    <% end %>
+
+    <% if idea_stage(@idea) == 2 %>
+
+    <h2 class="pdfremove">1、中级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#seniorparterintro' %></small></h2>
+          <p class="pdfremove"><span>投资3000元，成为中级合伙人，做自己的老板。</span></p>
+          <p class="pdfremove">您将拥有的权益：</p>
+        
+          <blockquote class="pdfremove">
+          <p>a. 股权<span><small>将拥有未来公司的创业原始股 1.5% 。</small></span></p>
+          <p>b. APP产品<span><small>实现想法的MVP产品，可直接市场推广，用户使用。</small></span></p>    
+          <p>c. 产品推广<span><small>前期推广，初级用户数在5000-10000。</small></span></p>    
+        
+          </blockquote>
+    <% end %>
 
 
-<h2 class="pdfremove">1、中级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#seniorparterintro' %></small></h2>
-      <p class="pdfremove"><span>投资3000元，成为中级合伙人，做自己的老板。</span></p>
-      <p class="pdfremove">您将拥有的权益：</p>
-    
-      <blockquote class="pdfremove">
-      <p>a. 股权<span><small>将拥有未来公司的创业原始股 1.5% 。</small></span></p>
-      <p>b. APP产品<span><small>实现想法的MVP产品，可直接市场推广，用户使用。</small></span></p>    
-      <p>c. 产品推广<span><small>前期推广，初级用户数在5000-10000。</small></span></p>    
-    
-      </blockquote>
-<% else %>
-<h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
-      <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
-      <p class="pdfremove">您将拥有的权益：</p>
-    
-      <blockquote class="pdfremove">
-      <p>a. 知情权<span><small>之后，非合伙人将被关在门外，无法得知想法商业化进展。</small></span></p>   
-      <p>b. 股权<span><small>将拥有未来公司的创业原始股 1% 。</small></span></p>
-      <p>c. 商业计划书<span><small>包括该想法的市场规模、产品研发、推广路径等。</small></span></p>
-      <p>d. 网站<span><small>PC+移动端网站，将充分体现想法，并可收集客户反馈。</small></span></p>    
-      <p>e. 微信公众服务<span><small>公众账号服务，便于服务更多的群体。</small></span></p>   
-      <p>f. 优先投资权<span><small>优先于非合伙人购买股权。</small></span></p>
-    
-      </blockquote>
-<% end %>
+    </div>
 
-</div>
+    <div class="changjinglist">
+    <h2 class="pdfremove"> 2、应用场景 </h2>
+      <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
+    </div>
 
-<div class="changjinglist">
-<h2 class="pdfremove"> 2、应用场景 </h2>
-<%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
-</div>
-
-<%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
-
+    <% if !current_user.nil? %> 
+      <%= render :partial=>"newremark", :locals=>{:newcomment=>Comment.new,:linkidea_id=>@idea.id} %>
+    <% end %>
 
 
 <div class="businesscanvas">
 <h2 id="canvas-title">3、商业模型 
-  <small><%= link_to ' 下载 ', idea_path(@idea,format:'pdf') %>
-          <% if current_user.id == ideaowner(@idea).user_id %>
-            <%= link_to ' 修改', edit_idea_path(@idea) %>  
-          <% end %>
+  <small><%= link_to ' PDF显示 ', idea_path(@idea,format:'pdf') %>
+  <% if !current_user.nil? && user_is_ideaowner(@idea,current_user)%> 
+    <%= link_to ' 修改', edit_idea_path(@idea) %>  
+  <% end %>
   
-  </small></h2>
+  </small>
+</h2>
+
 <br>
 <!--
 <i id="menu-toggle" class = "glyphicon glyphicon-heart-empty"></i>
@@ -342,83 +347,75 @@
 
 <footer><cite title="Source Title">Productgaga出品( www.productgaga.com) : 2周实现你的想法，还送1000元！</cite></footer>
 
-<% if ideastakeholders(@idea).count > 8 %>
-
-<h2>4、推荐人股份 (非合伙人)</h2>
-<div class="table-responsive">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>推荐人号码</th>
-      <th>推荐人邮箱</th>
-      <th>推荐人已有股份</th>
-      <th>已邀请人数</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% for gudongid in 100..Teaserset.last.id %>
-      <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
-        <tr>
-          <td><%= gudongid %></td>          
-          <td><%= Teaserset.find(gudongid).email %></td>
-          <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
-          <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
-        </tr>
-      <% end %>  
-
-    <% end %>  
-  </tbody>
-</table>
-</div>
-<% end %>
-
-
-<% if ideastakeholders(@idea).count > 8 %>
+<% if idea_stage(@idea) == 2 %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a id="maodian1">中级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
-  <% if ideaseniorstakeholders(@idea).empty? %>
-    <p>暂时还没有中级合伙人投资，赶快邀请朋友们过来吧！</p>
-  <% else %>
-      <p>集齐10位股东后，中级合伙人招募结束。</p>
+  <h2><a>中级合伙人 </a><small> 想法创始人(<%=ideaowner(@idea).email %>)</small></h2>
+
       <ul class="list-group">
         <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
           <li class="list-group-item">
             <span class="badge">3000元</span>
-            <%#= User.where(email:stakehoder.email).first.name %> 
             <%= stakehoder.email %>
           </li>
       <% end %>
       </ul>
-  <% end %>
 </div>
 <% end %>
 
 <div class="stakeholderspart pdfremove">
-  <h2><a id="maodian1">初级合伙人 </a><small> 想法创始人(<%=User.where(id:ideaowner(@idea).user_id).first.name %>)</small></h2>
-  <% if ideastakeholders(@idea).empty? %>
-    <p>暂时还没有人投资，赶快邀请朋友们过来吧！</p>
-  <% else %>
-    <p>集齐10位股东后，初级合伙人招募结束。</p>
+  <h2><a>初级合伙人 </a><small> 想法创始人(<%=ideaowner(@idea).email %>)</small></h2>
     <ul class="list-group">
     <% ideastakeholders(@idea).each do |stakehoder| %>
       <li class="list-group-item">
         <span class="badge">300元</span>
-        <%= User.where(email:stakehoder.email).first.name %> 
-        <%#= stakehoder.email %>
+        <%= stakehoder.email %> 
       </li>
     <% end %>
     </ul>
-  <% end %>
 </div>
+
+
+<% if idea_stage(@idea) == 2 %>
+
+  <h2 class="pdfremove">4、推荐人股份 (非合伙人)</h2>
+  <div class="table-responsive pdfremove">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>推荐人号码</th>
+        <th>推荐人邮箱</th>
+        <th>推荐人已有股份</th>
+        <th>已邀请人数</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% for gudongid in 100..Teaserset.last.id %>
+        <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
+          <tr>
+            <td><%= gudongid %></td>          
+            <td><%= Teaserset.find(gudongid).email %></td>
+            <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
+            <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
+          </tr>
+        <% end %>  
+
+      <% end %>  
+    </tbody>
+  </table>
+  </div>
+<% end %>
+
 
 <div class="invitedfriendspart pdfremove">
 
-  <h2>受邀朋友
-  </h2>
+  <h2>受邀朋友</h2>
 
-  <% if current_user.id == ideaowner(@idea).user_id %>
+
+  <% if !current_user.nil? %>
+
+  <% if user_is_ideaowner?(@idea,current_user) %>
       
     <ul class="list-group">  
       <%  ideafollowers(@idea).each do |friendslist| %>
@@ -449,9 +446,10 @@
     </ul>
 
 
-
   <% else %>
       <p>该想法已邀请<%=ideafollowers(@idea).count %>名朋友来围观。</p>
+  <% end %>
+
   <% end %>
 </div>
 
@@ -462,7 +460,7 @@
 
 
                   <!-- Modal -->
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade pdfremove" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
