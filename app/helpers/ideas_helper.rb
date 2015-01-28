@@ -11,6 +11,7 @@ module IdeasHelper
   def user_is_ideaparter(idea,user)
 
     idea.user_ideaships.where(user_id:user.id, relationtype:1 ,p1donate:300)
+
   end
 
 
@@ -24,17 +25,16 @@ module IdeasHelper
       @ideastakeholders = idea.user_ideaships.where(relationtype:1,p1donate:300)
     end
 
-    def ideastakeholders(idea)
-      @ideastakeholders = idea.user_ideaships.where(relationtype:1,p2donate:3000)
+    def ideaseniorstakeholders(idea)
+      @ideaseniorstakeholders = idea.user_ideaships.where(relationtype:1,p2donate:3000)
     end
 
     def idea_stage(idea)
       #募集初级合伙人中
-      if (ideastakeholders(idea).count < 10)
+      if (ideastakeholders(idea).count < 9)
         return 1
-      else
       #募集中级合伙人中  
-        if (ideastakeholders(idea).count <10)
+        if (ideaseniorstakeholders(idea).count <10)
           return 2
         else
       #募集高级合伙人中   
