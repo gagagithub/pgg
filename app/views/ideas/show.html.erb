@@ -42,7 +42,7 @@
           <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
           <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
 
-          <% if idea_stage(idea) == 2 %>
+          <% if idea_stage(@idea) == 2 %>
             <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>  
           <% end %>        
     
@@ -415,7 +415,7 @@
 
   <% if !current_user.nil? %>
 
-  <% if user_is_ideaowner?(@idea,current_user) %>
+  <% if user_is_ideaowner(@idea,current_user) %>
       
     <ul class="list-group">  
       <%  ideafollowers(@idea).each do |friendslist| %>
