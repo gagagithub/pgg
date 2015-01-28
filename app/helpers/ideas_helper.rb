@@ -9,27 +9,25 @@ module IdeasHelper
   end
 
   def user_is_ideaparter(idea,user)
-
     idea.user_ideaships.where(user_id:user.id, relationtype:1 ,p1donate:300)
-
   end
 
 
   # 返回idea的follow user.
-    def ideafollowers(idea)
+  def ideafollowers(idea)
       @ideafollowers = idea.user_ideaships.where(relationtype:1)
-    end
+  end
 
   # 返回idea的投资人.
-    def ideastakeholders(idea)
+  def ideastakeholders(idea)
       @ideastakeholders = idea.user_ideaships.where(relationtype:1,p1donate:300)
-    end
+  end
 
-    def ideaseniorstakeholders(idea)
+  def ideaseniorstakeholders(idea)
       @ideaseniorstakeholders = idea.user_ideaships.where(relationtype:1,p2donate:3000)
-    end
+  end
 
-    def idea_stage(idea)
+  def idea_stage(idea)
       #募集初级合伙人中
       if (ideastakeholders(idea).count < 9)
         return 1
@@ -42,7 +40,7 @@ module IdeasHelper
         end
       end
 
-    end
+  end
 
     
 end

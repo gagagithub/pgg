@@ -90,9 +90,11 @@
 
     <div class="partnerbenefit">
 
+    ideas_stage = <%= idea_stage(@idea) %>  
+
     <% if idea_stage(@idea) == 1 %>
 
-    <h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
+          <h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
           <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
           <p class="pdfremove">您将拥有的权益：</p>
         
