@@ -442,6 +442,24 @@
 </div>
 
 
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container-fluid">
+
+    <% case idea_stage(@idea) %>
+      <% when 1 %>
+        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>      
+      <% when 2 %>
+        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+      <% when 3 %>
+        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资6000元，成为高级合伙人<a>
+      <% else %>
+        欢迎成为我们的投资合伙人！
+    <% end %>
+
+  </div>
+</nav>
+
+
                   <!-- Modal -->
                   <div class="modal fade pdfremove" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -483,7 +501,6 @@
                       </div>
                     </div>
                   </div>
-
 
 
 
