@@ -32,6 +32,8 @@ module IdeasHelper
       if (ideastakeholders(idea).count < 9)
         return 1
       #募集中级合伙人中  
+      else
+              
         if (ideaseniorstakeholders(idea).count <10)
           return 2
         else

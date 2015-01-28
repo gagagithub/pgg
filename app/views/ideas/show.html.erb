@@ -90,7 +90,9 @@
 
     <div class="partnerbenefit">
 
-    ideas_stage = <%= idea_stage(@idea) %>  
+    ideas_stage = <%= idea_stage(@idea) %>
+    ideastakeholders(idea).count =   <%= ideastakeholders(@idea).count  %>
+    ideaseniorstakeholders(idea).count = <%= ideaseniorstakeholders(@idea).count  %>
 
     <% if idea_stage(@idea) == 1 %>
 
