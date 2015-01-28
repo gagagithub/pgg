@@ -292,12 +292,12 @@ class IdeasController < ApplicationController
 
 
     def validate_user
-      if(current_user.nil?)
-        redirect_to root_path
-      else
-      validateresult = @idea.user_ideaships.where(user_id:current_user.id)
-      redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
-      end
+#      if(current_user.nil?)
+#        redirect_to '/users/new'
+#      else
+#      validateresult = @idea.user_ideaships.where(user_id:current_user.id)
+#      redirect_to current_user, notice:"您不具备该用户的访问权限！" if validateresult.empty?
+#      end
     end
 
     def validate_junior_parter
