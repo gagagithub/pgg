@@ -29,53 +29,19 @@
 
 <div class="ideas-brief-part">
 
-<h1><%= @idea.name %>
-  
-</h1>
-<small><%= @idea.intro %></small>
-    <!-- Onwer -->
-
-  <% if !current_user.nil? %>    
-    <% case idea_user_type(@idea) %>
-      <% when 1 %>
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-        <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"btn btn-lg btn-primary col-xs-12 col-md-2"%>
-      <% when 2 %>
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-        <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-      <% when 3 %>
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-      <% when 4 %>
-        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>      
-      <% when 5 %>
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-        <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-      <% when 6 %>
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-      <% when 7 %>
-        <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-        <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-        <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
-      <% when 8 %>
-        <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-      <% else %>
-        puts "Hi !"
-    <% end %>
-
-  <% end %>
+<h1><%= @idea.name %></h1>
+<h2><%= @idea.intro %></h2>
 
 </div>
 
 <div class="ideas-list">
 
-    <div class="partnerbenefit">
+
+
 
     <% if idea_stage(@idea) == 1 %>
 
-          <h2 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h2>
+          <h1 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h1>
           <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
           <p class="pdfremove">您将拥有的权益：</p>
         
@@ -93,23 +59,28 @@
 
     <% if idea_stage(@idea) == 2 %>
 
-    <h2 class="pdfremove">1、中级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#seniorparterintro' %></small></h2>
-          <p class="pdfremove"><span>投资3000元，成为中级合伙人，做自己的老板。</span></p>
-          <p class="pdfremove">您将拥有的权益：</p>
-        
-          <blockquote class="pdfremove">
-          <p>a. 股权<span><small>将拥有未来公司的创业原始股 1.5% 。</small></span></p>
-          <p>b. APP产品<span><small>实现想法的MVP产品，可直接市场推广，用户使用。</small></span></p>    
-          <p>c. 产品推广<span><small>前期推广，初级用户数在5000-10000。</small></span></p>    
-        
-          </blockquote>
+          <h1 class="pdfremove">1、合伙人信息 <small><%= link_to " 更多", '/static_pages/about#seniorparterintro' %></small></h1>
+
+          <h2 class="pdfremove"><span>招募中级合伙人中</span>，还有<span><%= 10 - ideaseniorstakeholders(@idea).count %>位</span>名额。</h2>
+
+          <p>- <mark>投资3000元，获得1500股，1.5%股权。</mark></p>
+          <p><mark>- 预期将在半年内，2.5倍投资回报。</mark></p>
+          <p>- 本轮融资3万，用于MVP产品实现、运营、推广。</p>
+
+          <h1 class="pdfremove">2、当前进展 </h1>
+          <h2 class="pdfremove">项目经过初期推广，已有<span>300+注册用户，20+普通股东，10位初级合伙人,<%= ideaseniorstakeholders(@idea).count %>名中级合伙人。</span></h2>
+
+          <p>- 微信公众号 <mark>kuailv-club</mark> 。</p>
+          <p>- APP产品原型设计实现。<%= link_to '查看', "https://popapp.in/projects/54b64299fedcd1660dc8e532/preview" %></p>
+          <p>- 基础服务申请完毕：域名、服务器等。</p>
+
+          <h1 class="pdfremove">3、风险投资协议 <small><%= link_to " 正式版", 'http://yun.baidu.com/share/link?shareid=1222575103&uk=844900100' %></small></h1>
+          <h2 class="pdfremove">召集齐10个中级合伙人后，签署协议。人不齐则退钱。</h2>            
     <% end %>
 
-
-    </div>
-
     <div class="changjinglist">
-    <h2 class="pdfremove"> 2、应用场景 </h2>
+    <h1 class="pdfremove"> 4、应用场景 </h1>
+    <h2 class="pdfremove">快捷安全，找到心仪驴友，一起去旅行。</h2>
       <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
     </div>
 
@@ -118,329 +89,373 @@
     <% end %>
 
 
-<div class="businesscanvas">
-<h2 id="canvas-title">3、商业模型 
-  <small><%= link_to ' PDF显示 ', idea_path(@idea,format:'pdf') %>
-  <% if !current_user.nil? && user_is_ideaowner(@idea,current_user)%> 
-    <%= link_to ' 修改', edit_idea_path(@idea) %>  
-  <% end %>
-  
-  </small>
-</h2>
 
-<br>
-<!--
-<i id="menu-toggle" class = "glyphicon glyphicon-heart-empty"></i>
--->
-<div class ="canvas-body">
-      <body class='canvas show with-canvas updateable-canvas'></body>
-
-      <div class='content-container'>
-
-      <div id='content_area'>
-
-
-      <div id='canvas'>
-
-      <table class='canvas'>
-      <tr>
-      <td class='area' height='66%' rowspan='2' width='20%'>
-
-      <table class="cell-container" style="display: table;">
-        <tbody>
-          <tr>
-            <td class="canvas-cell canvas-cell-main">
-              <h3 class="main">
-                <div class="area-title">合作伙伴</div>
-              </h3>
-                <div class="show">
-                    <span class="help-block"><%= simple_format @idea.key_partners %></span>
-                </div>
-              </td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
-
-
-      <td class='area' height='33%' width='20%'>
-
-      <table class="cell-container" style="display: table;">
-        <tbody>
-          <tr>
-            <td class="canvas-cell canvas-cell-main">
-              <h3 class="main">
-                <div class="area-title">核心业务</div>
-              </h3>
-                  <div class="show">
-                    <span class="help-block"><%= simple_format @idea.key_activities %></span>
-                  </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
-
-
-      <td class='area' colspan='2' height='66%' rowspan='2' width='20%'>
-
-      <table class="cell-container" style="display: table;">
-        <tbody>
-          <tr>
-            <td class="canvas-cell canvas-cell-main">
-              <h3 class="main">
-                <div class="area-title">价值主张</div>
-              </h3>
-                  <div class="show">
-                    <span class="help-block"><%= simple_format @idea.value_proposition %></span>
-                  </div>
-            </td>
-          </tr>
-         </tbody>
-       </table>
-
-      </td>
-
-
-
-      <td class='area' height='33%' width='20%'>
-      <table class="cell-container" style="display: table;">
-        <tbody>
-          <tr>
-            <td class="canvas-cell canvas-cell-main">
-              <h3 class="main"><div class="area-title">客户关系</div></h3>
-                  <div class="show">
-                    <span class="help-block"><%= simple_format @idea.customer_relationships %></span>
-                  </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </td>
-
-
-
-      <td class='area' height='66%' rowspan='2' width='20%'>
-        <table class="cell-container" style="display: table;">
-          <tbody>
-            <tr>
-              <td class="canvas-cell canvas-cell-main">
-                <h3 class="main">
-                  <div class="area-title">客户细分</div>
-                </h3>
-                    <div class="show">
-                      <span class="help-block" title="Click to edit"><%= simple_format @idea.customer_segments %></span>
-                    </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-      </tr>
-
-      <tr>
-      <td class='area' height='33%' width='20%' style="height:220px;">
-        <table class="cell-container" style="display: table;">
-          <tbody>
-            <tr>
-
-              <td class="canvas-cell canvas-cell-main">
-                <h3 class="main">
-                  <div class="area-title">核心资源</div>
-                </h3>
-                    <div class="show">
-                      <span class="help-block" title="Click to edit"><%= simple_format @idea.key_resources %></span>
-                    </div>
-            </td>
-
-          </tr>
-        </tbody>
-      </table>
-      </td>
-
-      <td class='area' height='33%' width='20%'>
-        <table class="cell-container" style="display: table;">
-          <tbody>
-            <tr>
-              <td class="canvas-cell canvas-cell-main">
-                <h3 class="main">
-                  <div class="area-title">客户渠道</div>
-                </h3>
-                    <div class="show">
-                      <span class="help-block" title="Click to edit"><%= simple_format @idea.channels %></span>
-                    </div>
-
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-
-      </tr>
-      <tr>
-      <td class='area' colspan='3' height='33%' width='50%'>
-        <table class="cell-container" style="display: table;">
-          <tbody>
-            <tr>
-              <td class="canvas-cell canvas-cell-main">
-                <h3 class="main">
-                  <div class="area-title">成本</div>
-                </h3>
-                    <div class="show">
-                      <span class="help-block" title="Click to edit"><%= simple_format @idea.cost_structure %></span>
-                    </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </td>
-
-      <td class='area' colspan='3' height='33%' width='50%'>
-
-        <table class="cell-container" style="display: table;">
-          <tbody>
-            <tr>
-              <td class="canvas-cell canvas-cell-main">
-                <h3 class="main">
-                  <div class="area-title">收入来源</div>
-                </h3>
-                    <div class="show">
-                      <span class="help-block" title="Click to edit"><%= simple_format @idea.revenue_streams %></span>
-                    </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-      </td>
-      </tr>
-      </table>
-
-
-      </div>
-
-      </div>
-
-      </div>
-
-</div>      
-</div>
-
-<!--
-<footer><cite title="Source Title">Productgaga出品( www.productgaga.com) : 2周实现你的想法，还送1000元！</cite></footer>
--->
-
-<% if idea_stage(@idea) == 2 %>
-
-<div class="stakeholderspart pdfremove">
-  <h2>中级合伙人</h2>
-
-      <ul class="list-group">
-        <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
-          <li class="list-group-item">
-            <span class="badge">3000元</span>
-            <%= stakehoder.email %>
-          </li>
+    <h1>5、商业模型 
+      <small><%= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
+      <% if !current_user.nil? && user_is_ideaowner(@idea,current_user)%> 
+        <%= link_to ' 修改', edit_idea_path(@idea) %>  
       <% end %>
-      </ul>
-</div>
-<% end %>
+      </small>
+    </h1>
+    <h2 class="pdfremove">A. 快驴将如何盈利：</h2>
 
-<div class="stakeholderspart pdfremove">
-  <h2>初级合伙人</h2>
-    <ul class="list-group">
-    <% ideastakeholders(@idea).each do |stakehoder| %>
-      <li class="list-group-item">
-        <span class="badge">300元</span>
-        <%= stakehoder.email %> 
-      </li>
-    <% end %>
-    </ul>
-</div>
+    <dl>
+    <dt>收费会员</dt><dd>提供增值服务（参考陌陌，linkedin）。</dd>
+    <dt>广告收入</dt><dd>基于驴友需求大数据分析，定制化广告推广，和广告主、旅行社分润提成。</dd>
+    <dt>旅游产品收入</dt><dd>度假旅游产品套餐推荐，和旅行社、途牛等进行产品分润。</dd>
+    </dl>
 
+    <h2 class="pdfremove">B. 如何实现：</h2>
 
-<% if idea_stage(@idea) == 2 %>
+    <p>通过程序自动化从国内外网站收集约伴信息，根据用户需求，进行快速匹配和反馈。</p>
 
-  <h2 class="pdfremove">推荐人股份 (非合伙人)</h2>
-  <div class="table-responsive pdfremove">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>推荐人号码</th>
-        <th>推荐人邮箱</th>
-        <th>推荐人已有股份</th>
-        <th>已邀请人数</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% for gudongid in 100..Teaserset.last.id %>
-        <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
-          <tr>
-            <td><%= gudongid %></td>          
-            <td><%= Teaserset.find(gudongid).email %></td>
-            <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
-            <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
-          </tr>
-        <% end %>  
-
-      <% end %>  
-    </tbody>
-  </table>
-  </div>
-<% end %>
-
-
-<div class="invitedfriendspart pdfremove">
-
-  <h2>受邀朋友</h2>
+    <h1 class="pdfremove">6、股份 </h1>
+    <h2 class="pdfremove">当前产品，初级合伙人共占有1000股，普通股东共占有5000股。</h2>
 
 
   <% if !current_user.nil? %>
+    <% if user_is_ideaowner(@idea,current_user) %>
 
-  <% if user_is_ideaowner(@idea,current_user) %>
-      
-    <ul class="list-group">  
-      <%  ideafollowers(@idea).each do |friendslist| %>
-        <% if friendslist.user_id.nil? %>
-            <li class="list-group-item">
-            <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>
-            <span class="badge"><%= link_to '确认为初级合伙人',:controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id %></span>
-            <span class="badge"><%= link_to '确认为中级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
+          <h1 class="pdfremove">7、创始人管理 </h1>
+            <h2 class="pdfremove">A、操作</h2>
+    <!-- Onwer -->
 
-            <span class="badge"><%= link_to '删除', friendslist, method: :delete, data: { confirm: '您确定吗?' } %></span>
+                <% case idea_user_type(@idea) %>
+                  <% when 1 %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+                    <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
+                  <% when 2 %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                  <% when 3 %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                  <% when 4 %>
+                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>      
+                  <% when 5 %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                  <% when 6 %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+                  <% when 7 %>
+                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
+                  <% when 8 %>
+                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
+                  <% else %>
+                    puts "Hi !"
+                <% end %>
+          <br >
+          <br >            
+          <h2 class="pdfremove">B、商业模型管理</h2>
+              <div class="businesscanvas">
+              <div class ="canvas-body">
+                <body class='canvas show with-canvas updateable-canvas'></body>
 
-            </li>
-        <% else  %>
-          <li class="list-group-item">
-            <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
-            <% if friendslist.p1donate != 300 %>
+                <div class='content-container'>
 
-            <span class="badge"><%= link_to '确认为初级合伙人',:controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id %></span>
+                <div id='content_area'>
+
+
+                <div id='canvas'>
+
+                <table class='canvas'>
+                <tr>
+                <td class='area' height='66%' rowspan='2' width='20%'>
+
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main">
+                          <div class="area-title">合作伙伴</div>
+                        </h3>
+                          <div class="show">
+                              <span class="help-block"><%= simple_format @idea.key_partners %></span>
+                          </div>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+
+                <td class='area' height='33%' width='20%'>
+
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main">
+                          <div class="area-title">核心业务</div>
+                        </h3>
+                            <div class="show">
+                              <span class="help-block"><%= simple_format @idea.key_activities %></span>
+                            </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+
+                <td class='area' colspan='2' height='66%' rowspan='2' width='20%'>
+
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main">
+                          <div class="area-title">价值主张</div>
+                        </h3>
+                            <div class="show">
+                              <span class="help-block"><%= simple_format @idea.value_proposition %></span>
+                            </div>
+                      </td>
+                    </tr>
+                   </tbody>
+                 </table>
+
+                </td>
+
+
+
+                <td class='area' height='33%' width='20%'>
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main"><div class="area-title">客户关系</div></h3>
+                            <div class="show">
+                              <span class="help-block"><%= simple_format @idea.customer_relationships %></span>
+                            </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+
+
+                <td class='area' height='66%' rowspan='2' width='20%'>
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">客户细分</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.customer_segments %></span>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+                </tr>
+
+                <tr>
+                <td class='area' height='33%' width='20%' style="height:220px;">
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">核心资源</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.key_resources %></span>
+                              </div>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+                <td class='area' height='33%' width='20%'>
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">客户渠道</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.channels %></span>
+                              </div>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+
+                </tr>
+                <tr>
+                <td class='area' colspan='3' height='33%' width='50%'>
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">成本</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.cost_structure %></span>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </td>
+
+                <td class='area' colspan='3' height='33%' width='50%'>
+
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">收入来源</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.revenue_streams %></span>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </td>
+                </tr>
+                </table>
+
+
+                </div>
+
+                </div>
+
+                </div>
+
+                </div>      
+                </div>
+
+      <!--
+      <footer><cite title="Source Title">Productgaga出品( www.productgaga.com) : 2周实现你的想法，还送1000元！</cite></footer>
+      -->
+
+
+            <h2 class="pdfremove">C、中级合伙人管理</h2>
+              <% if idea_stage(@idea) == 2 %>
+
+              <div class="stakeholderspart pdfremove">
+
+              <ul class="list-group">
+              <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
+                <li class="list-group-item">
+                  <span class="badge">3000元</span>
+                  <%= stakehoder.email %>
+                </li>
+                <% end %>
+              </ul>
+              </div>
+              <% end %>
+
+            <h2 class="pdfremove">D、初级合伙人管理</h2>
+
+              <div class="stakeholderspart pdfremove">
+
+                  <ul class="list-group">
+                  <% ideastakeholders(@idea).each do |stakehoder| %>
+                    <li class="list-group-item">
+                      <span class="badge">300元</span>
+                      <%= stakehoder.email %> 
+                    </li>
+                  <% end %>
+                  </ul>
+              </div>
+
+            <h2 class="pdfremove">E、股东管理</h2>
+
+                <% if idea_stage(@idea) == 2 %>
+
+                  <h2 class="pdfremove">推荐人股份 (非合伙人)</h2>
+                  <div class="table-responsive pdfremove">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>推荐人号码</th>
+                        <th>推荐人邮箱</th>
+                        <th>推荐人已有股份</th>
+                        <th>已邀请人数</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% for gudongid in 100..Teaserset.last.id %>
+                        <% if Teaserset.where(inviter_id:gudongid).count > 0 %>
+                          <tr>
+                            <td><%= gudongid %></td>          
+                            <td><%= Teaserset.find(gudongid).email %></td>
+                            <td><%= Teaserset.where(inviter_id:gudongid).count*10 %></td>
+                            <td><%= Teaserset.where(inviter_id:gudongid).count %></td>
+                          </tr>
+                        <% end %>  
+
+                      <% end %>  
+                    </tbody>
+                  </table>
+                  </div>
+                <% end %>
+
+            <h2 class="pdfremove">F、受邀朋友管理</h2>
+
+                <div class="invitedfriendspart pdfremove">
+
+                      
+                    <ul class="list-group">  
+                      <%  ideafollowers(@idea).each do |friendslist| %>
+                        <% if friendslist.user_id.nil? %>
+                            <li class="list-group-item">
+                            <span class="glyphicon glyphicon-eye-close"></span> <%= friendslist.email %>
+                            <span class="badge"><%= link_to '确认为初级合伙人',:controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id %></span>
+                            <span class="badge"><%= link_to '确认为中级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
+
+                            <span class="badge"><%= link_to '删除', friendslist, method: :delete, data: { confirm: '您确定吗?' } %></span>
+
+                            </li>
+                        <% else  %>
+                          <li class="list-group-item">
+                            <span class="glyphicon glyphicon-eye-open"></span> <%= friendslist.email %>
+                            <% if friendslist.p1donate != 300 %>
+
+                            <span class="badge"><%= link_to '确认为初级合伙人',:controller => "ideas", :action =>"donate", :partnerid => friendslist.user_id %></span>
+
+                            <% end %>
+                            <% if friendslist.p2donate != 3000 %>
+                            <span class="badge"><%= link_to '确认为中级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
+                            <% end %>
+
+                          </li>
+                        <% end %>        
+                      <% end %>
+                    </ul>
+                </div>
+
+
+            
 
             <% end %>
-            <% if friendslist.p2donate != 3000 %>
-            <span class="badge"><%= link_to '确认为中级合伙人', :controller => "ideas", :action =>"p2donate", :partnerid => friendslist.user_id%></span>
-            <% end %>
-
-          </li>
-        <% end %>        
-      <% end %>
-    </ul>
-
-
-  <% else %>
-      <p>该想法已邀请<%=ideafollowers(@idea).count %>名朋友来围观。</p>
-  <% end %>
-
-  <% end %>
-</div>
-
-
-
-</div>
-</div>
+          <% end %>
+    </div>
+  </div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">

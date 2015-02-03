@@ -214,98 +214,65 @@ body{
 }
 
 
-.ideas-brief-part{
-	margin-bottom:0px;
-	line-height: 40px;
-//	padding-right:30px;
-//	padding-left:55px;
-
-}
-.ideas-brief-part a{
-	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
-	font-size :14px;
-	font-weight: bold;
-	float:right;
-	margin-top:10px;
-	margin-left:10px;
-}
 .ideas-brief-part h1{
-	font-size:28px;
-	float:left;
-	margin-top:10px;
+	font-family: Microsoft Yahei;
+	font-size: 32px;
 }
 
-.ideas-brief-part a:visited {
-	color: white;
-
+.ideas-brief-part h2{
+	font-family: Hiragino Sans GB,sans-serif;
+	font-style: italic;
+	font-size: 16px;
+	text-decoration: underline;
 }
 
-
+/*
 .ideas-list{
-//	padding-left:55px;
+	padding-left:55px;
 	padding-top:20px;
 }
+*/
+
 .ideas-list h1{
-	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
-	font-size :24px;
-	font-weight: bold;
+	font-family: Microsoft Yahei;
+	font-size :20px;
+//	font-weight: bold;
 	line-height: 44px;
-	font-style: italic;
+//	font-style: italic;
 	-webkit-font-smoothing: antialiased;
 }
 
 .ideas-list h2{
-	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
-	font-size :20px;
-	font-weight: bold;
-	line-height: 40px;
+	font-family: Hiragino Sans GB,sans-serif;
+	font-size :16px;
+//	font-weight: bold;
+//	line-height: 40px;
+	margin-top:0px;
+	margin-bottom:15px;
 	-webkit-font-smoothing: antialiased;
 }
 
 .ideas-list p{
-	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,sans-serif;
-	font-size :15px;
+	font-family: Hiragino Sans GB,sans-serif;
+	margin-bottom: 5px;
+	font-size: 13px;
 	-webkit-font-smoothing: antialiased;
 }
 
 
-.ideas-list a:visited {
+.ideas-list a:visited, .ideas-brief-part a:visited {
 	color:#428bca;
 }
 
-.ideas-list a:hover {
+.ideas-list a:hover, .ideas-brief-part a:hover {
 	background-color: white;
 	color:#428bca;
 }
 
-.ideas-list a{
+.ideas-list a, .ideas-brief-part a{
 	color:#428bca;
 }
 
-.ideas-list a{
-	margin-top:20px;
-}
-
-
-/*
-.myidealist a:visited {
-	color:#428bca;
-}
-
-.partnerbenefit a:visited {
-	color:#428bca;
-}
-
-.businesscanvas a:visited {
-	color:#428bca;
-}
-
-.invitedfriendspart a:visited {
-	color:#428bca;
-}
-
-
-*/
 
 .changjinglist a:visited {
 	color:white;
@@ -336,17 +303,26 @@ body{
 	color:#428bca;
 }
 
-.ideas-list p span{
+.ideas-list h2 span{
 	color:red;
 	font-style: italic;
 	font-weight: normal;
-	
+
 }
+
+/*
+.ideas-list ol ul li {
+	font-family: Hiragino Sans GB,sans-serif;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
 
 .ideas-list blockquote{
 	margin-top:20px;
-//	margin-left:60px;
+	margin-left:60px;
 }
+*/
 
 .aboutusinvite{
 	margin-top:50px;
@@ -454,6 +430,7 @@ list-style-type:none
 
 .canvas-body{
 	margin-top:55px;
+//	display: none;
 }
 
 #menu-toggle {
