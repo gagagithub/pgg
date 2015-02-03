@@ -93,7 +93,6 @@
     <h1>5、商业模型 
       <small><%= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
       <% if !current_user.nil? && user_is_ideaowner(@idea,current_user)%> 
-        <%= link_to ' 修改', edit_idea_path(@idea) %>  
       <% end %>
       </small>
     </h1>
@@ -117,40 +116,46 @@
     <% if user_is_ideaowner(@idea,current_user) %>
 
           <h1 class="pdfremove">7、创始人管理 </h1>
-            <h2 class="pdfremove">A、操作</h2>
+          <h2 class="pdfremove">A、操作  </h2>          
+          <p>
+                  <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+                  <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
+                  <%= link_to ' 商业模型修改', edit_idea_path(@idea),class:"col-xs-12 col-md-1" %>  
+          </p>
+          
     <!-- Onwer -->
+          
+          <%# case idea_user_type(@idea) %>
+                  <%# when 1 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+                    <%#= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
+                  <%# when 2 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                  <%# when 3 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                  <%# when 4 %>
+                  <!--  <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>   -->   
+                  <%# when 5 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%#= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                  <%# when 6 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <!--<a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
+                  <%# when 7 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%#= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
+                  <%# when 8 %>
+                    <!--<a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
+                  <%# else %>
+                    <!--puts "Hi !"-->
+          <%# end %>
+         
 
-                <% case idea_user_type(@idea) %>
-                  <% when 1 %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
-                    <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
-                  <% when 2 %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                  <% when 3 %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                  <% when 4 %>
-                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>      
-                  <% when 5 %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                  <% when 6 %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-                  <% when 7 %>
-                    <%= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <%= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
-                  <% when 8 %>
-                    <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-                  <% else %>
-                    puts "Hi !"
-                <% end %>
-          <br >
-          <br >            
-          <h2 class="pdfremove">B、商业模型管理</h2>
+<!--          <h2 class="pdfremove">B、商业模型管理</h2> -->
               <div class="businesscanvas">
               <div class ="canvas-body">
                 <body class='canvas show with-canvas updateable-canvas'></body>
@@ -352,7 +357,7 @@
       -->
 
 
-            <h2 class="pdfremove">C、中级合伙人管理</h2>
+            <h2 class="pdfremove">B、中级合伙人管理</h2>
               <% if idea_stage(@idea) == 2 %>
 
               <div class="stakeholderspart pdfremove">
@@ -368,7 +373,7 @@
               </div>
               <% end %>
 
-            <h2 class="pdfremove">D、初级合伙人管理</h2>
+            <h2 class="pdfremove">C、初级合伙人管理</h2>
 
               <div class="stakeholderspart pdfremove">
 
@@ -382,7 +387,7 @@
                   </ul>
               </div>
 
-            <h2 class="pdfremove">E、股东管理</h2>
+            <h2 class="pdfremove">D、股东管理</h2>
 
                 <% if idea_stage(@idea) == 2 %>
 
@@ -415,7 +420,7 @@
                   </div>
                 <% end %>
 
-            <h2 class="pdfremove">F、受邀朋友管理</h2>
+            <h2 class="pdfremove">E、受邀朋友管理</h2>
 
                 <div class="invitedfriendspart pdfremove">
 
