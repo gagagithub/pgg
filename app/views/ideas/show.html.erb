@@ -39,7 +39,7 @@
 
 
 
-    <% if idea_stage(@idea) == 2 %>
+    <% if idea_stage(@idea) == 1 %>
 
           <h1 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h1>
           <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
@@ -57,7 +57,7 @@
 
     <% end %>
 
-    <% if idea_stage(@idea) == 1 %>
+    <% if idea_stage(@idea) == 2 %>
 
           <h1 class="pdfremove">1、合伙人须知 <small><%= link_to " 权益", '/static_pages/about#seniorparterintro' %>
             <br>
