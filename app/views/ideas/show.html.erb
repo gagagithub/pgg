@@ -39,7 +39,7 @@
 
 
 
-    <% if idea_stage(@idea) == 1 %>
+    <% if idea_stage(@idea) == 2 %>
 
           <h1 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h1>
           <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
@@ -57,15 +57,15 @@
 
     <% end %>
 
-    <% if idea_stage(@idea) == 2 %>
+    <% if idea_stage(@idea) == 1 %>
 
-          <h1 class="pdfremove">1、合伙人信息 <small><%= link_to " 更多", '/static_pages/about#seniorparterintro' %></small></h1>
+          <h1 class="pdfremove">1、合伙人须知 <small><%= link_to " 权益", '/static_pages/about#seniorparterintro' %><%= link_to " 合伙人信息", '/static_pages/about#seniorparterintro' %></small></h1>
 
           <h2 class="pdfremove"><span>招募中级合伙人中</span>，还有<span><%= 10 - ideaseniorstakeholders(@idea).count %>位</span>名额。</h2>
 
           <p>- <mark>投资3000元，获得1500股，1.5%股权。</mark></p>
           <p><mark>- 预期将在半年内，2.5倍投资回报。</mark></p>
-          <p>- 本轮融资3万，用于MVP产品实现、运营、推广。</p>
+          <p>- 本轮融资3万，用于产品实现、运营、推广。</p>
 
           <h1 class="pdfremove">2、当前进展 </h1>
           <h2 class="pdfremove">项目经过初期推广，已有<span>300+注册用户，20+普通股东，10位初级合伙人,<%= ideaseniorstakeholders(@idea).count %>名中级合伙人。</span></h2>
@@ -462,66 +462,72 @@
     </div>
   </div>
 
+<!--  <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
 
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <div class="container-fluid">
+  <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </button>
 
-    <% case idea_stage(@idea) %>
-      <% when 1 %>
-        <a class="btn btn-lg btn-danger col-xs-12 col-md-12" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>      
-      <% when 2 %>
-        <a class="btn btn-lg btn-danger col-xs-12 col-md-12" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>
-      <% when 3 %>
-        <a class="btn btn-lg btn-danger col-xs-12 col-md-12" href="#myModal" role="button" data-toggle="modal">投资6000元，成为高级合伙人<a>
-      <% else %>
-        欢迎成为我们的投资合伙人！
-    <% end %>
+  <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container-fluid">
+        
+      <% case idea_stage(@idea) %>
+        <% when 1 %>
+          <button type="button" class="btn btn-danger btn-lg col-xs-12 col-md-12" data-toggle="modal" data-target="#myModal">投资300元，成为初级合伙人  </button>    
+        <% when 2 %>
+          <button type="button" class="btn btn-danger btn-lg col-xs-12 col-md-12" data-toggle="modal" data-target="#myModal">投资3000元，成为中级合伙人  </button>    
+        <% when 3 %>
+          <button type="button" class="btn btn-danger btn-lg col-xs-12 col-md-12" data-toggle="modal" data-target="#myModal">投资10000元，成为高级合伙人  </button>   
+        <% else %>
+          欢迎成为我们的投资合伙人！
+      <% end %>
 
-  </div>
-</nav>
+    </div>
+  </nav>
 
 
                   <!-- Modal -->
-                  <div class="modal fade pdfremove" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                          <h4 class="modal-title" id="myModalLabel">投资流程</h4>
-                        </div>
-                        <div class="modal-body">
-                          <h4>1. 转账</h4>
-                          微信支付：<%=User.where(id:ideaowner(@idea).user_id).first.wechatid %>
-                          <br>
-                          支付宝支付：<%=User.where(id:ideaowner(@idea).user_id).first.alipayid %>
-                          <br>
-                          转账300元时，请备注您的姓名！
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">投资流程</h4>
+          </div>
+          
+          <div class="modal-body">
+              <h4>1. 转账</h4>
+                  微信支付：<%=User.where(id:ideaowner(@idea).user_id).first.wechatid %>
+                  <br>
+                  支付宝支付：<%=User.where(id:ideaowner(@idea).user_id).first.alipayid %>
+                  <br>
+                  转账300元时，请备注您的姓名！
 
-                          <h4>2. 权限</h4>
-                          <% if ideastakeholders(@idea).count > 8 %>
-                            <p>一旦想法创意人收到您的3000元，他将会把您的权限提高为中级合伙人。</p>
-                          <% else %>
-                            <p>一旦想法创意人收到您的300元，他将会把您的权限提高为初级合伙人。</p>
-                          <% end %>
+              <h4>2. 权限</h4>
+                    <% case idea_stage(@idea) %>
+                    <% when 1 %>
+                      <p>一旦想法创意人收到您的300元，他将会把您的权限提高为初级合伙人。</p> 
+                    <% when 2 %>
+                      <p>一旦想法创意人收到您的3000元，他将会把您的权限提高为中级合伙人。</p>
+                    <% when 3 %>
+                      <p>一旦想法创意人收到您的10000元，他将会把您的权限提高为高级合伙人。</p>
+                    <% else %>
+                      欢迎成为我们的投资合伙人！
+                    <% end %>
 
-                          <p>不用担心，他是你的朋友，等他的消息，等不及的话，就微信催他一下！；）</p>
+                    <p>不用担心，他是你的朋友，等他的消息，等不及的话，就微信催他一下！；）</p>
 
-                        </div>
-                        <div class="modal-footer">
+          </div>
+                          
+          <div class="modal-footer">
 
-                          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 
-                          <button type="button" class="btn btn-danger" data-dismiss="modal">转账后确认</button>
-
-                  <!--
-                          <button type="button" class="btn btn-primary">支付后确认</button>    
-                  -->
-                          <%#= link_to '转账后确认', donate_path(@idea),class:"btn btn-danger" %>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">转账后确认</button>
+          </div>
+        </div>
+      </div>
+</div>
 
 
 
