@@ -83,8 +83,14 @@
     <% end %>
 
     <div class="changjinglist">
-    <h1 class="pdfremove"> 4、应用场景 </h1>
-    <h2 class="pdfremove">快捷安全，找到心仪驴友，一起去旅行。</h2>
+    <% if idea_stage(@idea) == 1 %>  
+      <h1 class="pdfremove"> 2、应用场景 </h1>
+    <% end %>
+    <% if idea_stage(@idea) == 2 %>  
+      <h1 class="pdfremove"> 4、应用场景 </h1>
+      <h2 class="pdfremove">快捷安全，找到心仪驴友，一起去旅行。</h2>
+    <% end %>
+
       <%= render :partial=>"remarkslist",:locals=>{:comments=>@idea.comments} %>
     </div>
 
@@ -93,7 +99,11 @@
     <% end %>
 
 
+    <% if idea_stage(@idea) == 1 %>  
+      <h1 class="pdfremove"> 3、商业模型 <small><%= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %></small></h1>
+    <% end %>
 
+    <% if idea_stage(@idea) == 2 %>  
     <h1>5、商业模型 
       <small><%#= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
       <%= link_to ' 更多信息 ', 'http://yun.baidu.com/share/link?shareid=2601939260&uk=844900100' %>
@@ -113,9 +123,12 @@
 
     <p class="pdfremove">通过程序自动化从国内外网站收集约伴信息，根据用户需求，进行快速匹配和反馈。</p>
 
+    <% end %>
+
+    <% if idea_stage(@idea) == 2 %>  
     <h1 class="pdfremove">6、股份 </h1>
     <h2 class="pdfremove">当前产品，初级合伙人共占有10000股，普通股东共占有5000股。</h2>
-
+    <% end %>
 
   <% if !current_user.nil? %>
     <% if user_is_ideaowner(@idea,current_user) %>
@@ -126,7 +139,7 @@
                   <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
                   <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
                   <%= link_to ' 商业模型修改', edit_idea_path(@idea),class:"col-xs-12 col-md-1" %>  
-                  <%= link_to '初级合伙人页面', junior_path(@idea),class:"col-xs-12 col-md-1" %>
+                  <%= link_to '初级合伙人', junior_path(@idea),class:"col-xs-12 col-md-1" %>
 
           </p>
           
