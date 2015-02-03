@@ -6,6 +6,7 @@
   <%= Rails.application.assets.find_asset('bootstrap.css').to_s.html_safe %>
 </style>     
 
+<% content_for :title do %><%= @idea.name %> <%= @idea.intro %><% end %>
 <!--
 <script type="text/javascript">
   $(document).ready(function(){
@@ -100,49 +101,28 @@
 
 
     <% if idea_stage(@idea) == 1 %>  
-      <h1 class="pdfremove"> 3、商业模型 <small><%= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %></small></h1>
+      <h1 class="pdfremove"> 3、商业模型 </h1>
     <% end %>
 
     <% if idea_stage(@idea) == 2 %>  
-    <h1>5、商业模型 
-      <small><%#= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
-      <%= link_to ' 更多信息 ', 'http://yun.baidu.com/share/link?shareid=2601939260&uk=844900100' %>
-      <% if !current_user.nil? && user_is_ideaowner(@idea,current_user)%> 
-      <% end %>
-      </small>
-    </h1>
-    <h2 class="pdfremove">A. 快驴将如何盈利：</h2>
+        <h1>5、商业模型 
+          <%#= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
+        </h1>
 
-    <dl class="pdfremove">
-    <dt>收费会员</dt><dd>提供增值服务（参考陌陌，linkedin）。</dd>
-    <dt>广告收入</dt><dd>基于驴友需求大数据分析，定制化广告推广，和广告主、旅行社分润提成。</dd>
-    <dt>旅游产品收入</dt><dd>度假旅游产品套餐推荐，和旅行社、途牛等进行产品分润。</dd>
-    </dl>
+        <h2 class="pdfremove">A. 快驴将如何盈利：</h2>
 
-    <h2 class="pdfremove">B. 如何实现：</h2>
+        <dl class="pdfremove">
+        <dt>收费会员</dt><dd>提供增值服务（参考陌陌，linkedin）。</dd>
+        <dt>广告收入</dt><dd>基于驴友需求大数据分析，定制化广告推广，和广告主、旅行社分润提成。</dd>
+        <dt>旅游产品收入</dt><dd>度假旅游产品套餐推荐，和旅行社、途牛等进行产品分润。</dd>
+        </dl>
 
-    <p class="pdfremove">通过程序自动化从国内外网站收集约伴信息，根据用户需求，进行快速匹配和反馈。</p>
+        <h2 class="pdfremove">B. 如何实现：</h2>
+
+        <p class="pdfremove">通过程序自动化从国内外网站收集约伴信息，根据用户需求，进行快速匹配和反馈。</p>
 
     <% end %>
 
-    <% if idea_stage(@idea) == 2 %>  
-    <h1 class="pdfremove">6、股份 </h1>
-    <h2 class="pdfremove">当前产品，初级合伙人共占有10000股，普通股东共占有5000股。</h2>
-    <% end %>
-
-  <% if !current_user.nil? %>
-    <% if user_is_ideaowner(@idea,current_user) %>
-
-          <h1 class="pdfremove">7、创始人管理 </h1>
-          <h2 class="pdfremove">A、操作  </h2>          
-          <p>
-                  <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
-                  <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
-                  <%= link_to ' 商业模型修改', edit_idea_path(@idea),class:"col-xs-12 col-md-1" %>  
-                  <%= link_to '初级合伙人', junior_path(@idea),class:"col-xs-12 col-md-1" %>
-
-          </p>
-          
               <div class="businesscanvas">
               <div class ="canvas-body">
                 <body class='canvas show with-canvas updateable-canvas'></body>
@@ -339,12 +319,38 @@
                 </div>      
                 </div>
 
-      <!--
-      <footer><cite title="Source Title">Productgaga出品( www.productgaga.com) : 2周实现你的想法，还送1000元！</cite></footer>
-      -->
+
+    <% if idea_stage(@idea) == 2 %>  
+    <h1 class="pdfremove">6、股份 </h1>
+    <h2 class="pdfremove">当前产品，初级合伙人共占有10000股，普通股东共占有5000股。</h2>
+    <% end %>
 
 
-            <h2 class="pdfremove">B、中级合伙人管理</h2>
+
+  <% if !current_user.nil? %>
+    <% if user_is_ideaowner(@idea,current_user) %>
+
+    <% if idea_stage(@idea) == 2 %>  
+          <h1 class="pdfremove">7、创始人管理 </h1>
+    <% end %>
+    <% if idea_stage(@idea) == 1 %>  
+          <h1 class="pdfremove">4、创始人管理 </h1>
+    <% end %>
+
+          <h2 class="pdfremove">A、操作  </h2>          
+          <p>
+                  <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+                  <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
+                  <%= link_to '商业模型修改', edit_idea_path(@idea),class:"col-xs-12 col-md-1" %>  
+                  <%= link_to '初级合伙人', junior_path(@idea),class:"col-xs-12 col-md-1" %>
+                  <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+
+          </p>
+          
+          <br>
+          <br>
+
+          <h2 class="pdfremove">B、中级合伙人管理</h2>
               <% if idea_stage(@idea) == 2 %>
 
               <div class="stakeholderspart pdfremove">
@@ -360,7 +366,7 @@
               </div>
               <% end %>
 
-            <h2 class="pdfremove">C、初级合伙人管理</h2>
+          <h2 class="pdfremove">C、初级合伙人管理</h2>
 
               <div class="stakeholderspart pdfremove">
 
