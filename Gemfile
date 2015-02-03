@@ -13,6 +13,8 @@ gem 'sqlite3', group: :development
 #gem 'pg', group: :production
 gem 'mysql2', group: :production
 
+gem 'yaml_db'
+
 #gem 'rails_12factor', group: :production
 gem 'rails_12factor'
 
