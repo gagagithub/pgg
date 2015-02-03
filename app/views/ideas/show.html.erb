@@ -59,7 +59,11 @@
 
     <% if idea_stage(@idea) == 1 %>
 
-          <h1 class="pdfremove">1、合伙人须知 <small><%= link_to " 权益", '/static_pages/about#seniorparterintro' %><%= link_to " 合伙人信息", '/static_pages/about#seniorparterintro' %></small></h1>
+          <h1 class="pdfremove">1、合伙人须知 <small><%= link_to " 权益", '/static_pages/about#seniorparterintro' %>
+            <br>
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#juniorparterinfo">初级合伙人信息</button> 
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#seniorparterinfo">中级合伙人信息</button> 
+          </small></h1>
 
           <h2 class="pdfremove"><span>招募中级合伙人中</span>，还有<span><%= 10 - ideaseniorstakeholders(@idea).count %>位</span>名额。</h2>
 
@@ -123,39 +127,6 @@
                   <%= link_to ' 商业模型修改', edit_idea_path(@idea),class:"col-xs-12 col-md-1" %>  
           </p>
           
-    <!-- Onwer -->
-          
-          <%# case idea_user_type(@idea) %>
-                  <%# when 1 %>
-                    <%#= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
-                    <%#= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
-                  <%# when 2 %>
-                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%#= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                  <%# when 3 %>
-                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                  <%# when 4 %>
-                  <!--  <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>   -->   
-                  <%# when 5 %>
-                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <%#= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                  <%# when 6 %>
-                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <!--<a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
-                  <%# when 7 %>
-                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
-                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
-                    <%#= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
-                  <%# when 8 %>
-                    <!--<a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
-                  <%# else %>
-                    <!--puts "Hi !"-->
-          <%# end %>
-         
-
-<!--          <h2 class="pdfremove">B、商业模型管理</h2> -->
               <div class="businesscanvas">
               <div class ="canvas-body">
                 <body class='canvas show with-canvas updateable-canvas'></body>
@@ -464,9 +435,6 @@
 
 <!--  <a class="btn btn-lg btn-danger" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
 
-  <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-  </button>
 
   <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
     <div class="container-fluid">
@@ -486,7 +454,7 @@
   </nav>
 
 
-                  <!-- Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -527,11 +495,111 @@
           </div>
         </div>
       </div>
-</div>
+  </div>
 
 
+  <!-- Modal -->
+  <div class="modal fade" id="juniorparterinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">初级合伙人信息</h4>
+          </div>
+          
+          <div class="modal-body">
+              <div class="stakeholderspart pdfremove">
+
+                  <ul class="list-group">
+                  <% ideastakeholders(@idea).each do |stakehoder| %>
+                    <li class="list-group-item">
+                      <span class="badge">300元</span>
+                      <%= stakehoder.email %> 
+                    </li>
+                  <% end %>
+                  </ul>
+              </div>
 
 
+          </div>
+                          
+          <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="seniorparterinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">初级合伙人信息</h4>
+          </div>
+          
+          <div class="modal-body">
+              <% if idea_stage(@idea) == 2 %>
+
+              <div class="stakeholderspart pdfremove">
+
+              <ul class="list-group">
+              <% ideaseniorstakeholders(@idea).each do |stakehoder| %>
+                <li class="list-group-item">
+                  <span class="badge">3000元</span>
+                  <%= stakehoder.email %>
+                </li>
+                <% end %>
+              </ul>
+              </div>
+              <% end %>
+
+
+          </div>
+                          
+          <div class="modal-footer">
+
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">确认</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+    <!-- Onwer -->
+          
+          <%# case idea_user_type(@idea) %>
+                  <%# when 1 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+                    <%#= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
+                  <%# when 2 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '等待其他初级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                  <%# when 3 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                  <%# when 4 %>
+                  <!--  <a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资300元，成为初级合伙人<a>   -->   
+                  <%# when 5 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%#= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                  <%# when 6 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <!--<a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
+                  <%# when 7 %>
+                    <%#= link_to '找人帮忙', share_path(@idea),class:"btn btn-lg btn-danger col-xs-12 col-md-2" %> 
+                    <%#= link_to '进入初级合伙人页面', junior_path(@idea),class:"btn btn-lg btn-info col-xs-12 col-md-2" %>
+                    <%#= link_to '等待其他中级合伙人加入中...', "#",class:"btn btn-lg btn-info col-xs-12 col-md-2" %>   
+                  <%# when 8 %>
+                    <!--<a class="btn btn-lg btn-danger col-xs-12 col-md-2" href="#myModal" role="button" data-toggle="modal">投资3000元，成为中级合伙人<a>-->
+                  <%# else %>
+                    <!--puts "Hi !"-->
+          <%# end %>
+         
+
+<!--          <h2 class="pdfremove">B、商业模型管理</h2> -->
 
 
 
