@@ -16,6 +16,10 @@ gem 'mysql2', group: :development
 
 gem 'yaml_db'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 #gem 'rails_12factor', group: :production
 gem 'rails_12factor'
 
