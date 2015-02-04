@@ -33,7 +33,6 @@
 <h1><%= @idea.name %></h1>
 <h2><%= @idea.intro %></h2>
 
-<%= image_tag(@idea.weixinqun_url(:thumb)) %>
 </div>
 
 <div class="ideas-list">
@@ -70,6 +69,8 @@
           <p class="pdfremove">- <mark>投资3000元，获得1500股，1.5%股权。</mark></p>
           <p class="pdfremove"><mark>- 预期将在半年内，2.5倍投资回报。</mark></p>
           <p class="pdfremove">- 本轮融资3万，用于产品实现、运营、推广。</p>
+          <p class="pdfremove">- 扫描以下二维码，进入合伙人微信讨论群。</p>
+          <%= image_tag(@idea.weixinqun_url(:thumb)) %>
 
           <h1 class="pdfremove">2、当前进展 </h1>
           <h2 class="pdfremove">项目经过初期推广，已有<span>300+注册用户，20+普通股东，10位初级合伙人,<%= ideaseniorstakeholders(@idea).count %>名中级合伙人。</span></h2>
