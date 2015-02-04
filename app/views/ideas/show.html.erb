@@ -335,18 +335,34 @@
           <h1 class="pdfremove">4、创始人管理 </h1>
     <% end %>
 
-          <h2 class="pdfremove">A、操作  </h2>          
-          <p>
-                  <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
-                  <%= link_to '通知受邀朋友', updatestatus_path(@idea),class:"col-xs-12 col-md-1"%>
-                  <%= link_to '商业模型修改', edit_idea_path(@idea),class:"col-xs-12 col-md-1" %>  
-                  <%= link_to '初级合伙人', junior_path(@idea),class:"col-xs-12 col-md-1" %>
-                  <%= link_to '找人帮忙', share_path(@idea),class:"col-xs-12 col-md-1" %> 
+          <h2 class="pdfremove">A、操作  </h2>    
 
-          </p>
-          
-          <br>
-          <br>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-success">邮件通知</button>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to '受邀朋友', updatestatus_path(@idea)%></li>
+                <li><%= link_to '初级合伙人', junior_path(@idea) %></li>
+                <li class="divider"></li>
+                <li><%= link_to '找新朋友', share_path(@idea)%></li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-success">IDEA修改</button>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to '商业模型修改', edit_idea_path(@idea)%></li>
+              </ul>
+            </div>
+            <br>
 
           <h2 class="pdfremove">B、中级合伙人管理</h2>
               <% if idea_stage(@idea) == 2 %>
