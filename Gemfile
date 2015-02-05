@@ -7,12 +7,10 @@ gem 'rails', '4.1.5'
 gem 'bootstrap-sass'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3', group: [:development, :production]
-#gem 'sqlite3', group: :development
 
-#gem 'pg', group: :production
-#gem 'mysql2', group: :production
-gem 'mysql2', group: :development
+gem 'sqlite3', group: :development
+
+gem 'mysql2', group: :production
 
 gem 'yaml_db'
 
