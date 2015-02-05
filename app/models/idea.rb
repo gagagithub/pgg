@@ -4,6 +4,6 @@ class Idea < ActiveRecord::Base
 	has_many :users, :through => :user_ideaships
 	has_many :comments
 
-	mount_uploader :weixinqun, WeixinqunUploader
+#	mount_uploader :weixinqun, WeixinqunUploader
 
 end
