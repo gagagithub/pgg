@@ -28,9 +28,12 @@
       <br>
 
       <div class="field">
-      <%= f.file_field :weixinqun %>
-      <%= f.hidden_field :weixinqun_cache %>
+        <%= f.label :微信讨论群（选填）%>
+        <span class="help-block">产品微信讨论群二维码图。</span>
+        <%= f.file_field :weixinqun %>
+        <%= f.hidden_field :weixinqun_cache %>
       </div>
+      <br \>
 
       <div class="field">
         <%= f.label :客户细分（选填） %>
