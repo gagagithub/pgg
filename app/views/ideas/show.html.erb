@@ -76,8 +76,103 @@
           <h2 class="pdfremove">项目经过初期推广，已有<span>300+注册用户，20+普通股东，10位初级合伙人,<%= ideaseniorstakeholders(@idea).count %>名中级合伙人。</span></h2>
 
           <p class="pdfremove">- 微信公众号 <mark>kuailv-club</mark> 。</p>
-          <p class="pdfremove">- APP产品原型设计实现。<%= link_to '查看', "https://popapp.in/projects/54b64299fedcd1660dc8e532/preview" %></p>
           <p class="pdfremove">- 基础服务申请完毕：域名、服务器等。</p>
+          <p class="pdfremove">- APP产品原型设计实现。<%#= link_to '查看', "https://popapp.in/projects/54b64299fedcd1660dc8e532/preview" %></p>
+
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 295px;">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="8"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <%= image_tag "app-1.jpg" %>
+
+                <div class="carousel-caption">
+                  邂逅 － 附近驴友
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-2.jpg" %>
+                <div class="carousel-caption">
+                  邂逅 － 全部驴友
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-3.jpg" %>
+                <div class="carousel-caption">
+                  找驴友 － 日期
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-4.jpg" %>
+                <div class="carousel-caption">
+                  找驴友 － 地点
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-5.jpg" %>
+                <div class="carousel-caption">
+                  找驴友 － 所有
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-6.jpg" %>
+                <div class="carousel-caption">
+                  找驴友 － 感兴趣
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-7.jpg" %>
+                <div class="carousel-caption">
+                  消息 － 列表
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-8.jpg" %>
+                <div class="carousel-caption">
+                  消息 － 聊天
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag "app-8.jpg" %>
+                <div class="carousel-caption">
+                  个人 － 页面
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+
 
           <h1 class="pdfremove">3、风险投资协议 <small><%= link_to " 正式版", 'http://yun.baidu.com/share/link?shareid=2334525164&uk=844900100' %></small></h1>
           <h2 class="pdfremove">召集齐10个中级合伙人后，签署协议。人不齐则退钱。</h2>            
