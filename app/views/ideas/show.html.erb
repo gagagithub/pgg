@@ -259,203 +259,6 @@
 
     <% end %>
 
-              <div class="businesscanvas">
-              <div class ="canvas-body">
-                <body class='canvas show with-canvas updateable-canvas'></body>
-
-                <div class='content-container'>
-
-                <div id='content_area'>
-
-
-                <div id='canvas'>
-
-                <table class='canvas'>
-                <tr>
-                <td class='area' height='66%' rowspan='2' width='20%'>
-
-                <table class="cell-container" style="display: table;">
-                  <tbody>
-                    <tr>
-                      <td class="canvas-cell canvas-cell-main">
-                        <h3 class="main">
-                          <div class="area-title">合作伙伴</div>
-                        </h3>
-                          <div class="show">
-                              <span class="help-block"><%= simple_format @idea.key_partners %></span>
-                          </div>
-                        </td>
-                    </tr>
-                  </tbody>
-                </table>
-                </td>
-
-
-                <td class='area' height='33%' width='20%'>
-
-                <table class="cell-container" style="display: table;">
-                  <tbody>
-                    <tr>
-                      <td class="canvas-cell canvas-cell-main">
-                        <h3 class="main">
-                          <div class="area-title">核心业务</div>
-                        </h3>
-                            <div class="show">
-                              <span class="help-block"><%= simple_format @idea.key_activities %></span>
-                            </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                </td>
-
-
-                <td class='area' colspan='2' height='66%' rowspan='2' width='20%'>
-
-                <table class="cell-container" style="display: table;">
-                  <tbody>
-                    <tr>
-                      <td class="canvas-cell canvas-cell-main">
-                        <h3 class="main">
-                          <div class="area-title">价值主张</div>
-                        </h3>
-                            <div class="show">
-                              <span class="help-block"><%= simple_format @idea.value_proposition %></span>
-                            </div>
-                      </td>
-                    </tr>
-                   </tbody>
-                 </table>
-
-                </td>
-
-
-
-                <td class='area' height='33%' width='20%'>
-                <table class="cell-container" style="display: table;">
-                  <tbody>
-                    <tr>
-                      <td class="canvas-cell canvas-cell-main">
-                        <h3 class="main"><div class="area-title">客户关系</div></h3>
-                            <div class="show">
-                              <span class="help-block"><%= simple_format @idea.customer_relationships %></span>
-                            </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                </td>
-
-
-
-                <td class='area' height='66%' rowspan='2' width='20%'>
-                  <table class="cell-container" style="display: table;">
-                    <tbody>
-                      <tr>
-                        <td class="canvas-cell canvas-cell-main">
-                          <h3 class="main">
-                            <div class="area-title">客户细分</div>
-                          </h3>
-                              <div class="show">
-                                <span class="help-block" title="Click to edit"><%= simple_format @idea.customer_segments %></span>
-                              </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-                </tr>
-
-                <tr>
-                <td class='area' height='33%' width='20%' style="height:220px;">
-                  <table class="cell-container" style="display: table;">
-                    <tbody>
-                      <tr>
-
-                        <td class="canvas-cell canvas-cell-main">
-                          <h3 class="main">
-                            <div class="area-title">核心资源</div>
-                          </h3>
-                              <div class="show">
-                                <span class="help-block" title="Click to edit"><%= simple_format @idea.key_resources %></span>
-                              </div>
-                      </td>
-
-                    </tr>
-                  </tbody>
-                </table>
-                </td>
-
-                <td class='area' height='33%' width='20%'>
-                  <table class="cell-container" style="display: table;">
-                    <tbody>
-                      <tr>
-                        <td class="canvas-cell canvas-cell-main">
-                          <h3 class="main">
-                            <div class="area-title">客户渠道</div>
-                          </h3>
-                              <div class="show">
-                                <span class="help-block" title="Click to edit"><%= simple_format @idea.channels %></span>
-                              </div>
-
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-
-                </tr>
-                <tr>
-                <td class='area' colspan='3' height='33%' width='50%'>
-                  <table class="cell-container" style="display: table;">
-                    <tbody>
-                      <tr>
-                        <td class="canvas-cell canvas-cell-main">
-                          <h3 class="main">
-                            <div class="area-title">成本</div>
-                          </h3>
-                              <div class="show">
-                                <span class="help-block" title="Click to edit"><%= simple_format @idea.cost_structure %></span>
-                              </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </td>
-
-                <td class='area' colspan='3' height='33%' width='50%'>
-
-                  <table class="cell-container" style="display: table;">
-                    <tbody>
-                      <tr>
-                        <td class="canvas-cell canvas-cell-main">
-                          <h3 class="main">
-                            <div class="area-title">收入来源</div>
-                          </h3>
-                              <div class="show">
-                                <span class="help-block" title="Click to edit"><%= simple_format @idea.revenue_streams %></span>
-                              </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </td>
-                </tr>
-                </table>
-
-
-                </div>
-
-                </div>
-
-                </div>
-
-                </div>      
-                </div>
-
-
     <% if idea_stage(@idea) == 2 %>  
     <h1 class="pdfremove">6、股份 </h1>
     <h2 class="pdfremove">当前产品，初级合伙人共占有10000股，普通股东共占有5000股。</h2>
@@ -774,6 +577,205 @@
          
 
 <!--          <h2 class="pdfremove">B、商业模型管理</h2> -->
+
+    
+          <!--
+              <div class="businesscanvas">
+              <div class ="canvas-body">
+                <body class='canvas show with-canvas updateable-canvas'></body>
+
+                <div class='content-container'>
+
+                <div id='content_area'>
+
+
+                <div id='canvas'>
+
+                <table class='canvas'>
+                <tr>
+                <td class='area' height='66%' rowspan='2' width='20%'>
+
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main">
+                          <div class="area-title">合作伙伴</div>
+                        </h3>
+                          <div class="show">
+                              <span class="help-block"><%= simple_format @idea.key_partners %></span>
+                          </div>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+
+                <td class='area' height='33%' width='20%'>
+
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main">
+                          <div class="area-title">核心业务</div>
+                        </h3>
+                            <div class="show">
+                              <span class="help-block"><%= simple_format @idea.key_activities %></span>
+                            </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+
+                <td class='area' colspan='2' height='66%' rowspan='2' width='20%'>
+
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main">
+                          <div class="area-title">价值主张</div>
+                        </h3>
+                            <div class="show">
+                              <span class="help-block"><%= simple_format @idea.value_proposition %></span>
+                            </div>
+                      </td>
+                    </tr>
+                   </tbody>
+                 </table>
+
+                </td>
+
+
+
+                <td class='area' height='33%' width='20%'>
+                <table class="cell-container" style="display: table;">
+                  <tbody>
+                    <tr>
+                      <td class="canvas-cell canvas-cell-main">
+                        <h3 class="main"><div class="area-title">客户关系</div></h3>
+                            <div class="show">
+                              <span class="help-block"><%= simple_format @idea.customer_relationships %></span>
+                            </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+
+
+                <td class='area' height='66%' rowspan='2' width='20%'>
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">客户细分</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.customer_segments %></span>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+                </tr>
+
+                <tr>
+                <td class='area' height='33%' width='20%' style="height:220px;">
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">核心资源</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.key_resources %></span>
+                              </div>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+                </td>
+
+                <td class='area' height='33%' width='20%'>
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">客户渠道</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.channels %></span>
+                              </div>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+
+                </tr>
+                <tr>
+                <td class='area' colspan='3' height='33%' width='50%'>
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">成本</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.cost_structure %></span>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </td>
+
+                <td class='area' colspan='3' height='33%' width='50%'>
+
+                  <table class="cell-container" style="display: table;">
+                    <tbody>
+                      <tr>
+                        <td class="canvas-cell canvas-cell-main">
+                          <h3 class="main">
+                            <div class="area-title">收入来源</div>
+                          </h3>
+                              <div class="show">
+                                <span class="help-block" title="Click to edit"><%= simple_format @idea.revenue_streams %></span>
+                              </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </td>
+                </tr>
+                </table>
+
+
+                </div>
+
+                </div>
+
+                </div>
+
+                </div>      
+                </div>
+            -->    
 
 
 
