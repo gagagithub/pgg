@@ -37,10 +37,10 @@
 
 <div class="ideas-list">
 
+<!--
+    <%# if idea_stage(@idea) == 1 %>
 
-    <% if idea_stage(@idea) == 1 %>
-
-          <h1 class="pdfremove">1、初级合伙人权益 <small><%= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h1>
+          <h1 class="pdfremove">1、初级合伙人权益 <small><%#= link_to " 更多信息", '/static_pages/about#juniorparterintro' %></small></h1>
           <p class="pdfremove"><span>300元成为众筹项目合伙人，6个月后拥有事业，3年后财务自由。</span></p>
           <p class="pdfremove">您将拥有的权益：</p>
         
@@ -54,23 +54,40 @@
         
           </blockquote>
 
-    <% end %>
+    <%# end %>
 
-    <% if idea_stage(@idea) == 2 %>
-
-          <h1 class="pdfremove">1、合伙人须知 <small><%= link_to " 权益", '/static_pages/about#seniorparterintro' %>
+          <h1 class="pdfremove">1、合伙人须知 <small><%#= link_to " 权益", '/static_pages/about#seniorparterintro' %>
             <br>
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#juniorparterinfo">初级合伙人信息</button> 
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#seniorparterinfo">中级合伙人信息</button> 
           </small></h1>
 
-          <h2 class="pdfremove"><span>招募中级合伙人中</span>，还有<span><%= 10 - ideaseniorstakeholders(@idea).count %>位</span>名额。</h2>
+          <h2 class="pdfremove"><span>招募中级合伙人中</span>，还有<span><%#= 10 - ideaseniorstakeholders(@idea).count %>位</span>名额。</h2>
 
           <p class="pdfremove">- <mark>投资3000元，获得1500股，1.5%股权。</mark></p>
           <p class="pdfremove"><mark>- 预期将在半年内，2.5倍投资回报。</mark></p>
           <p class="pdfremove">- 本轮融资3万，用于产品实现、运营、推广。</p>
           <p class="pdfremove">- 扫描以下二维码，进入合伙人微信讨论群。</p>  
+          <%#= image_tag(@idea.weixinqun_url(:thumb)) %>
+
+-->
+
+          <h1 class="pdfremove">1、招募高级合伙人 <small><%= link_to " 权益", '/static_pages/about#seniorparterintro' %>
+            <br>
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#juniorparterinfo">初级合伙人信息</button> 
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#seniorparterinfo">中级合伙人信息</button> 
+          </small></h1>
+
+          <h2 class="pdfremove"><span>招募高级合伙人中</span>，还有<span>10位</span>名额。</h2>
+
+          <p class="pdfremove">- <mark>投资6000元，获得1500股，1.5%股权。</mark></p>
+          <p class="pdfremove"><mark>- 预期将在1年内，2.5倍投资回报。</mark></p>
+          <p class="pdfremove">- 本轮融资6万，用于产品运营、推广。</p>
+          <p class="pdfremove">- 扫描以下二维码，进入合伙人微信讨论群。</p>  
           <%= image_tag(@idea.weixinqun_url(:thumb)) %>
+
+    <% if idea_stage(@idea) == 2 %>
+
 
           <h1 class="pdfremove">2、当前进展 </h1>
           <h2 class="pdfremove">项目经过初期推广，已有<span>300+注册用户，20+普通股东，10位初级合伙人,<%= ideaseniorstakeholders(@idea).count %>名中级合伙人。</span></h2>
@@ -260,8 +277,136 @@
     <% end %>
 
     <% if idea_stage(@idea) == 2 %>  
-    <h1 class="pdfremove">6、股份 </h1>
-    <h2 class="pdfremove">当前产品，初级合伙人共占有10000股，普通股东共占有5000股。</h2>
+    <h1 class="pdfremove">6、股份 </h1>    
+
+                  <div class="table-responsive pdfremove">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>姓名</th>
+                        <th>股份</th>
+                        <th>合伙人身份</th>
+                        <th>股份组成（初级合伙＋初级推广＋中级合伙）</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                          <tr>
+                            <td>崔伟</td>          
+                            <td>10760</td>
+                            <td>中级合伙人</td>
+                            <td>1000+3760＋6000</td>
+                          </tr>
+
+                          <tr>
+                            <td>史洪宾</td>          
+                            <td>1890</td>
+                            <td>中级合伙人</td>
+                            <td>1000+140+750</td>
+                          </tr>
+
+                          <tr>
+                            <td>田广涛</td>          
+                            <td>1790</td>
+                            <td>中级合伙人</td>
+                            <td>1000+40+750</td>
+                          </tr>
+
+                          <tr>
+                            <td>李鹏</td>          
+                            <td>1500</td>
+                            <td>中级合伙人</td>
+                            <td>0+0+1500</td>
+                          </tr>
+
+                          <tr>
+                            <td>陈志浩</td>          
+                            <td>1500</td>
+                            <td>中级合伙人</td>
+                            <td>0+0+1500</td>
+                          </tr>
+
+                          <tr>
+                            <td>王科卫</td>          
+                            <td>1500</td>
+                            <td>中级合伙人</td>
+                            <td>0+0+1500</td>
+                          </tr>
+
+                          <tr>
+                            <td>张永刚</td>          
+                            <td>1500</td>
+                            <td>中级合伙人</td>
+                            <td>0+0+1500</td>
+                          </tr>
+
+                          <tr>
+                            <td>费莺莺</td>          
+                            <td>1500</td>
+                            <td>中级合伙人</td>
+                            <td>0+0+1500</td>
+                          </tr>
+
+                          <tr>
+                            <td>李海彬</td>          
+                            <td>1160</td>
+                            <td>初级合伙人</td>
+                            <td>1000+160</td>
+                          </tr>
+
+                          <tr>
+                            <td>胡中辉</td>          
+                            <td>1150</td>
+                            <td>初级合伙人</td>
+                            <td>1000+150</td>
+                          </tr>
+
+                          <tr>
+                            <td>黄佳琦</td>          
+                            <td>1140</td>
+                            <td>初级合伙人</td>
+                            <td>1000+140</td>
+                          </tr>
+
+                          <tr>
+                            <td>石磊</td>          
+                            <td>1090</td>
+                            <td>初级合伙人</td>
+                            <td>1000+90</td>
+                          </tr>
+
+                          <tr>
+                            <td>张鹏</td>          
+                            <td>1010</td>
+                            <td>初级合伙人</td>
+                            <td>1000+10</td>
+                          </tr>
+
+                          <tr>
+                            <td>刘毅</td>          
+                            <td>1000</td>
+                            <td>初级合伙人</td>
+                            <td>1000</td>
+                          </tr>
+
+                          <tr>
+                            <td>朱峰</td>          
+                            <td>1000</td>
+                            <td>初级合伙人</td>
+                            <td>1000</td>
+                          </tr>
+
+                          <tr>
+                            <td>小股东们</td>          
+                            <td>510</td>
+                            <td>普通股东</td>
+                            <td>共23位小股东</td>
+                          </tr>
+
+                    </tbody>
+                  </table>
+                  </div>
+
     <% end %>
 
 
