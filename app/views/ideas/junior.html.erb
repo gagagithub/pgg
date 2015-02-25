@@ -34,60 +34,38 @@
 </div>
 
 <div class="ideas-list">
-<!-- <h2>0、受邀的朋友 </h2>  -->
 
+<%#= render :partial=>"kuailvindex",:locals=>{:teasersets=>Teaserset.all} %>
 
+<h1>用户推广 </h1>
 
-<h2>1、初级合伙人合同</h2>
-<%= link_to "点击查看", 'http://yun.baidu.com/share/link?shareid=1222575103&uk=844900100',:target=> "_blank" %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>初级合伙人-inviteid</th>
+      <th>种子用户email</th>
+    </tr>
+  </thead>
 
-<h2>2、商业计划书 </h2>
-<%= link_to "点击查看", 'http://yun.baidu.com/share/link?shareid=3737190773&uk=844900100',:target=> "_blank" %>
-
-<h2>3、产品原型 </h2>
-
-<%= render :partial=>"kuailvindex",:locals=>{:teasersets=>Teaserset.all} %>
+  <tbody>
+    <% i=1 %>
+    <% Teaserset.all.each do |teaserset| %>
+      <% if(!teaserset.email.blank?)  %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= teaserset.inviter_id %></td>
+          <td><%= teaserset.email %></td>
+        </tr>
+        <% i=i+1 %>
+     <% end %>
+    <% end %>
+  </tbody>
+</table>
 
 
 </div>
 </div>
-
-
-<!--
-  <div class = "container">
-
-  <div class="ideas-list">
-    <h1>签约流程</h1>
-
-    <blockquote>
-        <p>1. 获取合同范本 <span><small>http://pan.baidu.com/s/1qWz8DWw</small></span></p>   
-        <p>2. 修改合同<span><small>根据您自己的想法、项目，对合同范本进行修改。</small></span></p>
-        <p>3. 发送合同<span><small>通过下面邮件发送，把合同发给初级合伙人们。</small></span></p>
-        <p>4. 确认，收费<span><small>初级合伙人确认过合同，仍愿意加入的话，支付300元给您。</small></span></p>    
-        <p>5. 缴费<span><small>如果您愿意和productgaga.com合作的话，缴费2000元，使用服务。</small></span></p>   
-        <p>6. 结束<span><small>2周内，productgaga.com将提交服务成果。</small></span></p>
-      
-      </blockquote>
-
-      <h2>发送合同给初级合伙人们</h2>
-      <%#= bootstrap_form_tag("/ideas/sendmail",method:"get") do %>
-      <%#= bootstrap_form_tag url:'/ideas/' do |f| %>
-        <%#= f.text_field :friend_name, label:"朋友名字" %>
-        <%#= hidden_field_tag(:friend_email, nil) %>
-        <%#= f.text_field(:email_title, label:"主题",value:"合同初稿，欢迎意见") %>
-        <%#= f.text_area(:email_content,label:"通知信内容",value:"Hi Buddy:
-之前和你沟通的那个想法，最近有一些更新补充，进来看看呗。；）
-谢谢先啦！") %>
-        <%#= hidden_field_tag(:idea_id,params[:id]) %>
-        <%#= f.primary("发送合同") %>
-
-      <%# end %>
-
-      <br>
-  </div>
-  </div>
--->
-
 
 
 
