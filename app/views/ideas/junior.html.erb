@@ -26,9 +26,9 @@
 
 <%= link_to '返回产品通用页面', @idea,class:"btn btn-lg btn-info" %>  
 
-<% if current_user.id == ideaowner(@idea).user_id %>
-      <%= link_to '更新通知', updatejuniorpartner_path(@idea),class:"btn btn-lg btn-primary"%>
-<% end %>
+<%# if current_user.id == ideaowner(@idea).user_id %>
+      <%#= link_to '更新通知', updatejuniorpartner_path(@idea),class:"btn btn-lg btn-primary"%>
+<%# end %>
 
 
 </div>
@@ -37,8 +37,45 @@
 
 <%#= render :partial=>"kuailvindex",:locals=>{:teasersets=>Teaserset.all} %>
 
-<h1>用户推广 </h1>
+<h1>资金情况 </h1>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>收入支出</th>
+      <th>金额(元)</th>
+      <th>剩余总额(元)</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+        <tr>
+          <td>2015-1-15</td>
+          <td>6位中级合伙人融资</td>
+          <td>+18000</td>
+          <td>18000</td>
+        </tr>
+
+        <tr>
+          <td>2015-1-30</td>
+          <td>小潘研发开发费用支出</td>
+          <td>-400</td>
+          <td>17600</td>
+        </tr>        
+
+        <tr>
+          <td>2015-2-25</td>
+          <td>4位高级合伙人融资</td>
+          <td>+24000</td>
+          <td>41600</td>
+        </tr>        
+
+  </tbody>
+</table>
+
+<!--
 <table class="table table-striped">
   <thead>
     <tr>
@@ -49,20 +86,20 @@
   </thead>
 
   <tbody>
-    <% i=1 %>
-    <% Teaserset.all.each do |teaserset| %>
-      <% if(!teaserset.email.blank?)  %>
+    <%# i=1 %>
+    <%# Teaserset.all.each do |teaserset| %>
+      <%# if(!teaserset.email.blank?)  %>
         <tr>
-          <td><%= i %></td>
-          <td><%= teaserset.inviter_id %></td>
-          <td><%= teaserset.email %></td>
+          <td><%#= i %></td>
+          <td><%#= teaserset.inviter_id %></td>
+          <td><%#= teaserset.email %></td>
         </tr>
-        <% i=i+1 %>
-     <% end %>
-    <% end %>
+        <%# i=i+1 %>
+     <%# end %>
+    <%# end %>
   </tbody>
 </table>
-
+-->
 
 </div>
 </div>
