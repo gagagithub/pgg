@@ -17,12 +17,13 @@
 <%#= link_to '关联', share_path(@idea) %> 
 <%#= link_to '点评', {:controller =>"comments", :action =>"new",:linkidea_id=>@idea.id} %>
 
-<div class="user-share-part">
 
-<h1><%= @idea.name %>
-  
-</h1>
-<small><%= @idea.intro %></small>
+<div class="ideas-brief-part">
+
+<h1><%= @idea.name %></h1>
+<h2><%= @idea.intro %></h2>
+
+</div>
 
 <%= link_to '返回产品通用页面', @idea,class:"btn btn-lg btn-info" %>  
 
