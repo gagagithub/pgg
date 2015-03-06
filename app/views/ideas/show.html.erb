@@ -224,8 +224,9 @@
 
     <% if idea_stage(@idea) == 2 %>  
         <h1>5、商业模型 
-          <%#= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
+          <%= link_to ' 更多信息 ', idea_path(@idea,format:'pdf') %>
         </h1>
+
 
         <h2 class="pdfremove">A. 快驴将如何盈利：</h2>
 
@@ -723,12 +724,8 @@
                   <%# else %>
                     <!--puts "Hi !"-->
           <%# end %>
-         
-
-<!--          <h2 class="pdfremove">B、商业模型管理</h2> -->
-
-    
-          <!--
+             
+          
               <div class="businesscanvas">
               <div class ="canvas-body">
                 <body class='canvas show with-canvas updateable-canvas'></body>
@@ -924,7 +921,7 @@
 
                 </div>      
                 </div>
-            -->    
+              
 
 
 
